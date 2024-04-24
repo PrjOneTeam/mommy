@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic|Satisfy|Handlee:400" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="lib/com/fontawesome/6.x/css/all.min.css?ver=20230815-A" />
+    <link rel="stylesheet" href="lib/theme/mts/css/all.min.css?v=20240331" type="text/css" />
+    <script type="text/javascript" src="lib/jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="lib/theme/mts/js/jquery.main.min.js?v=20230129"></script>
+</head>
+<body>
+    <!--
+        Header
+    -->
+    <div id="header">
+        <header>
+            <div id="top-bar">
+                <div class="container">
+                    <div class="top-navigation">
+                        <ul class="top-row">
+                            <li class="first">
+                                <div class="top-bar-join">
+                                    <div class="text"><span>Preschool and Kindergarten worksheets</span></div>
+                                    <div class="join"> <a href="/join">Join for FREE</a></div>
+                                </div>
+                            </li>
+                            <li><a href="/login" class="header-login">Login</a></li>
+                            <li class="first">
+                                <div class="top-bar-cart"> <a href="/cart"><span class="txt">Cart</span> <span class="cnt">1</span></a></div>
+                            </li>
+                            <li>
+                                <div class="social">
+                                    <a class="social-icons" id="social-icons" href="https://www.pinterest.com/teachingstation/" title="View our Worksheets on Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                                    <a class="social-icons" id="social-icons" href="https://www.facebook.com/MyTeachingStation" title="Connect with My Teaching Station on Facebook" target="_blank"><i class="icon-facebook"></i></a>
+                                    <a class="social-icons" id="social-icons" href="https://twitter.com/MyTeaching" title="Connect with My Teaching Station on Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                                    <a class="social-icons" id="social-icons" href="https://www.instagram.com/myteachingstation.mts" title="View our Worksheets on Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <a href="/" id="logo" title="Free Preschool and Kindergarten Worksheets">My Teaching Station</a>
+                <div class="nav-container">
+                    <nav>
+                        <nav id="nav-main">
+                            <ul>
+                                <li><a href="/worksheets/reading">Reading</a></li>
+                                <li><a href="/worksheets/writing">Writing</a></li>
+                                <li><a href="/worksheets/math">Math</a></li>
+                                <li><a href="/worksheets/art-and-colors">Art &amp; Colors</a></li>
+                                <li><a href="/children-educational-articles" style="color:#079eed">Articles</a></li>
+                                <li>
+                                    <div class="divleft"><a href="/preschool-kindergarten-workbooks">Workbooks</a></div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div id="nav-trigger">
+                            <span>Menu</span>
+                        </div>
+                        <nav id="nav-mobile">
+                            <ul>
+                                <li><a href="/worksheets/reading">Reading</a></li>
+                                <li><a href="/worksheets/writing">Writing</a></li>
+                                <li><a href="/worksheets/math">Math</a></li>
+                                <li><a href="/worksheets/art-and-colors">Art &amp; Colors</a></li>
+                                <li><a href="/children-educational-articles" style="color:#079eed">Articles</a></li>
+                                <li>
+                                    <div class="divleft"><a href="/preschool-kindergarten-workbooks">Workbooks</a></div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </nav>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </header>
+    </div>
+    <!--
+        /Header
+    -->
+
+    <!--
+        Content Layout
+    -->
+    <div id="content-layout">
+        <div class="container">
+            <div class="content-holder">
+                <script type="text/javascript">
+                    checkBeforeLeaving = false;
+                </script>
+                <style>
+                    .auth-container {background-color:#fff; margin: 0 auto; max-width: 420px;border: 1px solid #dadada}
+                    .auth-block {max-width: 320px;padding-bottom:10px;}
+                    .signup span.normal {font-size:14px;max-width:250px;margin:0 auto}
+                    .pos-cell {padding: 0 10px 5px 0;}
+                    .rgt {padding-right:0}
+                    .signup span.subheading  {font-size:14px;margin-bottom:5px;}			
+                    .invalidFieldHeader {text-align:left;font-size:13px;}		
+                    .auth-foot {background-color:#f1f1f1; border-radius:4px;padding: 7px 15px;}	
+                    h1.hpage2 {padding-top:20px;}
+                </style>
+                <div>&nbsp;</div>
+                <div class="auth-container">
+                    <div class="auth-block">
+                        <h1 class="hpage2">Returning Members</h1>
+                        <div class="social-signup-options">
+                            <a class="fb-login">Login with Facebook</a>
+                            <div class="social-signin-div">
+                                <div><span>OR</span></div>
+                            </div>
+                        </div>
+                        <form onsubmit="return frmValidCheck(this);" name="SignIn" persist="false" style="margin-bottom:5px;" target="_self" id="SignIn" method="post" action="/auth.cfm?sign_in=1">
+                            <input id="actionxm" type="hidden" name="actionxm" value="authenticate">
+                            <input id="actionxm" type="hidden" name="start_page" value="/my-account/">
+                            <span class="astrix">*</span>E-mail Address
+                            <div><input maxlength="50" id="email" vtype="text" vlabel="Email Address" vrequired="true" class="clInput" style="width:97%;" type="text" name="email"> </div>
+                            <span class="astrix">*</span>Password
+                            <div><input maxlength="30" id="password" vtype="password" vlabel="Password" vrequired="true" class="clInput" style="width:97%" type="password" name="password"> </div>
+                            <div class="mbo"><input type="checkbox" name="remember_me" id="remember_me_1" value="NEVER" class="clRadioCheck "> Remember me on this computer until I log out.</div>
+                            <div id="ValidationMessagesSignIn" class="XMValidationMessage mbo"></div>
+                            <input id="taskbtn" vtype="submit" class="btn btn-primary" type="submit" name="taskbtn" value="Sign In" style="width:100%">
+                        </form>
+                        <p class="center semi-small">Forgot Password? <a href="/login?actionxm=ResetPwd">Click here to reset your password</a>.</p>
+                        <div class="auth-foot center mbo">
+                            <strong>Not a member?</strong> <a href="/join">Join for FREE</a>.
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--
+        /Content Layout
+    -->
+
+    <!--
+        Footer
+    -->
+    <div id="footer">
+        <footer class="pbl">
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-column one">
+                        <div class="footer-header">Worksheets</div>
+                        <ul class="link-list">
+                            <li><a href="/worksheets/reading" title="View all Reading worksheets">Reading</a></li>
+                            <li><a href="/worksheets/writing" title="View all Writing worksheets">Writing</a></li>
+                            <li><a href="/worksheets/math" title="View all Math worksheets">Math</a></li>
+                            <li><a href="/worksheets/art-and-colors" title="View all Art &amp; Colors worksheets">Art &amp; Colors</a></li>
+                            <li><a href="/suggest-worksheet" title="Suggest a Worksheet">Suggest a Worksheet</a></li>
+                            <li><a href="/customize" title="Preschool and Kindergarten Curriculum">Customized Worksheets</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column two">
+                        <div class="footer-header">My Account</div>
+                        <ul>
+                            <li><a href="/login" title="MTS Account Login">Account Login</a></li>
+                            <li><a href="/my-account" title="My MTS Profile">My Profile</a></li>
+                            <li><a href="/my-purchases" title="View My MTS Order Downloads">My Purchases</a></li>
+                            <li><a href="/my-orders" title="View My MTS Order History">Order History</a></li>
+                            <li><a href="/my-account?actionxm=EmailPreference" title="Manage My Email Preferences">Email Preferences</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column three">
+                        <div class="footer-header">Resources</div>
+                        <ul>
+                            <li><a href="/preschool-kindergarten-workbooks" title="MTS Teaching Products">MTS Products</a></li>
+                            <li><a href="/children-educational-articles" title="Early Childhood Educational Articles">Educational Articles</a></li>
+                            <li><a href="/early-childhood-lesson-guidelines" title="Preschool and Kindergarten Curriculum">Lesson Guidelines</a></li>
+                            <li><a href="/faq" title="Questions about our site? Visit our Frequently Asked Questions">FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column four">
+                        <div class="footer-header">My Teaching Station</div>
+                        <ul>
+                            <li><a href="/about" title="About My Teaching Station">About MTS</a></li>
+                            <li><a href="/contact" title="Contact My Teaching Station">Contact</a></li>
+                            <li><a href="/privacy-statement" title="View MTS Privacy Statement">Privacy Statement</a></li>
+                            <li><a href="/refund-policy">Refund Policy</a></li>
+                            <li><a href="/terms-and-conditions">Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column five">
+                        <div class="footer-header">Educational Articles</div>
+                        <ul>
+                            <li><a href="/kids-learning-activities" title="View all Activities articles">Activities</a></li>
+                            <li><a href="/child-development" title="View all Child Development articles">Child Development</a></li>
+                            <li><a href="/teaching-learning" title="View all Teaching &amp; Learning articles">Teaching &amp; Learning</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="footer-logo-wrapper">
+                    <a href="/" id="footer-logo" title="Free Preschool and Kindergarten Worksheets">My Teaching Station</a>
+                    Preschool and kindergarten educational resources for teachers and parents, including worksheets, lesson guidelines, learning activities, and most up-to-date educational research.
+                    <div class="block mto">
+                        <div class="social">
+                            <a class="social-icons" id="social-icons" href="https://www.pinterest.com/teachingstation/" title="View our Worksheets on Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                            <a class="social-icons" id="social-icons" href="https://www.facebook.com/MyTeachingStation" title="Connect with My Teaching Station on Facebook" target="_blank"><i class="icon-facebook"></i></a>
+                            <a class="social-icons" id="social-icons" href="https://twitter.com/MyTeaching" title="Connect with My Teaching Station on Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a class="social-icons" id="social-icons" href="https://www.instagram.com/myteachingstation.mts" title="View our Worksheets on Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-stay-in-touch">
+                    <div class="block mto30"> &nbsp;</div>
+                    <div class="copyright mto">
+                        <p>©2024 My Teaching Station. All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </footer>
+    </div>
+    <!--
+        /Footer
+    -->
+</body>
+</html>
