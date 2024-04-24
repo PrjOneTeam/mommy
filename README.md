@@ -1,66 +1,50 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Mommy
 
-## About Laravel
+Web bán hàng với các sản phẩm là workbook và các mẫu thẻ dạng pdf có thể download về máy thông qua email. Web song ngữ (Anh, Việt)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Tham khảo : https://www.myteachingstation.com/
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Khách hàng
+#### Phân loại sản phẩm
+Khách hàng vào trang xem danh sách các sản phẩm theo bộ lọc là các category, sub-category được mô tả ở tài liệu. Sản phẩm có 2 loại
+- workbook: sản phẩm được đầu tư, có giá cao nhất, nằm trong tab nổi bật nhất. Có workbook mất tiền, có loại free. Các workbook đều sample tương ứng với loại đen trắng hoặc có màu.
+- pdf: thường là các thẻ lẻ nằm trong các tab thuộc category tương ứng. Có thẻ mất tiền, có thẻ free, và 1 loại thẻ cho phép download khi đã mua 1 workbook có liên quan.
 
-## Learning Laravel
+#### Profile cá nhân
+- Profile khách hàng lưu đủ thông tin: name, email, subject_prefer (math, reading ...), role (teacher, worker ...), grade (cấp 1,2,3 vì có lọc theo grade), workbook_prefer (đen trắng hay có màu), gender (nam/nữ)
+- Lịch sử đặt hàng: các đơn hàng đã đặt, chưa nhận (mua r chưa download)
+- Lịch sử mua hàng: các đơn hàng đã nhận (đã download)
+- Thay đổi password
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Cách thức mua hàng
+Mua thông qua cổng thanh toán. Sau khi thanh toán, sẽ có email bắn về kèm link download tài liệu.
+Với sản phẩm free thì download trực tiếp tại web
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Quản lý
+#### Danh sách customer
+- Danh sách customer tương ứng với các thông tin profile cá nhân như ở phía khách hàng (thông tin cá nhân, lịch sử mua hàng)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Admin
+- Chỉ có 1 admin (ko cần crud)
 
-## Laravel Sponsors
+#### Sản phẩm
+- Category, sub-category đã có trong tài liệu, tạm thời fix cứng, ko crud. Sản phẩm có thể gắn với 1 hoặc nhiều category hoặc sub-category
+- Nội dung sp : package bao nhiêu file, size, description
+- Phân loai: Nếu là PDF có 2 loại:  PDF mất tiền ko link tới wordbook,  PDF mất tiền link tới workbook, PDH free
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+#### Giá bán
+- quản lý giá bán gắn với sản phẩm, giá bao gồm giá gốc, giá sale. Có active sale hay không
 
-### Premium Partners
+#### Đánh giá, comment
+- Với workbook gắn reviews, mỗi review có thông tin tên, rate (1-5 sao), nội dung review.
+- Với PDF gắn comment, mỗi comment gắn với PDF gồm thông tin tên, nội dung comment
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Đơn hàng
+- Quản lý danh sách đơn hàng có lọc theo trạng thái (đã download hay chưa), tiền đơn hàng
+- Mỗi đơn hàng gắn 1 list sản phẩm, giá sale và tổng tiền hàng
+- Hiển thị thông tin doanh thu (cơ bản) ngay ở trang đơn hàng
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Bài viết
+- Quản lý các bài viết trên trang khách hàng
