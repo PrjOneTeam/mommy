@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Gilroy Regular';
+    src: url('../fonts/SVN-Gilroy-Regular.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Gilroy Light';
+    src: url('../fonts/GILROY-LIGHT1.OTF') format("opentype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'VN Gilroy Medium';
+    src: url('../fonts/SVN-Gilroy-Medium.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/GILROY-MEDIUM1.OTF') format("opentype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Gilroy Medium';
+    src: url('../fonts/GILROY-MEDIUM1.OTF') format("opentype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/GILROY-BOLD1.OTF') format("opentype");
+    font-weight: bold;
+    font-style: normal
+}
