@@ -37,4 +37,9 @@ class WorkbookRepository
     {
         return $this->model->all();
     }
+
+    public function getActiveWorkbooks()
+    {
+        return $this->model->where('status', true)->get();
+    }
 }

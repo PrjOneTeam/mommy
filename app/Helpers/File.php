@@ -9,14 +9,18 @@ use Illuminate\Http\UploadedFile;
 
 class File
 {
-    public function uploadFile(Request $request, string $fileRequest, string $storagePath = 'images'): void
+    public function uploadFile(Request $request, string $fileRequest, string $storagePath = 'images'): string
     {
         if ($request->hasFile($fileRequest)) {
             $fileUpload = $request->file($fileRequest);
             if ($fileUpload instanceof UploadedFile) {
-                $imageBwFilename = $fileUpload->getClientOriginalName();
-                $fileUpload->move(storage_path($storagePath), $imageBwFilename);
+                $fileName = $fileUpload->getClientOriginalName();
+                $fileUpload->move(storage_path($storagePath), $fileName);
+
+                return sprintf('%s/%s', $storagePath, $fileName);
             }
         }
+
+        return '';
     }
 }

@@ -52,18 +52,16 @@ class Category
         return $this->categories[$category]['sub'] ?? [];
     }
 
-    public function getNameCategory(string $category): string
+    public function getKeyValueCategories(): array
     {
-        if (isset($this->categories[$category])) {
-            return $this->categories[$category]['name'];
-        }
-
-        foreach ($this->categories as $value) {
-            if (isset($value['sub'][$category])) {
-                return $value['sub'][$category];
+        $categories = [];
+        foreach ($this->categories as $key => $value) {
+            $categories[$key] = $value['name'];
+            foreach ($value['sub'] as $subKey => $subValue) {
+                $categories[$subKey] = $subValue;
             }
         }
 
-        return '';
+        return $categories;
     }
 }

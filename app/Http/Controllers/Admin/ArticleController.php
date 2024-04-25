@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\File;
+use App\Http\Controllers\Controller;
 use App\Repositories\ArticleRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
@@ -16,17 +18,30 @@ class ArticleController extends Controller
     ) {
     }
 
+    public function listing(): View
+    {
+        $articles = $this->articleRepository->all();
+        return view('admin.articles.listing', [
+            'articles' => $articles
+        ]);
+    }
+
+    public function create(): View
+    {
+        return view('admin.articles.form');
+    }
+
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
             'title' => 'required|string',
             'content' => 'required|string',
-            'pictures' => 'nullable|string',
+            'pictures' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048',
         ]);
 
 
         try {
-            $this->file->uploadFile($request, 'pictures');
+            $data['pictures'] = $this->file->uploadFile($request, 'pictures');
             $article = $this->articleRepository->create($data);
 
             return response()->json($article, 201);
