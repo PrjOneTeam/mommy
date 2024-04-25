@@ -11,6 +11,7 @@ use App\Repositories\WorkbookRepository;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -18,11 +19,12 @@ use Illuminate\Validation\Rule;
 class PdfController extends Controller
 {
     public function __construct(
-        private readonly PdfRepository $pdfRepository,
+        private readonly PdfRepository      $pdfRepository,
         private readonly WorkbookRepository $workbookRepository,
-        private readonly File $file,
-        private readonly Category $category,
-    ) {
+        private readonly File               $file,
+        private readonly Category           $category,
+    )
+    {
     }
 
     public function listing(): View
@@ -45,22 +47,47 @@ class PdfController extends Controller
         ]);
     }
 
-    public function store(Request $request): JsonResponse
+    public function edit(int $id): View
     {
-        $data = $request->validate([
+        $topics = $this->category->getKeyValueCategories();
+        $relatedWorkbooks = $this->workbookRepository->getActiveWorkbooks()->pluck('name', 'id')->toArray();
+
+        $pdf = $this->pdfRepository->find($id);
+
+        return view('admin.products.pdf-form', [
+            'topics' => $topics,
+            'relatedWorkbooks' => $relatedWorkbooks,
+            'pdf' => $pdf,
+        ]);
+    }
+
+    public function validateRequest(Request $request): array
+    {
+        $condition = [
+            'id' => 'nullable|numeric',
             'name' => 'required|string',
             'description' => 'nullable|string',
             'grade' => ['nullable', Rule::in(Grade::all())],
             'topic' => ['nullable', 'array', Rule::in(array_keys($this->category->getKeyValueCategories()))],
-            'image_bw' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048',
             'image_color' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048',
-            'files_bw' => 'required',
             'files_color' => 'nullable',
             'status' => 'nullable',
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
             'related_workbook' => 'nullable|array',
-        ]);
+        ];
+
+        if(!isset($request->id)) {
+            $condition['files_bw'] = 'required|mage|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048';
+            $condition['image_bw'] = 'required';
+        }
+
+        return $request->validate($condition);
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $data = $this->validateRequest($request);
 
         try {
             $data['status'] = $request->boolean('status');
@@ -69,10 +96,22 @@ class PdfController extends Controller
             $data['files_bw'] = $this->file->uploadFile($request, 'files_bw', 'pdfs');
             $data['files_color'] = $this->file->uploadFile($request, 'files_color', 'pdfs');
 
-            $pdf = $this->pdfRepository->create($data);
+            if (isset($request->id)) {
+                if (!$data['image_color']) unset($data['image_color']);
+                if (!$data['image_bw']) unset($data['image_bw']);
+                if (!$data['files_bw']) unset($data['files_bw']);
+                if (!$data['files_color']) unset($data['files_color']);
 
-            return response()->json($pdf, 201);
+                $pdf = $this->pdfRepository->find($request->id);
+
+                $pdf = $this->pdfRepository->update($pdf, $data);
+            } else {
+                $pdf = $this->pdfRepository->create($data);
+            }
+
+            return redirect()->route('pdfs.lists')->with('success', __('Pdf created successfully'));
         } catch (Exception $e) {
+            dd($e);
             $logs = [
                 'type' => 'Error in PdfController@store',
                 'message' => $e->getMessage(),
@@ -81,7 +120,27 @@ class PdfController extends Controller
             ];
             Log::error(json_encode($logs));
 
-            return response()->json(['message' => __('System Errors')], 500);
+            return redirect()->back()->with('error', __('Something went wrong'));
+        }
+    }
+
+    public function destroy(int $id, Request $request): RedirectResponse
+    {
+        try {
+            $article = $this->pdfRepository->find($id);
+            $this->pdfRepository->delete($article);
+
+            return redirect()->back()->with('success', __('Pdf deleted successfully'));
+        } catch (\Exception $e) {
+            $logs = [
+                'type' => 'Error in PdfController@destroy',
+                'message' => $e->getMessage(),
+                'request' => $request->toArray(),
+                'trace' => $e->getTrace(),
+            ];
+            Log::error(json_encode($logs));
+
+            return redirect()->back()->with('error', __('Pdf could not be deleted'));
         }
     }
 }

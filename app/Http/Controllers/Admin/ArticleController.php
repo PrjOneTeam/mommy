@@ -6,6 +6,7 @@ use App\Helpers\File;
 use App\Http\Controllers\Controller;
 use App\Repositories\ArticleRepository;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
@@ -31,7 +32,7 @@ class ArticleController extends Controller
         return view('admin.articles.form');
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
             'title' => 'required|string',
@@ -42,9 +43,9 @@ class ArticleController extends Controller
 
         try {
             $data['pictures'] = $this->file->uploadFile($request, 'pictures');
-            $article = $this->articleRepository->create($data);
+            $this->articleRepository->create($data);
 
-            return response()->json($article, 201);
+            return redirect()->route('articles.lists')->with('success', __('Article created successfully'));
         } catch (\Exception $e) {
             $logs = [
                 'type' => 'Error in ArticleController@store',
@@ -54,7 +55,27 @@ class ArticleController extends Controller
             ];
             Log::error(json_encode($logs));
 
-            return response()->json(['message' => __('System Errors')], 500);
+            return redirect()->back()->with('error', __('Something went wrong'));
+        }
+    }
+
+    public function destroy(int $id, Request $request): RedirectResponse
+    {
+        try {
+            $article = $this->articleRepository->find($id);
+            $this->articleRepository->delete($article);
+
+            return redirect()->back()->with('success', __('Article deleted successfully'));
+        } catch (\Exception $e) {
+            $logs = [
+                'type' => 'Error in ArticleController@destroy',
+                'message' => $e->getMessage(),
+                'request' => $request->toArray(),
+                'trace' => $e->getTrace(),
+            ];
+            Log::error(json_encode($logs));
+
+            return redirect()->back()->with('error', __('Article could not be deleted'));
         }
     }
 }

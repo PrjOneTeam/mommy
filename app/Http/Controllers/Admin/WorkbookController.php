@@ -7,8 +7,10 @@ use App\Helpers\File;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\WorkbookRepository;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -40,7 +42,7 @@ class WorkbookController extends Controller
         ]);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
             'name' => 'required|string',
@@ -74,8 +76,8 @@ class WorkbookController extends Controller
 
             $workbook = $this->workbookRepository->create($data);
 
-            return response()->json($workbook, 201);
-        } catch (\Exception $e) {
+            return redirect()->route('workbooks.lists')->with('success', __('Workbook created successfully'));
+        } catch (Exception $e) {
             $logs = [
                 'type' => 'Error in WorkbookController@store',
                 'message' => $e->getMessage(),
@@ -84,7 +86,27 @@ class WorkbookController extends Controller
             ];
             Log::error(json_encode($logs));
 
-            return response()->json(['message' => __('System Errors')], 500);
+            return redirect()->back()->with('error', __('Something went wrong'));
+        }
+    }
+
+    public function destroy(int $id, Request $request): RedirectResponse
+    {
+        try {
+            $article = $this->workbookRepository->find($id);
+            $this->workbookRepository->delete($article);
+
+            return redirect()->back()->with('success', __('Workbook deleted successfully'));
+        } catch (\Exception $e) {
+            $logs = [
+                'type' => 'Error in WorkbookController@destroy',
+                'message' => $e->getMessage(),
+                'request' => $request->toArray(),
+                'trace' => $e->getTrace(),
+            ];
+            Log::error(json_encode($logs));
+
+            return redirect()->back()->with('error', __('Workbook could not be deleted'));
         }
     }
 }
