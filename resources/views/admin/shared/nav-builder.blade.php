@@ -21,7 +21,7 @@
         ---------------------------------->
         @if($isAdmin)
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.customer.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.customer.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-people"></i>
                 {{ $lang['customers'] }}
             </a>
@@ -37,22 +37,22 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="{{ route('admin-v2.product.index') }}">
+                    <a class="c-sidebar-nav-link" href="{{ route('admin.product.index') }}">
                         {{ $lang['products'] }}
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="{{ route('admin-v2.product-group.index') }}">
+                    <a class="c-sidebar-nav-link" href="{{ route('admin.product-group.index') }}">
                         {{ $lang['product_group'] }}
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="{{ route('admin-v2.product-type.index') }}">
+                    <a class="c-sidebar-nav-link" href="{{ route('admin.product-type.index') }}">
                         {{ $lang['product_type'] }}
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="{{ route('admin-v2.manufacturer.index') }}">
+                    <a class="c-sidebar-nav-link" href="{{ route('admin.manufacturer.index') }}">
                         {{ $lang['manufacturer'] }}
                     </a>
                 </li>
@@ -68,12 +68,12 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="{{ route('admin-v2.application.index') }}">
+                    <a class="c-sidebar-nav-link" href="{{ route('admin.application.index') }}">
                         Giải pháp
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="{{ route('admin-v2.solution.index') }}">
+                    <a class="c-sidebar-nav-link" href="{{ route('admin.solution.index') }}">
                         Nhóm giải pháp
                     </a>
                 </li>
@@ -83,7 +83,7 @@
         |   Quản lý ngành công nghiệp
         ---------------------------------->
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.industry.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.industry.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 {{ $lang['industry']['index'] }}
             </a>
@@ -93,71 +93,71 @@
         ---------------------------------->
         <li class="c-sidebar-nav-title">{{$lang['common']['posts']}}</li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.topic.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.topic.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Topic
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.post.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.post.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Posts
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.event.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.event.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Sự kiện
             </a>
         </li>
         <li class="c-sidebar-nav-title">Download</li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.download.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.download.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Bài viết
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.category-download.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.category-download.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Danh mục
             </a>
         </li>
         <li class="c-sidebar-nav-title">Nguồn nhân lực</li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.employee.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.employee.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Nhân viên
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.department.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.department.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Phòng ban
             </a>
         </li>
         <li class="c-sidebar-nav-title">-----</li>
       	<li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.project.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.project.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Dự án
             </a>
         </li>
      	<li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.subscribe.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.subscribe.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Đăng kí nhận thông tin
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.contact-request.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.contact-request.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Yêu cầu liên hệ
             </a>
         </li>
         @if($isAdmin)
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin-v2.account.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.account.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-newspaper"></i>
                 Quản trị viên
             </a>
