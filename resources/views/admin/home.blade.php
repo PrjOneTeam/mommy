@@ -11,7 +11,7 @@
                         </div>
                         <div>
                             <div class="text-value text-info" style="font-size:22px">
-                                {{ \App\User::count() }}
+                                {{ \App\Models\User::count() }}
                             </div>
                             <div class="text-muted text-uppercase font-weight-bold small">
                                 Thành viên
@@ -28,7 +28,7 @@
                         </div>
                         <div>
                             <div class="text-value text-success" style="font-size:22px">
-                                {{ \App\Product::count() }}
+                                {{ \App\Models\User::count() }}
                             </div>
                             <div class="text-muted text-uppercase font-weight-bold small">
                                 Sản phẩm
@@ -45,7 +45,7 @@
                         </div>
                         <div>
                             <div class="text-value text-warning" style="font-size:22px">
-                                {{ \App\Admin\Event::count() }}
+                                {{ \App\Models\User::count() }}
                             </div>
                             <div class="text-muted text-uppercase font-weight-bold small">
                                 Sự kiện
@@ -62,7 +62,7 @@
                         </div>
                         <div>
                             <div class="text-value text-danger" style="font-size:22px">
-                                {{ \App\ContactRequest::where('contacted', 0)->count() }}
+                                {{ \App\Models\User::count() }}
                             </div>
                             <div class="text-muted text-uppercase font-weight-bold small">
                                 Yêu cầu liên hệ<br>đang chờ
