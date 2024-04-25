@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Systems Manager | @yield('title', 'Dashboard')</title>
     <link href="/admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admin/css/free.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('admin/css/flag.min.css') }}" rel="stylesheet"> <!-- icons -->
+    <link href="{{ asset('admin/v2/css/free.min.css') }}" rel="stylesheet"> <!-- icons -->
+    <link href="{{ asset('admin/v2/css/flag.min.css') }}" rel="stylesheet"> <!-- icons -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/v2/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/v2/css/custom.css') }}" rel="stylesheet">
     @yield('css')
-    <link href="{{ asset('admin/css/coreui-chartjs.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/v2/css/coreui-chartjs.css') }}" rel="stylesheet">
     <style>
         .tox .tox-toolbar__overflow {
             right: 100px !important;
@@ -37,7 +37,7 @@
 </head>
 <body class="c-app">
     <div id="loadingIcon" style="position:fixed;width:100%;height:100%;z-index:99999;background: rgb(244, 245, 246);display:flex;align-items:center;justify-content:center;">
-        <img src="{{ asset('admin/icons/spinnervlll.gif') }}" width="150px">
+        <img src="{{ asset('admin/v2/icons/spinnervlll.gif') }}" width="150px">
     </div>
     @include('admin.shared.nav-builder')
     <div class="c-wrapper c-fixed-components">
@@ -75,12 +75,12 @@
         </div>
     </div>
     @include('admin.shared.files-modal')
-    <script src="{{ asset('admin/js/coreui.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin/js/coreui-utils.js') }}"></script>
+    <script src="{{ asset('admin/v2/js/coreui.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/v2/js/coreui-utils.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/cd89cfqodamjuxinfsl9k4zjkzfmnte4v0gqwy9g39s3ue50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="{{ asset('admin/js/filemanage.js') }}"></script>
+    <script src="{{ asset('admin/v2/js/filemanage.js') }}"></script>
     @yield('javascript')
     <script>
         tinymce.init({
