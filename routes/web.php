@@ -5,7 +5,7 @@ use App\Http\Controllers\WorkbookController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user-site.home');
 });
 
 Route::post('/workbooks', [WorkbookController::class, 'store'])->name('workbooks.store');
