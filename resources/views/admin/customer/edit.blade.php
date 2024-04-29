@@ -9,7 +9,7 @@
                     <span class="ml-2">{{ $lang['back'] }}</span>
                 </a>
                 <h3 style="font-size:20px;text-transform:capitalize;font-weight:500;margin-bottom:30px;">
-                    Khách hàng: <span class="text-danger">{{ $customer->last_name . ' ' . $customer->first_name }}</span>
+                    {{ $lang['customers'] }}: <span class="text-danger">{{ $customer->last_name . ' ' . $customer->first_name }}</span>
                 </h3>
             </div>
         </div>

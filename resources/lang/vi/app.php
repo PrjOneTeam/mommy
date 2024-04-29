@@ -13,6 +13,8 @@ return [
     'art_and_colors' => 'Art &amp; Colors',
     'articles' => 'Articles',
     'workbooks' => 'Workbooks',
+    'customers' => 'Khách hàng',
+    'registered_customers' => 'Đăng ký khách hàng',
     'suggest_worksheet' => 'Suggest a Worksheet',
     'customize_worksheet' => 'Customized Worksheets',
     'my_account' => 'My Account',

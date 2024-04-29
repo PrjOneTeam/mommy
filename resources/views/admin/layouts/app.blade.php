@@ -66,9 +66,10 @@
             <div class="modal-content">
                 <div class="modal-body text-center">
                     <i class="c-icon icon--modal cil-warning text-danger"></i>
-                    <h5 class="title-confirm">Bạn có chắc chắn muốn xoá?</h5>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Không</button>
-                    <button class="btn btn-danger" onclick="$('#html-form-delete').find('form').submit()" type="button">Có</button>
+                    <h5 class="title-confirm">{{ $lang['cofirm_delete_msg'] }}</h5>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ $lang['confirm_no'] }}</button>
+                    <button class="btn btn-danger" onclick="$('#html-form-delete').find('form').submit()" type="button">
+                        {{ $lang['confirm_yes'] }}</button>
                     <div id="html-form-delete"></div>
                 </div>
             </div>

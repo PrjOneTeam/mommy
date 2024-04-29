@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PdfController;
@@ -22,4 +23,6 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/pdfs', [PdfController::class, 'create'])->name('pdfs.create');
     Route::get('/articles/lists', [ArticleController::class, 'listing'])->name('articles.lists');
     Route::get('/articles', [ArticleController::class, 'create'])->name('articles.create');
+    Route::resource('customer','CustomerController');
+    Route::resource('order','OrderController');
 });
