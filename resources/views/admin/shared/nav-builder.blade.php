@@ -19,7 +19,21 @@
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.dashboard') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Dash board
+                {{ $lang['dashboard'] }}
+            </a>
+        </li>
+
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.customer.index') }}">
+                <i class="c-sidebar-nav-icon c-icon cil-people"></i>
+                {{ $lang['customers'] }}
+            </a>
+        </li>
+
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.order.index') }}">
+                <i class="c-sidebar-nav-icon c-icon cil-share-boxed"></i>
+                {{ $lang['orders'] }}
             </a>
         </li>
     </ul>
