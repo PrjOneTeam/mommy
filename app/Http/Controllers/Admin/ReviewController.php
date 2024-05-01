@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReviewRepository;
 use Exception;
@@ -18,13 +19,31 @@ class ReviewController extends Controller
     ) {
     }
 
-    public function listing(): View
+    public function index(Request $request): View|JsonResponse
     {
-        $reviews = $this->reviewRepository->all();
+        if ($request->ajax()) {
+            $reviews = $this->reviewRepository->all();
+            $results = [];
 
-        return view('admin.feedback.review-listing', [
-            'reviews' => $reviews
-        ]);
+            if ($reviews->count() > 0) {
+                $results = $reviews->map(function ($review) {
+                    return [
+                        'id' => $review->id,
+                        'workbook' => '<a href="' . route('admin.workbook.edit', $review->workbook_id) . '">' . $review->workbook?->name . '</a>',
+                        'public_name' => $review->public_name,
+                        'rate' => $review->rate,
+                        'review' => $review->review,
+                        'created_at' => $review->created_at?->format('Y-m-d H:i:s'),
+                        'updated_at' => $review->updated_at?->format('Y-m-d H:i:s'),
+                        'action' => Helper::renderAction('review', $review->id),
+                    ];
+                });
+            }
+
+            return response()->json(['data' => $results]);
+        }
+
+        return view('admin.feedback.review-listing');
     }
 
     public function create(): View

@@ -37,65 +37,37 @@
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <p style="margin: 10px auto 0 5px; color: #999999">Werkbooks</p>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('workbooks.lists') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.workbook.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Workbooks
+                {{__("Workbooks")}}
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('workbooks.create') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.pdf.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Add Workbook
+                {{__("Pdfs")}}
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <p style="margin: 10px auto 0 5px; color: #999999">PDF</p>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('pdfs.lists') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.article.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Pdfs
-            </a>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('pdfs.create') }}">
-                <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Add Pdf
+                {{__("Articles")}}
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
-            <p style="margin: 10px auto 0 5px; color: #999999">Articles</p>
+            <p style="margin: 10px auto 0 5px; color: #999999">{{__("Customers")}}</p>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('articles.lists') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.comment.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Articles
+                {{__("Comments")}}
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('articles.create') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.review.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Add Article
-            </a>
-        </li>
-
-        <li class="c-sidebar-nav-item">
-            <p style="margin: 10px auto 0 5px; color: #999999">Customers</p>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('comments.lists') }}">
-                <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Comments
-            </a>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('reviews.lists') }}">
-                <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                Reviews
+                {{__("Reviews")}}
             </a>
         </li>
     </ul>

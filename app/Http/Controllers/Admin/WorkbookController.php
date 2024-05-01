@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\Grade;
 use App\Helpers\File;
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\WorkbookRepository;
@@ -13,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class WorkbookController extends Controller
@@ -24,14 +26,34 @@ class WorkbookController extends Controller
     ) {
     }
 
-    public function listing(): View
-{
-    $workbooks = $this->workbookRepository->all();
+    public function index(Request $request): View|JsonResponse
+    {
+        if ($request->ajax()) {
+            $workbooks = $this->workbookRepository->all();
+            $results = [];
 
-    return view('admin.products.workbook-listing', [
-        'workbooks' => $workbooks
-    ]);
-}
+            if ($workbooks->count() > 0) {
+                $results = $workbooks->map(function ($workbook) {
+                    return [
+                        'id' => $workbook->id,
+                        'name' => $workbook->name,
+                        'description' => Str::limit($workbook->description, 50),
+                        'grade' => $workbook->grade,
+                        'topic' => $workbook->topic ? implode(', ', $workbook->topic) : null,
+                        'status' => $workbook->status ? __('Active') : __('Inactive'),
+                        'price' => $workbook->price,
+                        'created_at' => $workbook->created_at->format('Y-m-d H:i:s'),
+                        'updated_at' => $workbook->updated_at->format('Y-m-d H:i:s'),
+                        'action' => Helper::renderAction('workbook', $workbook->id),
+                    ];
+                });
+            }
+
+            return response()->json(['data' => $results]);
+        }
+
+        return view('admin.products.workbook-listing');
+    }
 
     public function create(): View
     {
@@ -39,6 +61,17 @@ class WorkbookController extends Controller
 
         return view('admin.products.workbook-form', [
             'topics' => $topics,
+        ]);
+    }
+
+    public function edit(int $id): View
+    {
+        $topics = $this->category->getKeyValueCategories();
+        $workbook = $this->workbookRepository->find($id);
+
+        return view('admin.products.workbook-form', [
+            'topics' => $topics,
+            'workbook' => $workbook,
         ]);
     }
 
@@ -74,9 +107,23 @@ class WorkbookController extends Controller
             $data['files_color'] = $this->file->uploadFile($request, 'files_color', 'pdfs');
             $data['file_both'] = $this->file->uploadFile($request, 'file_both', 'pdfs');
 
-            $workbook = $this->workbookRepository->create($data);
+            if ($request->has('id')) {
+                if (!$data['image_color']) unset($data['image_color']);
+                if (!$data['image_bw']) unset($data['image_bw']);
+                if (!$data['image_both']) unset($data['image_both']);
+                if (!$data['files_bw']) unset($data['files_bw']);
+                if (!$data['files_color']) unset($data['files_color']);
+                if (!$data['file_both']) unset($data['file_both']);
 
-            return redirect()->route('workbooks.lists')->with('success', __('Workbook created successfully'));
+                $workbook = $this->workbookRepository->find($data['id']);
+                $this->workbookRepository->update($workbook, $data);
+
+                return redirect()->route('admin.workbook.index')->with('success', __('Workbook updated successfully'));
+            } else {
+                $this->workbookRepository->create($data);
+
+                return redirect()->route('admin.workbook.index')->with('success', __('Workbook created successfully'));
+            }
         } catch (Exception $e) {
             $logs = [
                 'type' => 'Error in WorkbookController@store',

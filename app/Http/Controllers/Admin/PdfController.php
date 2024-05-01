@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\Grade;
 use App\Helpers\File;
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\PdfRepository;
@@ -14,6 +15,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class PdfController extends Controller
@@ -27,13 +29,32 @@ class PdfController extends Controller
     {
     }
 
-    public function listing(): View
+    public function index(Request $request): View|JsonResponse
     {
-        $pdfs = $this->pdfRepository->all();
+        if ($request->ajax()) {
+            $pdfs = $this->pdfRepository->all();
+            $results = [];
 
-        return view('admin.products.pdf-listing', [
-            'pdfs' => $pdfs
-        ]);
+            if ($pdfs->count() > 0) {
+                $results = $pdfs->map(function ($pdf) {
+                    return [
+                        'id' => $pdf->id,
+                        'name' => $pdf->name,
+                        'description' => Str::limit($pdf->description, 50),
+                        'grade' => $pdf->grade,
+                        'topic' => $pdf->topic ? implode(', ', $pdf->topic) : null,
+                        'status' => $pdf->status ? __('Active') : __('Inactive'),
+                        'price' => $pdf->price,
+                        'created_at' => $pdf->created_at->format('Y-m-d H:i:s'),
+                        'updated_at' => $pdf->updated_at->format('Y-m-d H:i:s'),
+                        'action' => Helper::renderAction('pdf', $pdf->id),
+                    ];
+                });
+            }
+
+            return response()->json(['data' => $results]);
+        }
+        return view('admin.products.pdf-listing');
     }
 
     public function create(): View
@@ -104,14 +125,13 @@ class PdfController extends Controller
 
                 $pdf = $this->pdfRepository->find($request->id);
 
-                $pdf = $this->pdfRepository->update($pdf, $data);
+                $this->pdfRepository->update($pdf, $data);
             } else {
-                $pdf = $this->pdfRepository->create($data);
+                $this->pdfRepository->create($data);
             }
 
-            return redirect()->route('pdfs.lists')->with('success', __('Pdf created successfully'));
+            return redirect()->route('admin.pdf.index')->with('success', __('Pdf created successfully'));
         } catch (Exception $e) {
-            dd($e);
             $logs = [
                 'type' => 'Error in PdfController@store',
                 'message' => $e->getMessage(),

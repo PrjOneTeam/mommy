@@ -17,7 +17,7 @@ class File
                 $fileName = $fileUpload->getClientOriginalName();
                 $fileUpload->move(storage_path($storagePath), $fileName);
 
-                return sprintf('%s/%s', $storagePath, $fileName);
+                return sprintf('storage/%s/%s', $storagePath, $fileName);
             }
         }
 
