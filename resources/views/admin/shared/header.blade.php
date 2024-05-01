@@ -20,10 +20,9 @@
                     Create
                 </button>
                 <div class="dropdown-menu" style="margin: 0px;">
-{{--                    <a class="dropdown-item" href="{{ route('admin.product.create') }}">{{ $lang['products'] }}</a>--}}
-{{--                    <a class="dropdown-item" href="{{ route('admin.product-group.create') }}">{{ $lang['product_group'] }}</a>--}}
-{{--                    <a class="dropdown-item" href="{{ route('admin.product-type.create') }}">{{ $lang['product_type'] }}</a>--}}
-{{--                    <a class="dropdown-item" href="{{ route('admin.manufacturer.create') }}">{{ $lang['manufacturer'] }}</a>--}}
+                    <a class="dropdown-item" href="{{ route('admin.workbook.create') }}">{{ __('Workbook') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.pdf.create') }}">{{ __('Pdf') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.article.create') }}">{{ __('Article') }}</a>
                 </div>
             </div>
         </li>

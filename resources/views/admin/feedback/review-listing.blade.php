@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
-@section('title', __('Articles'))
+@section('title', __('Reviews'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-between align-items-center mb-3">
                 <h3 style="font-size:20px;text-transform:capitalize;font-weight:500">
-                    {{ __('Articles') }}
+                    {{ __('Reviews') }}
                 </h3>
             </div>
         </div>
@@ -19,8 +19,10 @@
                                 <tr role="row">
                                     <th class="w68px"></th>
                                     <th>ID</th>
-                                    <th>{{ __('Title') }}</th>
-                                    <th>{{ __('Content') }}</th>
+                                    <th>{{ __('Workbook') }}</th>
+                                    <th>{{ __('Public Name') }}</th>
+                                    <th>{{ __('Rate') }}</th>
+                                    <th>{{ __('Review') }}</th>
                                     <th>{{ __('created_at') }}</th>
                                     <th>{{ __('updated_at') }}</th>
                                 </tr>
@@ -36,11 +38,13 @@
 @section('javascript')
     <script>
         $(document).ready(function () {
-            renderTable('/admin/article', JSON.parse('[\
+            renderTable('/admin/review', JSON.parse('[\
 						{ "data": "action", "orderable": false },\
                         { "data": "id" },\
-                        { "data": "title" },\
-                        { "data": "content" },\
+                        { "data": "workbook" },\
+                        { "data": "public_name" },\
+                        { "data": "rate" },\
+                        { "data": "review" },\
                         { "data": "created_at" },\
                         { "data": "updated_at" }\
                     ]'), JSON.parse('[\

@@ -37,4 +37,9 @@ class PdfRepository
     {
         return $this->model->all();
     }
+
+    public function getKeyValuePdfs(): array
+    {
+        return $this->model->pluck('name', 'id')->toArray();
+    }
 }
