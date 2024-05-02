@@ -2,118 +2,182 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ isset($pdf) ? __('Update Pdf') : __('Add new Pdf') }}</h1>
-    <form action="{{ route('admin.pdf.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
-        @csrf
-        @if(isset($pdf))
-        <input type="hidden" name="id" value="{{ $pdf->id }}" />
-        @endif
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="name">{{ __('Name') }}</label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" id="name" name="name" value="{{ old('name', $pdf->name ?? null) }}" /><br>
-            </div>
+    <div class="row justify-content-center">
+        <div class="col-10 col-lg-10">
+            <a href="{{ route('admin.pdf.index') }}" class="text-muted mb-2 d-flex align-items-center" style="text-decoration:none">
+                <i class="c-icon c-icon-sm cil-arrow-left"></i>
+                <span class="ml-2">{{ __('Back') }}</span>
+            </a>
+            <h3 style="font-size:20px;text-transform:capitalize;font-weight:500;margin-bottom:30px;">
+                {{ isset($pdf) ? __('Update Pdf') : __('Add new Pdf') }}
+            </h3>
         </div>
+        <div class="col-10 col-lg-10">
+            <div class="card pt-3">
+                <form action="{{ route('admin.pdf.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @if(isset($pdf))
+                        <input type="hidden" name="id" value="{{ $pdf->id }}" />
+                    @endif
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <fieldset class="d-flex">
+                                <label class="description mr-2">{{__("Status")}}</label>
+                                <label class="c-switch c-switch-sm c-switch-label c-switch-pill c-switch-opposite-success">
+                                    <input name="status" value="1" {{ old('status', $workbook->color_pick ?? null) ? 'checked' : null }} class="c-switch-input" type="checkbox" checked>
+                                    <span class="c-switch-slider" data-checked="✓" data-unchecked="✕"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="description">{{ __('Description') }} <span>({{ __('option') }})</span></label><br>
-            <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="name">{{ __('Name') }}</label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text" id="name" name="name" value="{{ old('name', $pdf->name ?? null) }}" />
+                        </div>
+                        @error('name')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="description">{{ __('Description') }} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
                 <textarea class="form-control" type="text" id="description"
-                    name="description">{{ old('description', $pdf->description ?? null) }}</textarea><br>
-            </div>
-        </div>
+                          name="description">{{ old('description', $pdf->description ?? null) }}</textarea>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="grade">{{ __('Grade') }} <span>({{ __('option') }})</span></label><br>
-            <div class="col-sm-10">
-                <select type="text" id="grade" name="grade" class="form-control">
-                    <option value="preschool" {{ old('grade') == 'preschool' ? 'selected' : (old('grade') == null && isset($pdf) && $pdf->grade == 'preschool' ? 'selected' : null) }}>{{ __('Preschool') }}</option>
-                    <option value="kindergarten" {{ old('grade') == 'kindergarten' ? 'selected' : (old('grade') == null && isset($pdf) && $pdf->grade == 'kindergarten' ? 'selected' : null) }}>{{ __('Kindergarten') }}
-                    </option>
-                </select><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="image_bw">{{ __('Image BW') }}</label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="file" id="image_bw" name="image_bw" />
+                        </div>
+                        @error('image_bw')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="topic">{{ __('Topic') }} <span>({{ __('option') }})</span></label><br>
-            <div class="col-sm-10">
-                <select id="topic" name="topic[]" multiple class="form-control">
-                    @foreach($topics as $key => $topic)
-                    <option value="{{ $key }}" {{ in_array($key, old('topic') ?? []) ? 'selected' : (old('topic') == null && in_array($key, $pdf->topic ?? []) ? 'selected' : null) }}>{{ $topic }}
-                    </option>
-                    @endforeach
-                </select><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="files_bw">{{__("Files BW")}}</label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="file" id="files_bw" name="files_bw" />
+                        </div>
+                        @error('files_bw')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="image_bw">{{ __('Image BW') }}</label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="file" id="image_bw" name="image_bw" /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="image_color">{{ __('Image Color') }} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="file" id="image_color" name="image_color" />
+                        </div>
+                        @error('image_color')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="image_color">{{ __('Image Color') }} <span>({{__('option')}})</span></label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="file" id="image_color" name="image_color" /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="files_color">{{__("Files Color")}} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="file" id="files_color" name="files_color" />
+                        </div>
+                        @error('files_color')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="status">{{ __('Status') }}</label><br>
-            <div class="col-sm-10">
-                <input type="checkbox" id="status" name="status" {{ old('status') ? 'checked' : (old('status') == null && isset($pdf) && $pdf->status ? 'checked' : null) }} /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="price">{{__("Price")}}</label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="number" id="price" name="price" value="{{ old('price', $pdf->price ?? null) }}" />
+                        </div>
+                        @error('price')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="files_bw">{{__("Files BW")}}</label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="file" id="files_bw" name="files_bw" /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="sale_price">{{__("Sale Price")}} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="number" id="sale_price" name="sale_price"
+                                   value="{{ old('sale_price', $pdf->sale_price ?? null) }}" />
+                        </div>
+                        @error('sale_price')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="files_color">{{__("Files Color")}} <span>({{__('option')}})</span></label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="file" id="files_color" name="files_color" /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="grade">{{ __('Grade') }} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
+                            <select type="text" id="grade" name="grade" class="form-control">
+                                <option value="preschool" {{ old('grade') == 'preschool' ? 'selected' : (old('grade') == null && isset($pdf) && $pdf->grade == 'preschool' ? 'selected' : null) }}>{{ __('Preschool') }}</option>
+                                <option value="kindergarten" {{ old('grade') == 'kindergarten' ? 'selected' : (old('grade') == null && isset($pdf) && $pdf->grade == 'kindergarten' ? 'selected' : null) }}>{{ __('Kindergarten') }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="price">{{__("Price")}}</label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="number" id="price" name="price" value="{{ old('price', $pdf->price ?? null) }}" /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="topic">{{ __('Topic') }} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
+                            <select id="topic" name="topic[]" multiple class="form-control select2-multiple">
+                                @foreach($topics as $key => $topic)
+                                    <option value="{{ $key }}" {{ in_array($key, old('topic') ?? []) ? 'selected' : (old('topic') == null && in_array($key, $pdf->topic ?? []) ? 'selected' : null) }}>{{ $topic }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('topic')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="sale_price">{{__("Sale Price")}} <span>({{__("option")}})</span></label><br>
-            <div class="col-sm-10">
-                <input class="form-control" type="number" id="sale_price" name="sale_price"
-                    value="{{ old('sale_price', $pdf->sale_price ?? null) }}" /><br>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="related_workbook">{{__("Related Workbook")}} <span class="text-muted font-weight-normal">({{ __("option") }})</span></label>
+                        <div class="col-sm-12">
+                            <select id="related_workbook" name="related_workbook[]" multiple class="form-control select2-multiple">
+                                @foreach($relatedWorkbooks as $workbookId => $workbook)
+                                    <option value="{{ $workbookId }}"
+                                        {{ in_array($workbookId, old('related_workbook') ?? []) ? 'selected' : (old('related_workbook') == null && in_array($workbookId, $pdf->related_workbook ?? []) ? 'selected' : null) }}>{{ $workbook }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('related_workbook')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="related_workbook">{{__("Related Workbook")}}</label><br>
-            <div class="col-sm-10">
-                <select id="related_workbook" name="related_workbook[]" multiple class="form-control">
-                    @foreach($relatedWorkbooks as $workbookId => $workbook)
-                    <option value="{{ $workbookId }}"
-                        {{ in_array($workbookId, old('related_workbook') ?? []) ? 'selected' : (old('related_workbook') == null && in_array($workbookId, $pdf->related_workbook ?? []) ? 'selected' : null) }}>{{ $workbook }}
-                    </option>
-                    @endforeach
-                </select><br>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>
 @endsection

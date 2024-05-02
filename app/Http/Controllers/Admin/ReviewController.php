@@ -35,7 +35,7 @@ class ReviewController extends Controller
                         'review' => $review->review,
                         'created_at' => $review->created_at?->format('Y-m-d H:i:s'),
                         'updated_at' => $review->updated_at?->format('Y-m-d H:i:s'),
-                        'action' => Helper::renderAction('review', $review->id),
+                        'action' => Helper::renderAction(module: 'review', id: $review->id, actions: [Helper::DELETE_BUTTON]),
                     ];
                 });
             }

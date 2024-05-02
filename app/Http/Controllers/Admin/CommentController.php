@@ -35,7 +35,7 @@ class CommentController extends Controller
                         'review' => $comment->review,
                         'created_at' => $comment->created_at?->format('Y-m-d H:i:s'),
                         'updated_at' => $comment->updated_at?->format('Y-m-d H:i:s'),
-                        'action' => Helper::renderAction('comment', $comment->id),
+                        'action' => Helper::renderAction(module: 'comment', id: $comment->id, actions: [Helper::DELETE_BUTTON]),
                     ];
                 });
             }
