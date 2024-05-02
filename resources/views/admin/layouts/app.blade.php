@@ -33,6 +33,26 @@
         .p10 {
             padding: 10px;
         }
+
+        .select2-container--default .select2-selection--multiple {
+            padding-bottom: 0;
+            padding-right: 0;
+        }
+
+        .select2-container--default .select2-selection--multiple,
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            padding-left: 10px;
+            padding-bottom: 5px;
+        }
+
+        input[type="file"] {
+            height: auto;
+        }
+
+        label {
+            font-weight: 600 !important;
+            color: #0d3064 !important;
+        }
     </style>
 </head>
 <body class="c-app">
