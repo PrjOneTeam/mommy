@@ -12,7 +12,7 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin')->check() || !Auth::guard('admin')->user()->is_delete == 0) {
+        if (Auth::guard('admin')->check()) {
             if (!Helper::getCookie('show_language')) {
                 $flag = 'vn';
                 Helper::setCookie('show_language', $flag);
