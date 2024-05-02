@@ -157,7 +157,7 @@
             }, 500)
 
             $('.select2-multiple').select2({
-                placeholder: "Lựa chọn",
+                placeholder: "{{__("Selection")}}",
                 allowClear: true
             });
 
