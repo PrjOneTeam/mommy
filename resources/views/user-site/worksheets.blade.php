@@ -33,85 +33,51 @@
             </div>
         </div>
         <div class="content-holder">
-            <div class="open-slide"><a href="javascript:void(0);" id="filter-open">OPEN &nbsp; FILTER</a></div>
+            <div class="open-slide"><a href="javascript:void(0);" id="filter-open">{{__("Filter")}}</a></div>
             <div class="left-bar">
                 <div id="filter-slider" class="filter-box">
                     <div class="filter-wrap">
                         <div class="filter-header">
-                            <div class="refine">Filter<i>Your Selection</i></div>
+                            <div class="refine">{{__("Filter")}}<i>{{__("Your Selection")}}</i></div>
                         </div>
-                        <form id="worksheetSearchFrm" class="worksheet-search-form" method="get">
-                            <fieldset>
-                                <input type="hidden" name="c" id="c" value="142">
-                                <input type="search" name="k" id="k" placeholder="Keyword Search...">
-                                <input type="submit" value="">
-                                <div class="clear-results icon-close sitecolor"><span class="space"><a href="/worksheets">clear search results</a></span></div>
-                            </fieldset>
-                            <div class="clearfix"></div>
-                        </form>
+{{--                        <form id="worksheetSearchFrm" class="worksheet-search-form" method="get">--}}
+{{--                            <fieldset>--}}
+{{--                                <input type="hidden" name="c" id="c" value="142">--}}
+{{--                                <input type="search" name="k" id="k" placeholder="Keyword Search...">--}}
+{{--                                <input type="submit" value="">--}}
+{{--                                <div class="clear-results icon-close sitecolor"><span class="space"><a href="/worksheets">clear search results</a></span></div>--}}
+{{--                            </fieldset>--}}
+{{--                            <div class="clearfix"></div>--}}
+{{--                        </form>--}}
                         <div id="search-filter">
                             <div class="filter-group mbo">
-                                <h5 class="filter-title">Subject</h5>
+                                <h5 class="filter-title">{{__("Subject")}}</h5>
                                 <div class="area">
                                     <ul id="subject" class="clearfix">
-                                        <li>
-                                            <a data-path="/reading" data-id="141" href="/worksheets/reading" class="fp">Reading<i></i></a>
-                                            <ul class="expand clearfix hide">
-                                                <li><a data-path="/alphabet" data-id="154" href="/worksheets/alphabet">Alphabet</a></li>
-                                                <li><a data-path="/phonics" data-id="155" href="/worksheets/phonics">Phonics</a></li>
-                                                <li><a data-path="/rhyming" data-id="156" href="/worksheets/rhyming">Rhyming</a></li>
-                                                <li><a data-path="/word-families" data-id="157" href="/worksheets/word-families">Word Families</a></li>
-                                                <li><a data-path="/high-frequency-words" data-id="158" href="/worksheets/high-frequency-words">High-Frequency Words</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="ck-active">
-                                            <a data-path="/writing" data-id="142" href="/worksheets/writing" class="fp">Writing<i></i></a>
-                                            <ul class="expand clearfix ">
-                                                <li><a data-path="/pre-writing" data-id="159" href="/worksheets/pre-writing">Pre-Writing</a></li>
-                                                <li><a data-path="/writing-numbers" data-id="161" href="/worksheets/writing-numbers">Writing Numbers</a></li>
-                                                <li><a data-path="/letters" data-id="162" href="/worksheets/letters">Writing Letters</a></li>
-                                                <li><a data-path="/building-words" data-id="160" href="/worksheets/building-words">Building Words</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a data-path="/math" data-id="143" href="/worksheets/math" class="fp">Math<i></i></a>
-                                            <ul class="expand clearfix hide">
-                                                <li><a data-path="/patterns" data-id="163" href="/worksheets/patterns">Patterns</a></li>
-                                                <li><a data-path="/shapes" data-id="164" href="/worksheets/shapes">Shapes</a></li>
-                                                <li><a data-path="/measurement" data-id="165" href="/worksheets/measurement">Measurement</a></li>
-                                                <li><a data-path="/numbers" data-id="166" href="/worksheets/numbers">Number Recognition &amp; Counting</a></li>
-                                                <li><a data-path="/sorting-categorizing" data-id="167" href="/worksheets/sorting-categorizing">Sorting &amp; Categorizing</a></li>
-                                                <li><a data-path="/position-direction" data-id="168" href="/worksheets/position-direction">Position &amp; Direction</a></li>
-                                                <li><a data-path="/addition" data-id="169" href="/worksheets/addition">Addition</a></li>
-                                                <li><a data-path="/subtraction" data-id="170" href="/worksheets/subtraction">Subtraction</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a data-path="/art-and-colors" data-id="145" href="/worksheets/art-and-colors" class="fp">Art &amp; Colors<i></i></a>
-                                            <ul class="expand clearfix hide">
-                                                <li><a data-path="/scissor-skills" data-id="187" href="/worksheets/scissor-skills">Scissor Skills</a></li>
-                                                <li><a data-path="/dot-to-dot" data-id="179" href="/worksheets/dot-to-dot">Dot-to-Dot</a></li>
-                                                <li><a data-path="/color-by-number" data-id="180" href="/worksheets/color-by-number">Color by Number</a></li>
-                                                <li><a data-path="/drawing" data-id="181" href="/worksheets/drawing">Drawing &amp; Coloring</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a data-path="/social-studies" data-id="182" href="/worksheets/social-studies" class="fp">Social Studies<i></i></a>
-                                            <ul class="expand clearfix hide">
-                                                <li><a data-path="/holidays" data-id="183" href="/worksheets/holidays">Holidays</a></li>
-                                            </ul>
-                                        </li>
+                                        @foreach($topics as $key => $topic)
+                                            <li>
+                                                <a href="/worksheets/{{$key}}" class="fp">{{$topic['name']}}<i></i></a>
+                                                @if(isset($topic['sub']))
+                                                    <ul class="expand clearfix hide">
+                                                        @foreach($topic['sub'] as $subKey => $subTopic)
+                                                            <li><a href="/worksheets/{{ $subKey }}">{{ $subTopic }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="filter-group">
-                                <h5 class="filter-title">Grade</h5>
+                                <h5 class="filter-title">{{__("Grade")}}</h5>
                                 <div class="area">
                                     <ul class="clearfix">
                                         <li>
                                             <ul id="grade" class="clearfix">
-                                                <li><a data-id="146" data-path="/preschool" href="/worksheets/preschool/writing">Preschool</a></li>
-                                                <li><a data-id="147" data-path="/kindergarten" href="/worksheets/kindergarten/writing">Kindergarten</a></li>
+                                                @foreach($grades as $grade)
+                                                    <li><a href="/worksheets/{{$grade}}">{{$grade}}</a></li>
+                                                @endforeach
                                                 <div class="clearfix"></div>
                                             </ul>
                                         </li>
@@ -119,12 +85,12 @@
                                 </div>
                             </div>
                             <div class="filter-group">
-                                <h5 class="filter-title">Resource Type</h5>
+                                <h5 class="filter-title">{{ __("Resource Type") }}</h5>
                                 <div class="area">
                                     <ul>
                                         <li>
                                             <ul id="resource" class="clearfix">
-                                                <li><a data-id="148" data-path="/worksheets/writing" data-current-state="off" href="/worksheets/writing" rel="nofollow">Free</a></li>
+                                                <li><a href="?f=1">{{__('Free')}}</a></li>
                                                 <div class="clearfix"></div>
                                             </ul>
                                         </li>
@@ -136,59 +102,59 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="left-bar-ads mto">
-                    <div class="content-box sboptin-holder">
-                        <div class="sb-lta-banner">
-                            <div class="spacer">
-                                <h2>Learning the Alphabet<span>The Complete Guide</span></h2>
-                                <p>
-                                    Everything you need to effectively teach the alphabet and help your child to build a strong reading and writing foundation.
-                                    <em>Increase your child's learning progress today!</em>
-                                </p>
-                                <div class="center mto mbo"><a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=side_banner" class="button">Download Now</a></div>
-                                <p></p>
-                            </div>
-                            <div class="center mto30 mbo50"><img src="/vault/2599/web/images/teaching-the-alphabet-printable-workbooks.png"></div>
-                        </div>
-                    </div>
-                    <div class="sidebanner-wrap">
-                        <div class="sidebanner-box">
-                            <div class="banner-title purple">Alphabet Flipbook Activity Set</div>
-                            <div class="banner-txt">
-                                <p>52 letter flipbook templates.</p>
-                            </div>
-                            <div class="center mto10"><a href="/reading/alphabet-flipbook-activity-set"><img src="/vault/2599/store/product/sidebar/printable-alphabet-flipbook-templates.png"></a></div>
-                            <div class="center mto mbo"><a href="/reading/alphabet-flipbook-activity-set" class="button btn-purple">Download Now</a></div>
-                            <div class="banner-txt small">★ available in black-and-white and color.</div>
-                        </div>
-                    </div>
-                    <div class="content-box sboptin-holder">
-                        <div class="sb-content">
-                            <span class="free">free</span>
-                            <h3>Exclusive Worksheets</h3>
-                            <div class="center">
-                                <div class="center"><span class="large">Get access to exclusive worksheets and our newsletter.</span><br>Join now for free!</div>
-                            </div>
-                            <div class="xm-sm-loading" id="optloading1139">&nbsp;</div>
-                            <form class="opt-in-form" id="leadBoxOptIn-1139">
-                                <input id="t" name="t" type="hidden" value="19F3D09A-D4BE-D992-B8FA14ABA14FDB79"><input id="p" name="p" type="hidden" value="/worksheets/writing"><input id="confirm_path" name="confirm_path" type="hidden" value="join">
-                                <div id="optinfields1139">
-                                    <div class="row-e"><input class="required" id="your_name" name="your_name" type="text"><input class="required-email" id="your_email" name="your_email" type="email"></div>
-                                    <input class="full-width" id="lead_first_name" name="lead_first_name" placeholder="Your Name" type="text" autocomplete="off" vrequired="true">
-                                    <input class="full-width" id="email" name="email" placeholder="Your Email" type="email" autocomplete="off" vrequired="true">
-                                    <div class="optin-req" id="req1139"></div>
-                                    <button class="full-width" id="submit" name="submit" type="submit">Get Worksheets</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="content-box-plain">
-                        <a href="/teaching-learning/3-powerful-methods-to-help-young-students-excel-at-math" title="3 Powerful Methods to Help Young Students Excel at Math"><img src="/vault/2599/web/images/Articles/Teaching-Learning/three-powerful-methods-to-help-young-children-excel-at-math-ten-frame-place-value-compose-decompose-numbers.jpg" style="width:100%;max-width: 350px;"></a>
-                    </div>
-                    <div class="content-box fbposts">
-                        <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/MyTeachingstation" data-small-header="false" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=709973005764664&amp;container_width=210&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2FMyTeachingstation&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;show_posts=true&amp;small_header=false"><span style="vertical-align: bottom; width: 210px; height: 500px;"><iframe name="f085a5939bca1c497" width="1000px" height="1000px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.10/plugins/page.php?adapt_container_width=true&amp;app_id=709973005764664&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df574c198c1ba3bed8%26domain%3Dwww.myteachingstation.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.myteachingstation.com%252Ff496e63cbb34dc254%26relation%3Dparent.parent&amp;container_width=210&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2FMyTeachingstation&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;show_posts=true&amp;small_header=false" style="border: none; visibility: visible; width: 210px; height: 500px;" class=""></iframe></span></div>
-                    </div>
-                </div>
+{{--                <div class="left-bar-ads mto">--}}
+{{--                    <div class="content-box sboptin-holder">--}}
+{{--                        <div class="sb-lta-banner">--}}
+{{--                            <div class="spacer">--}}
+{{--                                <h2>Learning the Alphabet<span>The Complete Guide</span></h2>--}}
+{{--                                <p>--}}
+{{--                                    Everything you need to effectively teach the alphabet and help your child to build a strong reading and writing foundation.--}}
+{{--                                    <em>Increase your child's learning progress today!</em>--}}
+{{--                                </p>--}}
+{{--                                <div class="center mto mbo"><a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=side_banner" class="button">Download Now</a></div>--}}
+{{--                                <p></p>--}}
+{{--                            </div>--}}
+{{--                            <div class="center mto30 mbo50"><img src="/vault/2599/web/images/teaching-the-alphabet-printable-workbooks.png"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="sidebanner-wrap">--}}
+{{--                        <div class="sidebanner-box">--}}
+{{--                            <div class="banner-title purple">Alphabet Flipbook Activity Set</div>--}}
+{{--                            <div class="banner-txt">--}}
+{{--                                <p>52 letter flipbook templates.</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="center mto10"><a href="/reading/alphabet-flipbook-activity-set"><img src="/vault/2599/store/product/sidebar/printable-alphabet-flipbook-templates.png"></a></div>--}}
+{{--                            <div class="center mto mbo"><a href="/reading/alphabet-flipbook-activity-set" class="button btn-purple">Download Now</a></div>--}}
+{{--                            <div class="banner-txt small">★ available in black-and-white and color.</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="content-box sboptin-holder">--}}
+{{--                        <div class="sb-content">--}}
+{{--                            <span class="free">free</span>--}}
+{{--                            <h3>Exclusive Worksheets</h3>--}}
+{{--                            <div class="center">--}}
+{{--                                <div class="center"><span class="large">Get access to exclusive worksheets and our newsletter.</span><br>Join now for free!</div>--}}
+{{--                            </div>--}}
+{{--                            <div class="xm-sm-loading" id="optloading1139">&nbsp;</div>--}}
+{{--                            <form class="opt-in-form" id="leadBoxOptIn-1139">--}}
+{{--                                <input id="t" name="t" type="hidden" value="19F3D09A-D4BE-D992-B8FA14ABA14FDB79"><input id="p" name="p" type="hidden" value="/worksheets/writing"><input id="confirm_path" name="confirm_path" type="hidden" value="join">--}}
+{{--                                <div id="optinfields1139">--}}
+{{--                                    <div class="row-e"><input class="required" id="your_name" name="your_name" type="text"><input class="required-email" id="your_email" name="your_email" type="email"></div>--}}
+{{--                                    <input class="full-width" id="lead_first_name" name="lead_first_name" placeholder="Your Name" type="text" autocomplete="off" vrequired="true">--}}
+{{--                                    <input class="full-width" id="email" name="email" placeholder="Your Email" type="email" autocomplete="off" vrequired="true">--}}
+{{--                                    <div class="optin-req" id="req1139"></div>--}}
+{{--                                    <button class="full-width" id="submit" name="submit" type="submit">Get Worksheets</button>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="content-box-plain">--}}
+{{--                        <a href="/teaching-learning/3-powerful-methods-to-help-young-students-excel-at-math" title="3 Powerful Methods to Help Young Students Excel at Math"><img src="/vault/2599/web/images/Articles/Teaching-Learning/three-powerful-methods-to-help-young-children-excel-at-math-ten-frame-place-value-compose-decompose-numbers.jpg" style="width:100%;max-width: 350px;"></a>--}}
+{{--                    </div>--}}
+{{--                    <div class="content-box fbposts">--}}
+{{--                        <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/MyTeachingstation" data-small-header="false" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=709973005764664&amp;container_width=210&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2FMyTeachingstation&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;show_posts=true&amp;small_header=false"><span style="vertical-align: bottom; width: 210px; height: 500px;"><iframe name="f085a5939bca1c497" width="1000px" height="1000px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.10/plugins/page.php?adapt_container_width=true&amp;app_id=709973005764664&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df574c198c1ba3bed8%26domain%3Dwww.myteachingstation.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.myteachingstation.com%252Ff496e63cbb34dc254%26relation%3Dparent.parent&amp;container_width=210&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2FMyTeachingstation&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;show_posts=true&amp;small_header=false" style="border: none; visibility: visible; width: 210px; height: 500px;" class=""></iframe></span></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
             <div class="left-body">
                 <div class="ploading"></div>

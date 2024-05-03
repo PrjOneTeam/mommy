@@ -7,22 +7,23 @@ namespace App\Http\Controllers\UserSite;
 use App\Enums\Grade;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Repositories\WorksheetRepository;
 use Illuminate\Http\Request;
 
 class WorksheetsController extends Controller
 {
     public function __construct(
         private readonly Category $category,
+        private readonly WorksheetRepository $worksheetRepository,
     ) {
     }
 
     public function index(Request $request, ?string $grade = null, ?string $topic = null): \Illuminate\Contracts\View\View
     {
-        if ($grade) {
-            $grades = Grade::all();
-            $categories = array_keys($this->category->getKeyValueCategories());
+        $grades = Grade::all();
 
-            if (!in_array($grade, $grades) && !in_array($grade, $categories)) {
+        if ($grade) {
+            if (!in_array($grade, $grades) && !in_array($grade, array_keys($this->category->getKeyValueCategories()))) {
                 abort(404);
             }
 
@@ -31,6 +32,15 @@ class WorksheetsController extends Controller
             }
         }
 
-        return view('user-site.worksheets');
+        $f = $request->get('f');
+        $p = $request->get('p');
+
+        $worksheets = $this->worksheetRepository->getWorksheets();
+
+dd($worksheets);
+        return view('user-site.worksheets', [
+            'grades' => $grades,
+            'topics' => $this->category->getCategories(),
+        ]);
     }
 }
