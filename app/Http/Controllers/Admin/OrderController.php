@@ -60,10 +60,10 @@ class OrderController extends Controller
                     $type = null;
                     if ($item->workbook_id != null) {
                         $type = 'workbook';
-                        $productName = Workbook::findOrFail($item->workbook_id)->name;
+                        $productName = Workbook::withTrashed()->find($item->workbook_id)->name;
                     } else {
                         $type = 'pdf';
-                        $productName = Pdf::findOrFail($item->pdf_id)->name;
+                        $productName = Pdf::withTrashed()->find($item->pdf_id)->name;
                     }
 
                     return [
