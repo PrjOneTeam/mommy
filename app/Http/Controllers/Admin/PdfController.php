@@ -99,7 +99,7 @@ class PdfController extends Controller
         ];
 
         if(!isset($request->id)) {
-            $condition['files_bw'] = 'required|mage|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048';
+            $condition['files_bw'] = 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048';
             $condition['image_bw'] = 'required';
         }
 
