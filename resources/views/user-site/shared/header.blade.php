@@ -4,13 +4,18 @@
             <div class="container">
                 <div class="top-navigation">
                     <ul class="top-row">
-                        <li class="first">
-                            <div class="top-bar-join">
-                                <div class="text"><span>@lang('app.preschool_kindergarten_worksheets')</span></div>
-                                <div class="join"> <a href="/join">@lang('app.join_for_free')</a></div>
-                            </div>
-                        </li>
-                        <li><a href="/login" class="header-login">@lang('app.login')</a></li>
+                        @if (Auth::check())
+                            <li><a href="/my-account" class="header-login">Welcome, {{ Auth::user()->public_name }}</a></li>
+                            <li><a href="/user/logout" class="header-login">logout</a></li>
+                        @else
+                            <li class="first">
+                                <div class="top-bar-join">
+                                    <div class="text"><span>@lang('app.preschool_kindergarten_worksheets')</span></div>
+                                    <div class="join"> <a href="/join">@lang('app.join_for_free')</a></div>
+                                </div>
+                            </li>
+                            <li><a href="/user/login" class="header-login">@lang('app.login')</a></li>
+                        @endif
                         <li class="first">
                             <div class="top-bar-cart">
                                 <a href="/cart">
@@ -31,7 +36,7 @@
             </div>
         </div>
         <div class="container">
-            <a href="/" id="logo" title="@lang('app.free_preschool_and_kindergarten_worksheets')">@lang('app.my_teaching_station')</a>
+            <a href="/" title="@lang('app.free_preschool_and_kindergarten_worksheets')">@lang('app.my_teaching_station')</a>
             <div class="nav-container">
                 <nav>
                     <nav id="nav-main">
