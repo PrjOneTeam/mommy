@@ -27,12 +27,12 @@
                                 <div class="pimg" style="width: 100%">
                                     <div class="ribbon {{ !$worksheet->price ? 'green' : null }}">{{ $worksheet->price ? __("Buy Now") : __("Free")}}</div>
                                     <div class="img-wrap">
-                                        <a href="/reading/alphabet/uppercase-letter-w-maze-worksheet" title="{{$worksheet->name}}">
-                                            <img style="min-height: 204px; width: 100%" src="{{$worksheet->image_bw ? asset($worksheet->image_bw) : ($worksheet->image_color ? asset($worksheet->image_color) : ($worksheet->image_both ? asset($worksheet->image_both) : asset('lib/theme/mts/images/default.jpg')))}}" alt="{{$worksheet->name}}">
+                                        <a href="/{{$worksheet->slug}}" title="{{$worksheet->name}}">
+                                            <img style="min-height: 204px; width: 100%" src="{{$worksheet->image_bw ? asset($worksheet->image_bw) : ($worksheet->image_color ? asset($worksheet->image_color) : ($worksheet->image_both ? asset($worksheet->image_both) : asset(\App\Enums\Image::DEFAULT_IMAGE)))}}" alt="{{$worksheet->name}}">
                                         </a>
                                     </div>
                                 </div>
-                                <div class="pdetail"><a href="/reading/alphabet/uppercase-letter-w-maze-worksheet" title="{{$worksheet->name}}">{{$worksheet->name}}</a></div>
+                                <div class="pdetail"><a href="/{{$worksheet->slug}}" title="{{$worksheet->name}}">{{$worksheet->name}}</a></div>
                                 <div class="post-icons clearfix">
                                     <div class="right">
                                         <a class="xmTip icon-info" data-tooltip="Alphabet"></a>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="post-photo">
                                     <a href="/writing/letters/uppercase-and-lowercase-letter-b-printable-writing-mat" title="">
-                                        <img src="{{$worksheet->image_bw ? asset($worksheet->image_bw) : ($worksheet->image_color ? asset($worksheet->image_color) : ($worksheet->image_both ? asset($worksheet->image_both) : asset('lib/theme/mts/images/default.jpg')))}}" alt="{{$worksheet->name}}">
+                                        <img src="{{$worksheet->image_bw ? asset($worksheet->image_bw) : ($worksheet->image_color ? asset($worksheet->image_color) : ($worksheet->image_both ? asset($worksheet->image_both) : asset(\App\Enums\Image::DEFAULT_IMAGE)))}}" alt="{{$worksheet->name}}">
                                     </a>
                                 </div>
                                 <div class="post-summary">
@@ -82,7 +82,7 @@
                 <span id="pagination_title" class="space10 mto10">{{__("Showing")}} {{$page}} - {{$page * $per_page}} of {{$totals}}</span>
             </div>
             <div class="ft-right mto10">
-                <span class="space10">PAGE: </span>
+                <span class="space10">{{__("Page")}}: </span>
                 <div class="article_paging">
                     <ul class="pagination">
                         @for($i = 1; $i <= ceil($totals/$per_page); $i++)

@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/worksheets/{grade?}/{topic?}', [WorksheetsController::class, 'index'])->name('worksheets');
+Route::get('/{worksheet}', [\App\Http\Controllers\UserSite\WorksheetDetailController::class, 'index'])->name('worksheets.detail');
 
 include __DIR__ . '/admin.php';
 

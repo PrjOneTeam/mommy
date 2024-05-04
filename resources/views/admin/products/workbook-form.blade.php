@@ -19,6 +19,19 @@
                     @if(isset($workbook))
                     <input type="hidden" name="id" value="{{ $workbook->id }}" />
                     @endif
+
+                    <div class="form-group">
+                        <div class="col-12">
+                            <fieldset class="d-flex">
+                                <label class="description mr-2">{{__("Active")}}</label>
+                                <label class="c-switch c-switch-sm c-switch-label c-switch-pill c-switch-opposite-success">
+                                    <input name="status" value="1" {{ old('status', $workbook->status ?? null) ? 'checked' : null }} class="c-switch-input" type="checkbox" checked>
+                                    <span class="c-switch-slider" data-checked="✓" data-unchecked="✕"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-12 control-label" for="name">{{ __("Name") }}</label>
                         <div class="col-sm-12">
@@ -88,18 +101,6 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-12">
-                            <fieldset class="d-flex">
-                                <label class="description mr-2">{{__("Status")}}</label>
-                                <label class="c-switch c-switch-sm c-switch-label c-switch-pill c-switch-opposite-success">
-                                    <input name="status" value="1" {{ old('status', $workbook->status ?? null) ? 'checked' : null }} class="c-switch-input" type="checkbox" checked>
-                                    <span class="c-switch-slider" data-checked="✓" data-unchecked="✕"></span>
-                                </label>
-                            </fieldset>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="col-sm-12 control-label" for="files_bw">{{__("Files BW")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
                         <div class="col-sm-12">
                             <input class="form-control" type="file" id="files_bw" name="files_bw">
@@ -145,7 +146,7 @@
                     <div class="form-group">
                         <label class="col-sm-12 control-label" for="price">{{__("Price")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
                         <div class="col-sm-12">
-                            <input class="form-control" type="number" id="price" name="price" value="{{ old('price', $workbook->price ?? null) }}">
+                            <input class="form-control" id="price" name="price" value="{{ old('price', $workbook->price ?? null) }}">
                         </div>
                         @error('price')
                         <div class="col-sm-12">

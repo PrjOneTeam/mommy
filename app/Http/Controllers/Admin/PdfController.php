@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\Grade;
 use App\Helpers\File;
 use App\Helpers\Helper;
+use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\PdfRepository;
@@ -25,6 +26,7 @@ class PdfController extends Controller
         private readonly WorkbookRepository $workbookRepository,
         private readonly File               $file,
         private readonly Category           $category,
+        private readonly Language           $language,
     )
     {
     }
@@ -127,6 +129,15 @@ class PdfController extends Controller
 
                 $this->pdfRepository->update($pdf, $data);
             } else {
+                $slug = $this->language->convert_vi_to_en($data['name']);
+                $data['slug'] = str_replace(' ', '-', strtolower($slug));
+
+                $already = $this->pdfRepository->findBySlug($slug);
+
+                if ($already) {
+                    $data['slug'] = $data['slug'] . '-' . time();
+                }
+
                 $this->pdfRepository->create($data);
             }
 
