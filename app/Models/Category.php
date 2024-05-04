@@ -12,7 +12,7 @@ class Category
             'sub' => [
                 'patterns' => 'Patterns',
                 'shapes' => 'Shapes',
-                'sorting ' => 'Sorting ',
+                'sorting' => 'Sorting',
                 'position' => 'Position',
                 'measurements' => 'Measurements',
                 'addition' => 'Addition',

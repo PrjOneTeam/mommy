@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->string('files_bw');
             $table->string('files_color')->nullable();
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->string('sale_price')->nullable();
             $table->json('related_workbook')->nullable();
             $table->timestamps();

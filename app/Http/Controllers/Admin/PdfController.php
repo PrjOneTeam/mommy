@@ -93,14 +93,14 @@ class PdfController extends Controller
             'image_color' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048',
             'files_color' => 'nullable',
             'status' => 'nullable',
-            'price' => 'required|numeric',
+            'price' => 'nullable|numeric',
             'sale_price' => 'nullable|numeric',
             'related_workbook' => 'nullable|array',
+            'files_bw' => 'nullable',
         ];
 
         if(!isset($request->id)) {
-            $condition['files_bw'] = 'required|mage|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048';
-            $condition['image_bw'] = 'required';
+            $condition['image_bw'] = 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048';
         }
 
         return $request->validate($condition);

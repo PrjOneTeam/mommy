@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\UserSite\WorksheetsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('user-site.home');
 });
+
+Route::get('/worksheets/{grade?}/{topic?}', [WorksheetsController::class, 'index'])->name('worksheets');
 
 include __DIR__ . '/admin.php';
 
