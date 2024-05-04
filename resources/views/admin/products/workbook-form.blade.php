@@ -208,11 +208,16 @@
                         <div class="col-sm-12">
                             <select id="topic" name="topic[]" multiple class="form-control select2-multiple">
                                 @foreach($topics as $key => $topic)
-                                    <option value="{{ $key }}" {{ in_array($key, old('topic') ?? []) ? 'selected' : null }}>{{ $topic }}
+                                    <option value="{{ $key }}" {{ in_array($key, old('topic') ?? []) ? 'selected' : (old('topic') == null && in_array($key, $workbook->topic ?? []) ? 'selected' : null) }}>{{ $topic }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
+                        @error('topic')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-12">

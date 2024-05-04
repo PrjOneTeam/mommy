@@ -78,6 +78,7 @@ class WorkbookController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
+            'id' => 'nullable|numeric',
             'name' => 'required|string',
             'description' => 'nullable|string',
             'color_pick' => 'nullable',

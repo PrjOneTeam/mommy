@@ -21,26 +21,59 @@ class WorksheetsController extends Controller
     public function index(Request $request, ?string $grade = null, ?string $topic = null): \Illuminate\Contracts\View\View
     {
         $grades = Grade::all();
+        $f = (bool) $request->get('f');
+        $p = (int) $request->get('p');
 
-        if ($grade) {
-            if (!in_array($grade, $grades) && !in_array($grade, array_keys($this->category->getKeyValueCategories()))) {
-                abort(404);
-            }
-
-            if ($topic && !in_array($grade, $grades)) {
+        $categoryKeys = array_keys($this->category->getKeyValueCategories());
+        if ($grade && $topic) {
+            if (!in_array($grade, $grades) || !in_array($topic, $categoryKeys)) {
                 abort(404);
             }
         }
 
-        $f = $request->get('f');
-        $p = $request->get('p');
+        if ($grade && !$topic && !in_array($grade, $grades)) {
+            if (!in_array($grade, $categoryKeys)) {
+                abort(404);
+            }
+            $topic = $grade;
+            $grade = null;
+        }
 
-        $worksheets = $this->worksheetRepository->getWorksheets();
+        $worksheets = $this->worksheetRepository->getWorksheets(
+            $grade,
+            $topic,
+            $f,
+            $p,
+        );
 
-dd($worksheets);
+        $totals = $this->worksheetRepository->getTotals();
+        $perPage = $this->worksheetRepository::LIMIT;
+
+        if ($p < 0) {
+            $p = 1;
+        }
+        if ($p > ceil($totals / $perPage)) {
+            $p = ceil($totals / $perPage);
+        }
+
+        if ($request->ajax()) {
+            return view('user-site.worksheets.content-box', [
+                'grades' => $grades,
+                'topics' => $this->category->getCategories(),
+                'worksheets' => $worksheets,
+                'page' => $p <= 0 ? 1 : min($p, ceil($totals / $perPage)),
+                'per_page' => $perPage,
+                'totals' => $totals,
+            ]);
+        }
+
         return view('user-site.worksheets', [
             'grades' => $grades,
             'topics' => $this->category->getCategories(),
+            'worksheets' => $worksheets,
+            'page' => $p <= 0 ? 1 : min($p, ceil($totals / $perPage)),
+            'per_page' => $perPage,
+            'totals' => $totals,
         ]);
     }
 }

@@ -15,9 +15,9 @@ class File
             $fileUpload = $request->file($fileRequest);
             if ($fileUpload instanceof UploadedFile) {
                 $fileName = $fileUpload->getClientOriginalName();
-                $fileUpload->move(storage_path($storagePath), $fileName);
+                $fileUpload->move(public_path($storagePath), $fileName);
 
-                return sprintf('storage/%s/%s', $storagePath, $fileName);
+                return sprintf('%s/%s', $storagePath, $fileName);
             }
         }
 
