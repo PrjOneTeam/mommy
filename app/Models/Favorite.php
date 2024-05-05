@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Customer extends Authenticatable
+class Favorite extends Model
 {
     use HasFactory, Notifiable;
 
@@ -17,16 +16,8 @@ class Customer extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'public_name',
-        'email',
-        'location',
-        'role',
-        'subject_prefer',
-        'grade_teacher',
-        'gender',
-        'color_prefer'
+        'customer_id',
+        'pdf_id',
     ];
 
     /**
@@ -45,9 +36,6 @@ class Customer extends Authenticatable
     protected function casts(): array
     {
         return [
-            'role' => 'array',
-            'subject_prefer' => 'array',
-            'grade_teacher' => 'array',
         ];
     }
 }
