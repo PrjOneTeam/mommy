@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class WorksheetRepository
 {
-    public const LIMIT = 2;
+    public const LIMIT = 24;
 
     protected int $totals = 0;
 
@@ -59,5 +59,10 @@ class WorksheetRepository
     public function getTotals(): int
     {
         return $this->totals;
+    }
+
+    public function getRelatedWorksheet($type, $topic)
+    {
+        return $this->{$type}->whereJsonContains('topic', $topic)->get();
     }
 }

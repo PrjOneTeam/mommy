@@ -3,39 +3,18 @@
 namespace App\Repositories;
 
 use App\Models\Workbook;
+use App\Repositories\Repository;
 
-class WorkbookRepository
+class WorkbookRepository extends Repository
 {
-    protected $model;
-
     public function __construct(Workbook $workbook)
     {
-        $this->model = $workbook;
+        return parent::__construct($workbook);
     }
 
-    public function create(array $data)
+    public function findBySlug(string $slug): ?Workbook
     {
-        return $this->model->create($data);
-    }
-
-    public function update(Workbook $workbook, array $data)
-    {
-        return $workbook->update($data);
-    }
-
-    public function delete(Workbook $workbook)
-    {
-        return $workbook->delete();
-    }
-
-    public function find(int $id)
-    {
-        return $this->model->find($id);
-    }
-
-    public function all()
-    {
-        return $this->model->all();
+        return $this->model->where('slug', $slug)->first();
     }
 
     public function getActiveWorkbooks()

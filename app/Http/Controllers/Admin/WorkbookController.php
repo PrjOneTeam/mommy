@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\Grade;
 use App\Helpers\File;
 use App\Helpers\Helper;
+use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\WorkbookRepository;
@@ -23,6 +24,7 @@ class WorkbookController extends Controller
         private readonly WorkbookRepository $workbookRepository,
         private readonly File $file,
         private readonly Category $category,
+        private readonly Language           $language,
     ) {
     }
 
@@ -121,6 +123,13 @@ class WorkbookController extends Controller
 
                 return redirect()->route('admin.workbook.index')->with('success', __('Workbook updated successfully'));
             } else {
+                $slug = $this->language->convert_vi_to_en($data['name']);
+                $data['slug'] = str_replace(' ', '-', strtolower($slug));
+
+                $already = $this->workbookRepository->findBySlug($slug);
+                if ($already) {
+                    $data['slug'] = $data['slug'] . '-' . time();
+                }
                 $this->workbookRepository->create($data);
 
                 return redirect()->route('admin.workbook.index')->with('success', __('Workbook created successfully'));

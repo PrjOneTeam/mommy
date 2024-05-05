@@ -12,6 +12,7 @@ class Workbook extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'description',
         'color_pick',
         'image_bw',

@@ -12,7 +12,7 @@ class Worksheet
     public function isFree(Pdf|Workbook $worksheet): bool
     {
         if ($worksheet instanceof Pdf) {
-            return !$worksheet->related_workbook;
+            return !$worksheet->related_workbook && !$worksheet->price;
         }
 
         return !$worksheet->price;

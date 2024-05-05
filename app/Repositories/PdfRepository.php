@@ -3,39 +3,18 @@
 namespace App\Repositories;
 
 use App\Models\Pdf;
+use App\Repositories\Repository;
 
-class PdfRepository
+class PdfRepository extends Repository
 {
-    protected $model;
-
     public function __construct(Pdf $pdf)
     {
-        $this->model = $pdf;
+        return parent::__construct($pdf);
     }
 
-    public function create(array $data)
+    public function findBySlug(string $slug): ?Pdf
     {
-        return $this->model->create($data);
-    }
-
-    public function update(Pdf $pdf, array $data)
-    {
-        return $pdf->update($data);
-    }
-
-    public function delete(Pdf $pdf)
-    {
-        return $pdf->delete();
-    }
-
-    public function find(int $id)
-    {
-        return $this->model->find($id);
-    }
-
-    public function all()
-    {
-        return $this->model->all();
+        return $this->model->where('slug', $slug)->first();
     }
 
     public function getKeyValuePdfs(): array

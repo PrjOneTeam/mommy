@@ -12,6 +12,7 @@ class Pdf extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'description',
         'grade',
         'topic',
@@ -29,4 +30,9 @@ class Pdf extends Model
         'topic' => 'array',
         'related_workbook' => 'array',
     ];
+
+    public function relatedWorkbooks()
+{
+    return $this->hasMany('App\Models\Workbook', 'id', 'related_workbook');
+}
 }
