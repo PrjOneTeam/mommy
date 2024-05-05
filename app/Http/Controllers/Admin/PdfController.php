@@ -9,6 +9,7 @@ use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\PdfRepository;
+use App\Repositories\SlugRepository;
 use App\Repositories\WorkbookRepository;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -27,6 +28,7 @@ class PdfController extends Controller
         private readonly File               $file,
         private readonly Category           $category,
         private readonly Language           $language,
+        private readonly SlugRepository     $slugRepository,
     )
     {
     }
@@ -116,8 +118,8 @@ class PdfController extends Controller
             $data['status'] = $request->boolean('status');
             $data['image_bw'] = $this->file->uploadFile($request, 'image_bw');
             $data['image_color'] = $this->file->uploadFile($request, 'image_color');
-            $data['files_bw'] = $this->file->uploadFile($request, 'files_bw', 'pdfs');
-            $data['files_color'] = $this->file->uploadFile($request, 'files_color', 'pdfs');
+            $data['files_bw'] = $this->file->uploadFile($request, 'files_bw', 'pdfs', true);
+            $data['files_color'] = $this->file->uploadFile($request, 'files_color', 'pdfs', true);
 
             if (isset($request->id)) {
                 if (!$data['image_color']) unset($data['image_color']);
@@ -126,22 +128,27 @@ class PdfController extends Controller
                 if (!$data['files_color']) unset($data['files_color']);
 
                 $pdf = $this->pdfRepository->find($request->id);
-
                 $this->pdfRepository->update($pdf, $data);
+                $message = __('Pdf updated successfully');
             } else {
                 $slug = $this->language->convert_vi_to_en($data['name']);
-                $data['slug'] = str_replace(' ', '-', strtolower($slug));
+                $slug = str_replace(' ', '-', strtolower($slug));
 
-                $already = $this->pdfRepository->findBySlug($slug);
+                $already = $this->slugRepository->findBySlug($slug);
 
                 if ($already) {
-                    $data['slug'] = $data['slug'] . '-' . time();
+                    $slug = $slug . '-' . time();
                 }
 
-                $this->pdfRepository->create($data);
+                $pdf = $this->pdfRepository->create($data);
+                $this->slugRepository->create([
+                    'slug' => $slug,
+                    'pdf_id' => $pdf->id,
+                ]);
+                $message = __('Pdf created successfully');
             }
 
-            return redirect()->route('admin.pdf.index')->with('success', __('Pdf created successfully'));
+            return redirect()->route('admin.pdf.index')->with('success', $message);
         } catch (Exception $e) {
             $logs = [
                 'type' => 'Error in PdfController@store',

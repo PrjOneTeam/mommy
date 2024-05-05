@@ -32,7 +32,7 @@ class Pdf extends Model
     ];
 
     public function relatedWorkbooks()
-{
-    return $this->hasMany('App\Models\Workbook', 'id', 'related_workbook');
-}
+    {
+        return $this->hasMany('App\Models\Workbook', 'id', 'related_workbook');
+    }
 }

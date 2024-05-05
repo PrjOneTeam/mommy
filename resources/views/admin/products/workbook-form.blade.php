@@ -77,30 +77,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-12 control-label" for="image_color">{{__("Image Color")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
-                        <div class="col-sm-12">
-                            <input class="form-control" type="file" id="image_color" name="image_color">
-                        </div>
-                        @error('image_color')
-                        <div class="col-sm-12">
-                            <span class="text-danger">{{ $message }}</span>
-                        </div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-12 control-label" for="image_both">{{__("Image Both")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
-                        <div class="col-sm-12">
-                            <input class="form-control" type="file" id="image_both" name="image_both">
-                        </div>
-                        @error('image_both')
-                        <div class="col-sm-12">
-                            <span class="text-danger">{{ $message }}</span>
-                        </div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
                         <label class="col-sm-12 control-label" for="files_bw">{{__("Files BW")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
                         <div class="col-sm-12">
                             <input class="form-control" type="file" id="files_bw" name="files_bw">
@@ -113,11 +89,35 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-sm-12 control-label" for="image_color">{{__("Image Color")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="file" id="image_color" name="image_color">
+                        </div>
+                        @error('image_color')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-sm-12 control-label" for="files_color">{{__("Files Color")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
                         <div class="col-sm-12">
                             <input class="form-control" type="file" id="files_color" name="files_color">
                         </div>
                         @error('files_color')
+                        <div class="col-sm-12">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="image_both">{{__("Image Both")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="file" id="image_both" name="image_both">
+                        </div>
+                        @error('image_both')
                         <div class="col-sm-12">
                             <span class="text-danger">{{ $message }}</span>
                         </div>

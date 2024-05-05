@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('workbooks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->boolean('color_pick')->default(false);
             $table->string('image_bw')->nullable();

@@ -34,7 +34,9 @@ class WorksheetRepository
             if ($f) {
                 $query->whereNull('price');
             }
-        })->get();
+        })->join(
+            'slugs', 'pdfs.id', '=', 'slugs.pdf_id'
+        )->select('pdfs.*', 'slugs.slug')->get();
 
         $workbooks = $this->workbook->when($topic, function(Builder $query, string $topic) {
             $query->whereJsonContains('topic', $topic);
@@ -44,7 +46,9 @@ class WorksheetRepository
             if ($f) {
                 $query->whereNull('price');
             }
-        })->get();
+        })->join(
+            'slugs', 'workbooks.id', '=', 'slugs.workbook_id'
+        )->select('workbooks.*', 'slugs.slug')->get();
 
         $worksheets = $pdfs->concat($workbooks)->sortByDesc('updated_at');
         $this->totals = $worksheets->count();
