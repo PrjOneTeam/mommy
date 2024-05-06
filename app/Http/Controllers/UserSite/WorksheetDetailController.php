@@ -6,25 +6,27 @@ namespace App\Http\Controllers\UserSite;
 
 
 use App\Http\Controllers\Controller;
-use App\Repositories\PdfRepository;
-use App\Repositories\WorkbookRepository;
+use App\Repositories\SlugRepository;
 use App\Repositories\WorksheetRepository;
 use Illuminate\Http\Request;
 
 class WorksheetDetailController extends Controller
 {
     public function __construct(
-        private readonly PdfRepository $pdfRepository,
-        private readonly WorkbookRepository $workbookRepository,
         private readonly WorksheetRepository $worksheetRepository,
+        private readonly SlugRepository $slugRepository,
     )
     {
     }
 
     public function index(Request $request, ?string $worksheet = null): \Illuminate\Contracts\View\View
     {
-        $worksheet = $this->workbookRepository->findBySlug($worksheet) ?? ($this->pdfRepository->findBySlug($worksheet) ?? abort(404));
+        $slug = $this->slugRepository->findBySlug($worksheet);
+        if ($slug === null) {
+            abort(404);
+        }
 
+        $worksheet = $slug->workbook_id ? $slug->workbook : $slug->pdf;
         $type = $worksheet instanceof \App\Models\Workbook ? 'workbook' : 'pdf';
         $worksheetRelated = $this->worksheetRepository->getRelatedWorksheet($type, $worksheet->topic);
 
@@ -32,6 +34,7 @@ class WorksheetDetailController extends Controller
             'type' => $type,
             'worksheet' => $worksheet,
             'worksheetRelated' => $worksheetRelated,
+            'slug' => $slug->slug,
         ]);
     }
 }

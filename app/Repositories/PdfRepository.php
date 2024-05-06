@@ -12,11 +12,6 @@ class PdfRepository extends Repository
         return parent::__construct($pdf);
     }
 
-    public function findBySlug(string $slug): ?Pdf
-    {
-        return $this->model->where('slug', $slug)->first();
-    }
-
     public function getKeyValuePdfs(): array
     {
         return $this->model->pluck('name', 'id')->toArray();

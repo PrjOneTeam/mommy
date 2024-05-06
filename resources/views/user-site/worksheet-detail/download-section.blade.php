@@ -5,7 +5,7 @@
 ?>
 @if($worksheetHelper->isFree($worksheet))
     <div class="btn-download">
-        <a class="sheet" href="/pub/article/download.cfm?uuid=24C4F490-B40B-4799-9CDE-36160D996FC4">
+        <a class="sheet" href="{{ route('download', $slug, 'bw') }}">
             <span class="ico"><i class="icon-worksheet"></i></span>
             <span class="lbl">{{__("Download")}}<small>{{__("FREE Worksheet")}}</small></span>
         </a>

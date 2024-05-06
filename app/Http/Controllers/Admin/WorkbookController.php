@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Repositories\SlugRepository;
 use App\Repositories\WorkbookRepository;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -25,6 +26,7 @@ class WorkbookController extends Controller
         private readonly File $file,
         private readonly Category $category,
         private readonly Language           $language,
+        private readonly SlugRepository     $slugRepository,
     ) {
     }
 
@@ -106,9 +108,9 @@ class WorkbookController extends Controller
             $data['image_bw'] = $this->file->uploadFile($request, 'image_bw');
             $data['image_color'] = $this->file->uploadFile($request, 'image_color');
             $data['image_both'] = $this->file->uploadFile($request, 'image_both');
-            $data['files_bw'] = $this->file->uploadFile($request, 'files_bw', 'pdfs');
-            $data['files_color'] = $this->file->uploadFile($request, 'files_color', 'pdfs');
-            $data['file_both'] = $this->file->uploadFile($request, 'file_both', 'pdfs');
+            $data['files_bw'] = $this->file->uploadFile($request, 'files_bw', 'pdfs', true);
+            $data['files_color'] = $this->file->uploadFile($request, 'files_color', 'pdfs', true);
+            $data['file_both'] = $this->file->uploadFile($request, 'file_both', 'pdfs', true);
 
             if ($request->has('id')) {
                 if (!$data['image_color']) unset($data['image_color']);
@@ -121,19 +123,24 @@ class WorkbookController extends Controller
                 $workbook = $this->workbookRepository->find($data['id']);
                 $this->workbookRepository->update($workbook, $data);
 
-                return redirect()->route('admin.workbook.index')->with('success', __('Workbook updated successfully'));
+                $message = __('Workbook updated successfully');
             } else {
                 $slug = $this->language->convert_vi_to_en($data['name']);
-                $data['slug'] = str_replace(' ', '-', strtolower($slug));
+                $slug = str_replace(' ', '-', strtolower($slug));
 
-                $already = $this->workbookRepository->findBySlug($slug);
+                $already = $this->slugRepository->findBySlug($slug);
                 if ($already) {
-                    $data['slug'] = $data['slug'] . '-' . time();
+                    $slug = $slug . '-' . time();
                 }
-                $this->workbookRepository->create($data);
-
-                return redirect()->route('admin.workbook.index')->with('success', __('Workbook created successfully'));
+                $workbook = $this->workbookRepository->create($data);
+                $this->slugRepository->create([
+                    'slug' => $slug,
+                    'workbook_id' => $workbook->id,
+                ]);
+                $message = __('Workbook created successfully');
             }
+
+            return redirect()->route('admin.workbook.index')->with('success', $message);
         } catch (Exception $e) {
             $logs = [
                 'type' => 'Error in WorkbookController@store',
