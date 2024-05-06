@@ -36,7 +36,7 @@
                         </form>
                         <p class="center semi-small">Forgot Password? <a href="/login?actionxm=ResetPwd">Click here to reset your password</a>.</p>
                         <div class="auth-foot center mbo">
-                            <strong>Not a member?</strong> <a href="/join">Join for FREE</a>.
+                            <strong>Not a member?</strong> <a href="/user/register">Join for FREE</a>.
                         </div>
                     </div>
                 </div>

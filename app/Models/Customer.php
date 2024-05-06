@@ -25,6 +25,7 @@ class Customer extends Authenticatable
         'role',
         'subject_prefer',
         'grade_teacher',
+        'password',
         'gender',
         'color_prefer'
     ];
@@ -35,6 +36,7 @@ class Customer extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'password'
     ];
 
     /**
