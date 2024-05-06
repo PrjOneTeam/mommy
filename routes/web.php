@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserSite\DownloadController;
 use App\Http\Controllers\UserSite\HomeController;
+use App\Http\Controllers\UserSite\RegisterController;
 use App\Http\Controllers\UserSite\WorksheetDetailController;
 use App\Http\Controllers\UserSite\WorksheetsController;
 use App\Http\Controllers\UserSite\AccountController;
@@ -17,6 +18,9 @@ Route::get('/', [HomeController::class, 'index'])->name('user-site-home');
 Route::get('/user/login', [LoginController::class, 'index'])->name('user-site.login');
 Route::post('/user/login', [LoginController::class, 'login'])->name('login-submit');
 Route::get('/user/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/user/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/user/register', [RegisterController::class, 'store'])->name('register-submit');
 
 Route::get('/my-account', [AccountController::class, 'index'])->name('my-account');
 Route::get('/my-account/edit', [AccountController::class, 'edit'])->name('edit-account');

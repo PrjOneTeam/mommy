@@ -11,7 +11,7 @@
                             <li class="first">
                                 <div class="top-bar-join">
                                     <div class="text"><span>@lang('app.preschool_kindergarten_worksheets')</span></div>
-                                    <div class="join"> <a href="/join">@lang('app.join_for_free')</a></div>
+                                    <div class="join"> <a href="/user/register">@lang('app.join_for_free')</a></div>
                                 </div>
                             </li>
                             <li><a href="/user/login" class="header-login">@lang('app.login')</a></li>
