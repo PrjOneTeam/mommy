@@ -26,24 +26,26 @@ class DownloadController extends Controller
     {
         $slug = $this->slugRepository->findBySlug($slug);
         if ($slug === null) {
-            return redirect()->route('user-site-home', ['error' => __("Worksheet not found")]);
+            return redirect()->route('user-site-home')->with('error', __("Worksheet not found"));
         }
 
         $isFree = $this->worksheetHelper->isFree($slug->pdf ?? $slug->workbook);
+        $path = $this->getPathFile($slug->pdf ?? $slug->workbook, $color);
+        $file = storage_path($path);
+
+        if (file_exists($file) === false) {
+            return redirect()->back()->with('error', __('Something went wrong'));
+        }
 
         if ($isFree) {
-            $path = $this->getPathFile($slug->pdf ?? $slug->workbook, $color);
-            $file = storage_path($path);
-
             return response()->download($file);
         }
 
         $user = Auth::user();
-        if ($user) {
-
+        if (!$user) {
+            return redirect()->back()->with('error', __('Something went wrong'));
         }
 
-        $file = storage_path(self::DEFAULT_FILE);
         return response()->download($file);
     }
 

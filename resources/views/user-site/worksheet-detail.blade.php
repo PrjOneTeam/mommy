@@ -22,20 +22,57 @@
                                     <h1>{{ $worksheet->name }}</h1>
                                 </div>
                                 <div class="post-worksheet-left">
-                                    <div class="photo-wrap">
-                                        <div class="tb">
-                                            1 Page Worksheet
-                                        </div>
-                                        <ul class="gallery">
-                                            <li>
+                                    @if($worksheet->image_bw)
+                                        <div class="photo-wrap" id="file-bw">
+                                            <ul class="gallery">
+                                                <li>
                                                 <span class="pibfi_pinterest">
-                                                    <img src="{{ $worksheet->image_bw ?: asset(\App\Enums\Image::DEFAULT_IMAGE) }}"
+                                                    <img src="{{ $worksheet->image_bw }}"
                                                          alt="{{ $worksheet->name }}" style="max-width:300px;">
                                                 </span>
-                                            </li>
-                                        </ul>
-                                        <div class="tb"><span class="wkopt color">Available in <a href="/writing/letters/letter-x-tracing-printable-worksheet" style="text-decoration:underline;">black and white</a></span></div>
-                                    </div>
+                                                </li>
+                                            </ul>
+                                            @if($worksheet->files_color)
+                                                <div class="tb">
+                                                    <span class="wkopt color">{{__("Available in")}}
+                                                        <button onclick="toggleColor(this)" style="text-decoration:underline;">{{__("color")}}</button>
+                                                    </span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endif
+
+                                    @if($worksheet->image_color)
+                                        <div class="photo-wrap" id="file-color">
+                                            <ul class="gallery">
+                                                <li>
+                                            <span class="pibfi_pinterest">
+                                                <img src="{{ $worksheet->image_color }}"
+                                                     alt="{{ $worksheet->name }}" style="max-width:300px;">
+                                            </span>
+                                                </li>
+                                            </ul>
+                                            @if($worksheet->files_bw)
+                                                <div class="tb">
+                                                    <span class="wkopt color">{{__("Available in")}}
+                                                        <button style="text-decoration:underline;">{{__("black and white")}}</button>
+                                                    </span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endif
+                                    @if(!$worksheet->image_bw && !$worksheet->image_color)
+                                            <div class="photo-wrap" id="file-color">
+                                                <ul class="gallery">
+                                                    <li>
+                                                        <span class="pibfi_pinterest">
+                                                            <img src="{{ asset(\App\Enums\Image::DEFAULT_IMAGE) }}"
+                                                                 alt="{{ $worksheet->name }}" style="max-width:300px;">
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    @endif
                                     @include('user-site.worksheet-detail.file-info')
                                 </div>
                                 <div class="post-worksheet-right">
@@ -112,4 +149,21 @@
             </div>
         </div>
     </div>
+@endsection
+@section('javascript')
+    <script>
+        const toggleColor = (e) => {
+            const fileColor = document.getElementById('file-color');
+            const fileBw = document.getElementById('file-bw');
+            if (e.innerText === 'color') {
+                fileColor.style.display = 'block';
+                fileBw.style.display = 'none';
+                e.innerText = 'black and white';
+            } else {
+                fileColor.style.display = 'none';
+                fileBw.style.display = 'block';
+                e.innerText = 'color';
+            }
+        }
+    </script>
 @endsection
