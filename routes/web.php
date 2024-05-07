@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserSite\CartController;
+use App\Http\Controllers\UserSite\CheckoutController;
 use App\Http\Controllers\UserSite\DownloadController;
 use App\Http\Controllers\UserSite\HomeController;
 use App\Http\Controllers\UserSite\RegisterController;
@@ -30,7 +32,9 @@ Route::post('/my-account/change-password/submit', [AccountController::class, 'st
 Route::get('/my-purchases', [PurchaseController::class, 'index'])->name('purchase');
 Route::get('/my-orders', [OrderController::class, 'index'])->name('order');
 
-
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart', [CartController::class, 'addCart'])->name('cart.add');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('comment', [App\Http\Controllers\Admin\CommentController::class, 'store'])->name('comments.store');
 Route::post('review', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
 

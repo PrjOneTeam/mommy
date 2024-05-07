@@ -5,7 +5,7 @@
             <tbody>
             <tr>
                 <td><i class="icon-book">&nbsp;</i><strong>{{__("Package")}}:</strong></td>
-                <td><span class="space">2 Files</span></td>
+                <td><span class="space">1 File</span></td>
             </tr>
             @if($worksheet->size)
                 <tr>
