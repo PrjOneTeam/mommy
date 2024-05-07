@@ -24,7 +24,7 @@
                                 <div id="SectionchangepasswordSectionLabel" class="SectionLabel">
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tbody><tr>
-                                            <td>Change Password</td>
+                                            <td>@lang('app.change_pw')</td>
                                         </tr>
                                         </tbody></table>
                                 </div>
@@ -36,7 +36,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr class="XMFormRow XMFormRowChild" style=";" id="form_row_password">
-                                            <td valign="top" class="nonmandatory padleft"><label id="form_label_password" class="XMLabel" for="password" style="">New Password</label></td>
+                                            <td valign="top" class="nonmandatory padleft"><label id="form_label_password" class="XMLabel" for="password" style="">@lang('app.new_pw')</label></td>
                                             <td valign="top" style="width:90%;word-wrap:break-word;;">
                                                 <link type="text/css" rel="stylesheet" href="/lib/com/password/password.min.css?ver=20200714-C">
                                                 <script src="/lib/com/password/password.webauthor.js?ver=20200714-G"></script>
@@ -54,7 +54,7 @@
                                             </td>
                                         </tr>
                                         <tr class="XMFormRow XMFormRowChild" style=";" id="form_row_confirm_password">
-                                            <td valign="top" class="nonmandatory padleft"><label id="form_label_confirm_password" class="XMLabel" for="confirm_password" style="">Confirm New Password</label></td>
+                                            <td valign="top" class="nonmandatory padleft"><label id="form_label_confirm_password" class="XMLabel" for="confirm_password" style="">@lang('app.confirm_pw')</label></td>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <td valign="top" style="width:90%;word-wrap:break-word;;"><input onkeyup="" lang="en" maxlength="15" id="confirm_password" vtype="password" hint="" placeholder="" vlabel="Confirm New Password" vrequired="false" class="clInput form-control clInput form-control" style="" type="password" name="confirm_password" value="">
                                             </td>

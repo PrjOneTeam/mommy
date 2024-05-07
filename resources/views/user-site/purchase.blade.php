@@ -2,21 +2,21 @@
 @section('content-layout')
 <div id="content-layout">
     <div class="container">
-        <h1 class="hpage">Purchases List</h1>
+        <h1 class="hpage">@lang('app.purchase_list')</h1>
         <div class="content-left">
             <div class="content-holder">
                 <div class="content-box" style="margin-bottom:15px;">
                     <div class="box-body">
-                        <h2>My Purchases</h2>
+                        <h2>@lang('app.my_purchase')</h2>
                         <div class="table-container">
                             <table class="table table-responsive table-bordered table-striped">
                                 <thead>
                                 <tr role="row" >
                                     <th>ID</th>
-                                    <th>Bill Info</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
-                                    <th>Created At</th>
+                                    <th>@lang('app.bill_info')</th>
+                                    <th>@lang('app.total')</th>
+                                    <th>@lang('app.status')</th>
+                                    <th>@lang('app.created_at')</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="content-box" style="margin-bottom:15px;">
                     <div class="box-body">
-                        <h2>You May Be Interested In</h2>
+                        <h2>@lang('app.interested_in')</h2>
                         <div id="related-worksheets" class="crsl-nav">
                             <a href="#" class="previous">Previous</a>
                             <a href="#" class="next">Next</a>
@@ -73,15 +73,13 @@
         <div class="content-right">
             <div class="content-box">
                 <div class="box-body">
-                    <h2>Welcome toong</h2>
+                    <h2>@lang('app.menu')</h2>
                     <ul class="link-list">
-                        <li><a href="/my-account?actionxm=Details">My Account</a></li>
-                        <li class="active"><a href="/my-purchases">My Purchases</a></li>
-                        <li><a href="/my-orders">My Orders</a></li>
-                        <li><a href="/my-favorites">My Favorites</a></li>
-                        <li><a href="/my-account?actionxm=ModifyProfile">Modify Profile</a></li>
-                        <li><a href="/my-account?actionxm=ModifyPwd">Change Password</a></li>
-                        <li><a href="/my-account?actionxm=EmailPreference">E-mail Preferences</a></li>
+                        <li><a href="/my-account">@lang('app.my_account')</a></li>
+                        <li class="active"><a href="/my-purchases">@lang('app.my_purchase')</a></li>
+                        <li><a href="/my-orders">@lang('app.my_order')</a></li>
+                        <li><a href="/my-account/edit">@lang('app.edit_account')</a></li>
+                        <li><a href="/my-account/change-password">@lang('app.change_pw')</a></li>
                     </ul>
                 </div>
             </div>

@@ -9,7 +9,7 @@
             <div class="content-holder">
                 <div class="content-box" style="margin-bottom:15px;">
                     <div class="box-body">
-                        <h2>Recommended for You, {{ $data['public_name'] }}</h2>
+                        <h2>@lang('app.recommend_for_you'), {{ $data['public_name'] }}</h2>
                         <div id="related-worksheets" class="crsl-nav">
                             <a href="#" class="previous">Previous</a>
                             <a href="#" class="next">Next</a>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="content-box" style="margin-bottom:15px;">
                     <div class="box-body">
-                        <h2>My Profile <div class="fright"><a href="/my-account/edit" class="button x-small">Edit Profile</a></div></h2><div class="clearfix"></div>
+                        <h2>@lang('app.my_profile')<div class="fright"><a href="/my-account/edit" class="button x-small">@lang('app.edit')</a></div></h2><div class="clearfix"></div>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" type="text/javascript"></script>
                         <script>
                             window.WEBSPELLCHECKER_CONFIG = {
@@ -50,7 +50,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE" class="XMLabel" for="SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE" style=""><strong>Name</strong></label>
+                                                            <label id="form_label_SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE" class="XMLabel" for="SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE" style=""><strong>@lang('app.name')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE">{{ $data['public_name'] }} </div> </div>
                                                         </td>
                                                     </tr>
@@ -73,7 +73,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E" class="XMLabel" for="SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E" style=""><strong>Location</strong></label>
+                                                            <label id="form_label_SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E" class="XMLabel" for="SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E" style=""><strong>@lang('app.location')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E">&nbsp;</div> {{ $data['location'] }} </div>
                                                         </td>
                                                     </tr>
@@ -85,7 +85,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE" class="XMLabel" for="SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE" style=""><strong>Subject Preference</strong></label>
+                                                            <label id="form_label_SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE" class="XMLabel" for="SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE" style=""><strong>@lang('app.subject_prefer')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE">
                                                                     <ul class="reg inline">
                                                                         @foreach($data['subject_prefer'] as $key => $subject)
@@ -105,7 +105,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC" class="XMLabel" for="SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC" style=""><strong>Position/Role</strong></label>
+                                                            <label id="form_label_SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC" class="XMLabel" for="SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC" style=""><strong>@lang('app.role')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC">
                                                                     <ul class="reg inline">
                                                                         @foreach($data['role'] as $key => $role)
@@ -124,7 +124,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL8E79429BFD23757E38B3486C12A23B00">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormEL8E79429BFD23757E38B3486C12A23B00" class="XMLabel" for="SignInFormEL8E79429BFD23757E38B3486C12A23B00" style=""><strong>Teaching Grade</strong></label>
+                                                            <label id="form_label_SignInFormEL8E79429BFD23757E38B3486C12A23B00" class="XMLabel" for="SignInFormEL8E79429BFD23757E38B3486C12A23B00" style=""><strong><strong>@lang('app.grade_teacher')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL8E79429BFD23757E38B3486C12A23B00">
                                                                     <ul class="reg inline">
                                                                         @foreach($data['grade_teacher'] as $key => $grade)
@@ -144,7 +144,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL492D8570935D1A29316878D827532CA2">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormEL492D8570935D1A29316878D827532CA2" class="XMLabel" for="SignInFormEL492D8570935D1A29316878D827532CA2" style=""><strong>Worksheet Color Preference</strong></label>
+                                                            <label id="form_label_SignInFormEL492D8570935D1A29316878D827532CA2" class="XMLabel" for="SignInFormEL492D8570935D1A29316878D827532CA2" style=""><strong>@lang('app.color_prefer')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL492D8570935D1A29316878D827532CA2">{{ $data['color_prefer'] }}</div> </div>
                                                         </td>
                                                     </tr>
@@ -155,7 +155,7 @@
                                                     <colgroup><col style="width:auto;text-overflow:ellipsis;">
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL176D25D5F69E605E0EB028484D8FFA23">
                                                         <td valign="top" class="padleft">
-                                                            <label id="form_label_SignInFormEL176D25D5F69E605E0EB028484D8FFA23" class="XMLabel" for="SignInFormEL176D25D5F69E605E0EB028484D8FFA23" style=""><strong>Teaching Gender</strong></label>
+                                                            <label id="form_label_SignInFormEL176D25D5F69E605E0EB028484D8FFA23" class="XMLabel" for="SignInFormEL176D25D5F69E605E0EB028484D8FFA23" style=""><strong><strong>@lang('app.gender')</strong></label>
                                                             <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL176D25D5F69E605E0EB028484D8FFA23">&nbsp;</div> {{ $data['gender'] }} </div>
                                                         </td>
                                                     </tr>
@@ -169,7 +169,7 @@
                             <div id="ValidationMessagesSignInForm" class="XMValidationMessage"></div>
                             <input type="hidden" name="xm_form_request_token" value=" XMFRT-www.myteachingstation.com-64EC06F9-D543-5F69-514F49CCBFC2AF31"> <input type="hidden" name="xm_user_token" value="1504685|4FAAB81A-8B4D-4AA5-AEBA-1D8679E0B1A6"> </form>
                         <script type="text/javascript">
-                            if (window.hasOwnProperty("xmFormObj")) xmFormObj["SignInForm"] = {"SignInFormEL492D8570935D1A29316878D827532CA2":{"field_options":{},"required":false,"label":"<strong>Worksheet Color Preference</strong>","type":"display"},"SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE":{"field_options":{},"required":false,"label":"<strong>Name</strong>","type":"display"},"SignInFormEL5CE689B3D99ADC3730CB2018CC101572":{"field_options":{},"required":false,"label":"<strong>E-mail</strong>","type":"display"},"SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE":{"field_options":{},"required":false,"label":"<strong>Subject Preference</strong>","type":"display"},"SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E":{"field_options":{},"required":false,"label":"<strong>Location</strong>","type":"display"},"SignInFormEL8E79429BFD23757E38B3486C12A23B00":{"field_options":{},"required":false,"label":"<strong>Teaching Grade</strong>","type":"display"},"SignInFormEL176D25D5F69E605E0EB028484D8FFA23":{"field_options":{},"required":false,"label":"<strong>Teaching Gender</strong>","type":"display"},"SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC":{"field_options":{},"required":false,"label":"<strong>Position/Role</strong>","type":"display"}};
+                            if (window.hasOwnProperty("xmFormObj")) xmFormObj["SignInForm"] = {"SignInFormEL492D8570935D1A29316878D827532CA2":{"field_options":{},"required":false,"label":"<strong>@lang('app.color_prefer')</strong>","type":"display"},"SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE":{"field_options":{},"required":false,"label":"<strong>@lang('app.name')</strong>","type":"display"},"SignInFormEL5CE689B3D99ADC3730CB2018CC101572":{"field_options":{},"required":false,"label":"<strong>E-mail</strong>","type":"display"},"SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE":{"field_options":{},"required":false,"label":"<strong>@lang('app.subject_prefer')</strong>","type":"display"},"SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E":{"field_options":{},"required":false,"label":"<strong>@lang('app.location')</strong>","type":"display"},"SignInFormEL8E79429BFD23757E38B3486C12A23B00":{"field_options":{},"required":false,"label":"<strong>@lang('app.grade_teacher')</strong>","type":"display"},"SignInFormEL176D25D5F69E605E0EB028484D8FFA23":{"field_options":{},"required":false,"label":"<strong>@lang('app.gender')</strong>","type":"display"},"SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC":{"field_options":{},"required":false,"label":"<strong>@lang('app.role')</strong>","type":"display"}};
 
                             //MR: 9/5/2022 - loop over all fields to set fieldOptions
 
@@ -327,14 +327,13 @@
         <div class="content-right">
             <div class="content-box">
                 <div class="box-body">
-                    <h2>Welcome {{ $data['public_name'] }}</h2>
+                    <h2>@lang('app.menu')</h2>
                     <ul class="link-list">
-                        <li class="active"><a href="/my-account?actionxm=Details">My Account</a></li>
-                        <li><a href="/my-purchases">My Purchases</a></li>
-                        <li><a href="/my-orders">My Orders</a></li>
-                        <li><a href="/my-favorites">My Favorites</a></li>
-                        <li><a href="/my-account?actionxm=ModifyProfile">Modify Profile</a></li>
-                        <li><a href="/my-account/change-password">Change Password</a></li>
+                        <li class="active"><a href="/my-account">@lang('app.my_account')</a></li>
+                        <li><a href="/my-purchases">@lang('app.my_purchase')</a></li>
+                        <li><a href="/my-orders">@lang('app.my_order')</a></li>
+                        <li><a href="/my-account/edit">@lang('app.edit_account')</a></li>
+                        <li><a href="/my-account/change-password">@lang('app.change_pw')</a></li>
                     </ul>
                 </div>
             </div>

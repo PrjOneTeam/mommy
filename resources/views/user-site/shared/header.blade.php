@@ -5,8 +5,8 @@
                 <div class="top-navigation">
                     <ul class="top-row">
                         @if (Auth::check())
-                            <li><a href="/my-account" class="header-login">Welcome, {{ Auth::user()->public_name }}</a></li>
-                            <li><a href="/user/logout" class="header-login">logout</a></li>
+                            <li><a href="/my-account" class="header-login">@lang('app.welcome'), {{ Auth::user()->public_name }}</a></li>
+                            <li><a href="/user/logout" class="header-login">@lang('app.logout')</a></li>
                         @else
                             <li class="first">
                                 <div class="top-bar-join">
@@ -23,6 +23,21 @@
                                 </a>
                             </div>
                         </li>
+                            <li>
+                                <select onchange="changeLanguage(this)">
+                                    <option value="{{ route('setLocale', 'en') }}" @if((isset(session()->all()['locale']) ? session()->all()['locale'] : 'en') == 'en') selected @endif>English</option>
+                                    <option value="{{ route('setLocale', 'vi') }}" @if((isset(session()->all()['locale']) ? session()->all()['locale'] : 'en') == 'vi') selected @endif>Tiếng Việt</option>
+                                </select>
+
+                                <script>
+                                    function changeLanguage(select) {
+                                        var url = select.options[select.selectedIndex].value;
+                                        window.location.href = url;
+                                    }
+                                </script>
+                            </li>
+{{--                            <li><a style="color: white" href="{{ route('setLocale', 'en') }}">English</a></li>--}}
+{{--                            <li><a style="color: white"  href="{{ route('setLocale', 'vi') }}">Tiếng Việt</a></li>--}}
                         <li>
                             <div class="social">
                                 <a class="social-icons" id="social-icons" href="#" target="_blank"><i class="icon-pinterest"></i></a>
