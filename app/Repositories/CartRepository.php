@@ -4,13 +4,14 @@ namespace App\Repositories;
 
 use App\Models\Cart;
 use App\Repositories\Repository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class CartRepository extends Repository
 {
-    public function __construct(Cart $article)
+    public function __construct(Cart $cart)
     {
-        parent::__construct($article);
+        parent::__construct($cart);
     }
 
     public function createSessionToken(?int $minutes = 10080): string
@@ -34,5 +35,14 @@ class CartRepository extends Repository
     public function getByUserId(int $userId): ?Cart
     {
         return $this->model->where('user_id', $userId)->first();
+    }
+
+    public function getCurrentCart(string $sessionToken): ?Cart
+    {
+//        $user = Auth::user();
+//
+//        $cart = $user? $this->getByUserId($user->id) :$this->getBySessionToken($sessionToken);
+
+        return $this->getBySessionToken($sessionToken);
     }
 }

@@ -10,6 +10,10 @@ class Order extends Model
 {
     use HasFactory, Notifiable;
 
+    public const ORDERED_STATUS = 'ordered';
+    public const PURCHASED_STATUS = 'purchased';
+    public const CANCELED_STATUS = 'canceled';
+
     /**
      * The attributes that are mass assignable.
      *

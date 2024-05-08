@@ -35,4 +35,9 @@ class Workbook extends Model
     protected $casts = [
         'topic' => 'array',
     ];
+
+    public function slug()
+    {
+        return $this->hasOne('App\Models\Slug', 'workbook_id', 'id');
+    }
 }

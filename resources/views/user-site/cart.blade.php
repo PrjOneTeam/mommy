@@ -27,16 +27,21 @@
                                                     </li>
                                                     <li class="price">
                                                         <div class="inner">
-                                                            @if($item->sale_price)
+                                                            @if($item->sale_price !== null)
                                                                 <span class="sale">{{__("$").$item->sale_price}}</span><br>
                                                             @endif
-                                                            <span class="{{ $item->sale_price ? 'strike' : null }}">{{__("$").$item->price}}</span>
+                                                            <span class="{{ $item->sale_price !== null ? 'strike' : null }}">{{__("$").$item->price}}</span>
                                                         </div>
                                                     </li>
                                                     <li class="remove">
-                                                        <div class="inner">
-                                                            <a class="remove-item" data-id="217748" data-uuid="41005FAC-9233-C86F-4B81DEDB9656BBBF"><span>{{__("Remove")}}</span></a>
-                                                        </div>
+                                                        <form action="{{route('cart.remove')}}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <input type="hidden" name="item_id" value="{{$item->id}}">
+                                                            <div class="inner">
+                                                                <a class="remove-item"><span>{{__("Remove")}}</span></a>
+                                                            </div>
+                                                        </form>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -68,7 +73,7 @@
                         </div>
                         <div class="col20">
                             <div class="cart-head">
-                                <div class="text">1 item</div>
+                                <div class="text">{{ count($cart->items) > 1 ? count($cart->items) . " " . __("items") : count($cart->items) . " " . __("item") }}</div>
                             </div>
                             <div class="cart-amounts">
                                 <div class="item">
@@ -76,7 +81,10 @@
                                         <tbody>
                                         <tr>
                                             <td class="bold">{{__("Total")}}</td>
-                                            <td class="bold total amt">{{__("$").$cart->total_price}}</td>
+                                            <td class="bold total amt {{$cart->total_sale_price && $cart->total_sale_price < $cart->total_price ? 'strike' : null}}">{{__("$").$cart->total_price}}</td>
+                                            @if($cart->total_sale_price && $cart->total_sale_price < $cart->total_price)
+                                                <td class="bold total sale">{{__("$").$cart->final_price}}</td>
+                                            @endif
                                         </tr>
                                         </tbody>
                                     </table>

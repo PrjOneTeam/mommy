@@ -35,4 +35,9 @@ class Pdf extends Model
     {
         return $this->hasMany('App\Models\Workbook', 'id', 'related_workbook');
     }
+
+    public function slug()
+    {
+        return $this->hasOne('App\Models\Slug', 'pdf_id', 'id');
+    }
 }

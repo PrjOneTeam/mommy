@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('pdf_id')->nullable();
             $table->enum('pdf_color', ['bw', 'color'])->nullable();
             $table->float('price');
-            $table->float('sale_price');
+            $table->float('sale_price')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
 

@@ -64,6 +64,7 @@ class WorksheetsController extends Controller
                 'page' => $p <= 0 ? 1 : min($p, ceil($totals / $perPage)),
                 'per_page' => $perPage,
                 'totals' => $totals,
+                'f' => $f,
             ]);
         }
 
@@ -74,6 +75,7 @@ class WorksheetsController extends Controller
             'page' => $p <= 0 ? 1 : min($p, ceil($totals / $perPage)),
             'per_page' => $perPage,
             'totals' => $totals,
+            'f' => $f,
         ]);
     }
 }
