@@ -27,10 +27,10 @@
                                                     </li>
                                                     <li class="price">
                                                         <div class="inner">
-                                                            @if($item->sale_price)
+                                                            @if($item->sale_price !== null)
                                                                 <span class="sale">{{__("$").$item->sale_price}}</span><br>
                                                             @endif
-                                                            <span class="{{ $item->sale_price ? 'strike' : null }}">{{__("$").$item->price}}</span>
+                                                            <span class="{{ $item->sale_price !== null ? 'strike' : null }}">{{__("$").$item->price}}</span>
                                                         </div>
                                                     </li>
                                                     <li class="remove">
@@ -81,8 +81,8 @@
                                         <tbody>
                                         <tr>
                                             <td class="bold">{{__("Total")}}</td>
-                                            <td class="bold total amt {{$item->sale_price? 'strike' : null}}">{{__("$").$cart->total_price}}</td>
-                                            @if($item->sale_price)
+                                            <td class="bold total amt {{$cart->total_sale_price && $cart->total_sale_price < $cart->total_price ? 'strike' : null}}">{{__("$").$cart->total_price}}</td>
+                                            @if($cart->total_sale_price && $cart->total_sale_price < $cart->total_price)
                                                 <td class="bold total sale">{{__("$").$cart->final_price}}</td>
                                             @endif
                                         </tr>

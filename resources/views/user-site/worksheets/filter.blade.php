@@ -158,6 +158,10 @@
 
     const setUrl = (option) => {
         let currentUrl = window.location.href;
+        let isFree = currentUrl.includes('?f=1');
+        if (isFree) {
+            currentUrl = currentUrl.replace('?f=1', '');
+        }
         let urlSplit = currentUrl.split('/');
         let url = '/worksheets';
         let currentGrade = urlSplit[4] ?? null;
@@ -185,6 +189,9 @@
 
         url = url.split('?')[0];
 
+        if (option.f === undefined && isFree) {
+            option.f = true;
+        }
         if (option.f === true) {
             url += '?f=1';
         }
@@ -202,6 +209,10 @@
             },
         })
         .then(async (response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
             const html = await response.text();
             document.getElementById('worksheets-body').innerHTML = html;
         })

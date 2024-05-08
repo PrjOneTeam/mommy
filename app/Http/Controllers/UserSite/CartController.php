@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Repositories\CartRepository;
 use App\Repositories\SlugRepository;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -21,10 +20,7 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        $user = Auth::user();
-
-        $sessionToken = $request->cookie(Cart::SESSION_TOKEN);
-        $cart = $user? $this->cartRepository->getByUserId($user->id) :$this->cartRepository->getBySessionToken($sessionToken);
+        $cart = $this->cartRepository->getCurrentCart($request->cookie(Cart::SESSION_TOKEN));
 
         return view('user-site.cart', [
             'cart' => $cart,
@@ -44,38 +40,22 @@ class CartController extends Controller
             return redirect()->back()->with('error', __('Something went wrong'));
         }
 
-        $user = Auth::user();
-
         $sessionToken = $request->cookie(Cart::SESSION_TOKEN) ?? $this->cartRepository->createSessionToken();
-        $cart = $user? $this->cartRepository->getByUserId($user->id) :$this->cartRepository->getBySessionToken($sessionToken);
+        $cart = $this->cartRepository->getBySessionToken($sessionToken);
 
         $worksheet = $slug->pdf ?? $slug->workbook;
-        $price = $worksheet->price;
-        $salePrice = $worksheet->sale_price;;
-        $finalPrice = $this->calculateFinalPrice($price, $salePrice);
+        $worksheetPrice = $worksheet->price;
+        $worksheetSalePrice = $worksheet->sale_price;
+        $cartNewFlag = false;
 
         if (!$cart) {
             $cart = $this->cartRepository->create([
                 'session_token' => $sessionToken,
-                'total_price' => $price,
-                'total_sale_price' => $salePrice,
-                'final_price' => $finalPrice,
+                'total_price' => $worksheetPrice,
+                'total_sale_price' => $worksheetSalePrice,
+                'final_price' => $this->calculateFinalPrice($worksheetPrice, $worksheetSalePrice),
             ]);
-        } else {
-            $data = [
-                'total_price' => $cart->total_price + $price,
-                'final_price' => $cart->final_price + $finalPrice,
-            ];
-
-            if ($salePrice !== null ) {
-                if ($cart->total_sale_price === null) {
-                    $data['total_sale_price'] = $salePrice;
-                } else {
-                    $data['total_sale_price'] = $cart->total_sale_price + $salePrice;
-                }
-            }
-
-            $this->cartRepository->update($cart, $data);
+            $cartNewFlag = true;
         }
 
         $items = $cart->items;
@@ -91,9 +71,32 @@ class CartController extends Controller
             $cart->items()->create([
                 'worksheet_name' => $slug->workbook->name ?? $slug->pdf->name,
                 'worksheet_slug' => $slug->slug,
-                'price' => $price,
-                'sale_price' => $salePrice,
+                'price' => $worksheetPrice,
+                'sale_price' => $worksheetSalePrice,
                 'color' => $request->post('color') ?? Color::BW,
+                'final_price' => $this->calculateFinalPrice($worksheetPrice, $worksheetSalePrice),
+            ]);
+            $cart->load('items');
+        } else {
+            $cart->items()->update([
+                'color' => $request->post('color') ?? Color::BW,
+            ]);
+        }
+
+        if (!$cartNewFlag) {
+            $totalPrice = null;
+            $totalSalePrice = null;
+            $finalPrice = null;
+            foreach ($cart->items as $cartItem) {
+                $totalPrice += $cartItem->price;
+                $totalSalePrice += $cartItem->sale_price ?? $cartItem->price;
+
+                $finalPrice += $this->calculateFinalPrice($cartItem->price, $cartItem->sale_price);
+            }
+
+            $this->cartRepository->update($cart, [
+                'total_price' => $totalPrice,
+                'total_sale_price' => $totalSalePrice,
                 'final_price' => $finalPrice,
             ]);
         }
@@ -114,10 +117,7 @@ class CartController extends Controller
     {
         $itemId = $request->post('item_id');
 
-        $user = Auth::user();
-
-        $sessionToken = $request->cookie(Cart::SESSION_TOKEN);
-        $cart = $user? $this->cartRepository->getByUserId($user->id) :$this->cartRepository->getBySessionToken($sessionToken);
+        $cart = $this->cartRepository->getCurrentCart($request->cookie(Cart::SESSION_TOKEN));
 
         if (!$cart) {
             return redirect()->back()->with('error', __('Something went wrong'));

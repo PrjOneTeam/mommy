@@ -7,8 +7,8 @@ use App\Repositories\Repository;
 
 class CartItemRepository extends Repository
 {
-    public function __construct(CartItem $article)
+    public function __construct(CartItem $cartItem)
     {
-        parent::__construct($article);
+        parent::__construct($cartItem);
     }
 }

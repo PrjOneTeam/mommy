@@ -10,10 +10,11 @@
                 <span class="space10">{{__('Page')}}: </span>
                 <div class="article_paging">
                     <ul class="pagination">
+                        <li><a href="?{{ $f ? 'f=1&' : null }}p={{ $page <= 1 ? $page : $page - 1}}" class="prev">&nbsp;</a></li>
                         @for($i = 1; $i <= ceil($totals/$per_page); $i++)
-                            <li><a href="?p={{$i}}" class="{{$page == $i ? 'active' : null}}">{{$i}}</a></li>
+                            <li><a href="?{{ $f ? 'f=1&' : null }}p={{$i}}" class="{{$page == $i ? 'active' : null}}">{{$i}}</a></li>
                         @endfor
-                        <li><a href="/worksheets/writing?p=2" class="next">&nbsp;</a></li>
+                        <li><a href="?{{ $f ? 'f=1&' : null }}p={{ $page >= ceil($totals/$per_page) ? $page : $page + 1}}" class="next">&nbsp;</a></li>
                     </ul>
                 </div>
             </div>
