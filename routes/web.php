@@ -34,6 +34,7 @@ Route::get('/my-orders', [OrderController::class, 'index'])->name('order');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'addCart'])->name('cart.add');
+Route::delete('/cart', [CartController::class, 'removeItem'])->name('cart.remove');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('comment', [App\Http\Controllers\Admin\CommentController::class, 'store'])->name('comments.store');
 Route::post('review', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');

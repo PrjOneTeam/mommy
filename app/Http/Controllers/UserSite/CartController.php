@@ -63,9 +63,17 @@ class CartController extends Controller
             ]);
         } else {
             $data = [
-                'total_sale_price' => $cart->total_sale_price + $salePrice,
+                'total_price' => $cart->total_price + $price,
                 'final_price' => $cart->final_price + $finalPrice,
             ];
+
+            if ($salePrice !== null ) {
+                if ($cart->total_sale_price === null) {
+                    $data['total_sale_price'] = $salePrice;
+                } else {
+                    $data['total_sale_price'] = $cart->total_sale_price + $salePrice;
+                }
+            }
 
             $this->cartRepository->update($cart, $data);
         }
@@ -90,7 +98,7 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('cart');
+        return redirect()->route('cart')->with(['success' => __('Item added to cart')]);
     }
 
     public function calculateFinalPrice(
@@ -100,6 +108,44 @@ class CartController extends Controller
     ): float
     {
         return $salePrice ?? $price;
+    }
+
+    public function removeItem(Request $request)
+    {
+        $itemId = $request->post('item_id');
+
+        $user = Auth::user();
+
+        $sessionToken = $request->cookie(Cart::SESSION_TOKEN);
+        $cart = $user? $this->cartRepository->getByUserId($user->id) :$this->cartRepository->getBySessionToken($sessionToken);
+
+        if (!$cart) {
+            return redirect()->back()->with('error', __('Something went wrong'));
+        }
+
+        $item = $cart->items()->find($itemId);
+
+        if (!$item) {
+            return redirect()->back()->with('error', __('Something went wrong'));
+        }
+
+        $price = $item->price;
+        $salePrice = $item->sale_price;
+        $finalPrice = $this->calculateFinalPrice($price, $salePrice);
+
+        $data = [
+            'total_price' => $cart->total_price - $price,
+            'final_price' => $cart->final_price - $finalPrice,
+        ];
+
+        if ($salePrice !== null ) {
+            $data['total_sale_price'] = $cart->total_sale_price - $salePrice;
+        }
+
+        $item->delete();
+        $cart->update($data);
+
+        return redirect()->route('cart')->with(['success' => __('Item removed from cart')]);
     }
 }
 

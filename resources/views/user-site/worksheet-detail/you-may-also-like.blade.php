@@ -9,7 +9,7 @@
             <div class="crsl-wrap">
                 @foreach($worksheetRelated?? [] as $w)
                     <figure class="crsl-item">
-                        <a href="/{{$w->slug}}" title="{{$w->name}}">
+                        <a href="/{{$w->slug->slug}}" title="{{$w->name}}">
                             <div class="bck"><img src="{{$w->image_bw ?: asset(\App\Enums\Image::DEFAULT_IMAGE)}}" alt="{{$w->name}}" width="100%"></div>
                             <figcaption>{{$w->name}}</figcaption>
                         </a>
