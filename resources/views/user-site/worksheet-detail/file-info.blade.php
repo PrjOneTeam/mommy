@@ -19,6 +19,6 @@
             </tr>
             </tbody>
         </table>
-        <p>{{__("This product is a downloadable PDF file")}}.</p>
+        <p>@lang('app.download_capable').</p>
     </div>
 </div>

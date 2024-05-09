@@ -1,6 +1,6 @@
 <div class="content-box">
     <div class="box-body">
-        <h2>{{__("You may also like")}}</h2>
+        <h2>@lang('app.interested_in')</h2>
         <div id="related-worksheets" class="crsl-nav">
             <a href="#" class="previous">{{__("Previous")}}</a>
             <a href="#" class="next">{{__("Next")}}</a>

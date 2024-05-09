@@ -15,17 +15,17 @@
             {{--                        </form>--}}
             <div>
                 <div class="filter-group mbo">
-                    <h5 class="filter-title">{{__("Subject")}}</h5>
+                    <h5 class="filter-title">@lang('app.subject')</h5>
                     <div class="area">
                         <ul id="subject" class="clearfix">
                             @foreach($topics as $key => $topic)
                                 <li {{ str_contains(url()->current(), $key)  ? 'class=ck-active' : null }}>
-                                    <a href="/worksheets/{{$key}}" data-path="{{$key}}" class="fp">{{$topic['name']}}<i></i></a>
+                                    <a href="/worksheets/{{$key}}" data-path="{{$key}}" class="fp">@lang('app.' . $topic['name'])<i></i></a>
                                     @if(isset($topic['sub']))
                                         <ul class="expand clearfix hide">
                                             @foreach($topic['sub'] as $subKey => $subTopic)
                                                 <li {{ str_contains(url()->current(), $subKey) ? 'class=ck-active' : null }}>
-                                                    <a data-path="{{$subKey}}" href="/worksheets/{{ $subKey }}">{{ $subTopic }}</a>
+                                                    <a data-path="{{$subKey}}" href="/worksheets/{{ $subKey }}">@lang('app.' . $subTopic)</a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -36,14 +36,14 @@
                     </div>
                 </div>
                 <div class="filter-group">
-                    <h5 class="filter-title">{{__("Grade")}}</h5>
+                    <h5 class="filter-title">@lang('app.grade')</h5>
                     <div class="area">
                         <ul class="clearfix">
                             <li>
                                 <ul id="grade" class="clearfix">
                                     @foreach($grades as $grade)
                                         <li {{ str_contains(url()->current(), $grade) ? 'class=ck-active' : null }}>
-                                            <a data-path="{{$grade}}" href="/worksheets/{{$grade}}">{{$grade}}</a>
+                                            <a data-path="{{$grade}}" href="/worksheets/{{$grade}}">@lang('app.' . $grade)</a>
                                         </li>
                                     @endforeach
                                     <div class="clearfix"></div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="filter-group">
-                    <h5 class="filter-title">{{ __("Resource Type") }}</h5>
+                    <h5 class="filter-title">@lang('app.resource_type')</h5>
                     <div class="area">
                         <ul>
                             <li>

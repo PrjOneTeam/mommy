@@ -20,6 +20,9 @@ class RegisterController extends Controller {
         $customer->password = Hash::make($param['password']);
         $customer->grade_teacher = [];
         $customer->subject_prefer = [];
+        if (!isset($param['role'])) {
+            $customer->role = [];
+        }
         $customer->save();
 
         return redirect()->route('user-site.login');
