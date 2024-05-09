@@ -49,6 +49,11 @@ class OrderRepository extends Repository
     public function isPurchase(int $worksheetId): bool
     {
         $customer = Auth::user();
+
+        if (!$customer) {
+            return false;
+        }
+        
         $result = DB::table('orders as o')
             ->select('od.id')
             ->join('order_details as od', 'o.id', '=', 'od.order_id')
