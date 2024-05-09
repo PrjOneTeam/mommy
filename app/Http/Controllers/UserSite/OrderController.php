@@ -8,9 +8,9 @@ use App\Models\Order;
 class OrderController extends Controller {
     public function index() {
         $dataList = Order::where('customer_id', 5)
-            ->where('status', 'ordered')
+            ->where('status', 'purchased')
             ->get();
-        return view('user-site.purchase', [
+        return view('user-site.order', [
             'dataList' => $dataList
         ]);
     }

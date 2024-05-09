@@ -307,15 +307,14 @@
             <div class="content-right">
                 <div class="content-box">
                     <div class="box-body">
-                        <h2>Welcome toong</h2>
+                        <h2>@lang('app.menu')</h2>
                         <ul class="link-list">
-                            <li><a href="/my-account?actionxm=Details">My Account</a></li>
-                            <li><a href="/my-purchases">My Purchases</a></li>
-                            <li><a href="/my-orders">My Orders</a></li>
-                            <li class="active"><a href="/my-favorites">My Favorites</a></li>
-                            <li><a href="/my-account?actionxm=ModifyProfile">Modify Profile</a></li>
-                            <li><a href="/my-account?actionxm=ModifyPwd">Change Password</a></li>
-                            <li><a href="/my-account?actionxm=EmailPreference">E-mail Preferences</a></li>
+                            <li><a href="/my-account">@lang('app.my_account')</a></li>
+                            <li><a href="/my-purchases">@lang('app.my_purchase')</a></li>
+                            <li><a href="/my-orders">@lang('app.my_order')</a></li>
+                            <li class="active"><a href="/my-favorites">@lang('app.my_favorite')</a></li>
+                            <li><a href="/my-account">@lang('app.edit_account')</a></li>
+                            <li><a href="/my-account/change-password">@lang('app.change_pw')</a></li>
                         </ul>
                     </div>
                 </div>
