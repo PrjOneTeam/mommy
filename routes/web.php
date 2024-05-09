@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserSite\ArticleController;
 use App\Http\Controllers\UserSite\CartController;
 use App\Http\Controllers\UserSite\CheckoutController;
 use App\Http\Controllers\UserSite\DownloadController;
@@ -21,6 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('user-site-home');
 Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('setLocale');
 
 Route::group(['middleware' => 'customer'], function() {
+    Route::get('/', [HomeController::class, 'index'])->name('user-site-home');
+    Route::get('/article', [ArticleController::class, 'index'])->name('article');
     Route::get('/my-account', [AccountController::class, 'index'])->name('my-account');
 
     Route::get('/user/login', [LoginController::class, 'index'])->name('user-site.login');

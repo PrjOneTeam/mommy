@@ -19,24 +19,20 @@
                 <div>&nbsp;</div>
                 <div class="auth-container">
                     <div class="auth-block">
-                        <h1 class="hpage2">Returning Members</h1>
-                        <div class="social-signup-options">
-                            <a class="fb-login">Login with Facebook</a>
-                            <div class="social-signin-div"><div><span>OR</span></div></div>
-                        </div>
+                        <h1 class="hpage2">@lang('app.login_title')</h1>
                         <form onsubmit="return frmValidCheck(this);" name="SignIn" persist="false" style="margin-bottom:5px;" target="_self" id="SignIn" method="post" action="/user/login">
                             <span class="astrix">*</span>E-mail Address
                             <div><input maxlength="50" id="email" vtype="text" vlabel="Email Address" vrequired="true" class="clInput" style="width:97%;" type="text" name="email"> </div>
                             <span class="astrix">*</span>Password
                             <div><input maxlength="30" id="password" vtype="password" vlabel="Password" vrequired="true" class="clInput" style="width:97%" type="password" name="password"> </div>
-                            <div class="mbo"><input type="checkbox" name="remember_me" id="remember_me_1" value="NEVER" class="clRadioCheck "> Remember me on this computer until I log out.</div>
+                            <div class="mbo"><input type="checkbox" name="remember_me" id="remember_me_1" value="NEVER" class="clRadioCheck ">@lang('app.remember_me')</div>
                             <div id="ValidationMessagesSignIn" class="XMValidationMessage mbo"></div>
-                            <input id="taskbtn" vtype="submit" class="btn btn-primary" type="submit" value="Sign In" style="width:100%">
+                            <input id="taskbtn" vtype="submit" class="btn btn-primary" type="submit" value="@lang('app.login')" style="width:100%">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </form>
-                        <p class="center semi-small">Forgot Password? <a href="/login?actionxm=ResetPwd">Click here to reset your password</a>.</p>
+                        <p class="center semi-small">@lang('app.forgot_pw')<a href="/login?actionxm=ResetPwd">@lang('app.reset_pw')</a>.</p>
                         <div class="auth-foot center mbo">
-                            <strong>Not a member?</strong> <a href="/user/register">Join for FREE</a>.
+                            <strong>@lang('app.not_member')</strong> <a href="/user/register">@lang('app.join_free')</a>.
                         </div>
                     </div>
                 </div>

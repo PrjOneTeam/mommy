@@ -88,7 +88,7 @@
                                     <div class="section-body">
                                         <ul class="wkst-detail">
                                             <li>
-                                                <span>{{__("Grade")}}</span>
+                                                <span>@lang('app.grade')</span>
                                                 <span>
                                                     <a href="/worksheets/{{$worksheet->grade}}">{{ucfirst($worksheet->grade)}}</a>
                                                 </span>

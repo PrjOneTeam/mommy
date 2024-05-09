@@ -9,7 +9,7 @@
     <div class="item" style="padding-right: 20px">
         <table class="cart-amounts">
             <tbody><tr>
-                <td class="{{ $worksheet->sale_price ?: 'bold' }}">{{ $worksheet->sale_price ? __("Regular Price") : __("Price")}}</td>
+                <td class="{{ $worksheet->sale_price ?: 'bold' }}">@lang('app.' .  ($worksheet->sale_price ? 'regular_price' : 'price'))</td>
                 <td class="total"><span class="{{$worksheet->sale_price ? 'strike' : 'sale bold' }}" id="reg-price-txt">${{$worksheet->price}}</span></td>
             </tr>
             </tbody>
