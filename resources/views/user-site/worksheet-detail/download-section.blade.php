@@ -3,7 +3,7 @@
      * @var App\Helpers\Worksheet $worksheetHelper
      */
 ?>
-@if($worksheetHelper->isFree($worksheet))
+@if($worksheetHelper->isFree($worksheet) || $isPurchase === true)
     <div class="btn-download">
         <a class="sheet" href="{{ route('download', $slug, 'bw') }}">
             <span class="ico"><i class="icon-worksheet"></i></span>
