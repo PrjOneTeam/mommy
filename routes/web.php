@@ -49,6 +49,19 @@ Route::group(['middleware' => 'customer'], function() {
     Route::post('comment', [App\Http\Controllers\Admin\CommentController::class, 'store'])->name('comments.store');
     Route::post('review', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
 
+    Route::get('station/privacy-statement', function () {
+        return view('user-site.station.statement');
+    })->name('statement');
+    Route::get('station/refund-policy', function () {
+        return view('user-site.station.policy');
+    })->name('policy');
+    Route::get('station/terms-and-conditions', function () {
+        return view('user-site.station.terms');
+    })->name('terms');
+    Route::get('station/about', function () {
+        return view('user-site.station.about');
+    })->name('about');
+
 // Always put this route at the end of the file
     Route::get('/pub/download/{slug}/{color?}', [DownloadController::class, 'download'])->name('download');
     Route::get('/worksheets/{grade?}/{topic?}', [WorksheetsController::class, 'index'])->name('worksheets');

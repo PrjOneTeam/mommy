@@ -5,12 +5,9 @@
                 <div class="footer-column one">
                     <div class="footer-header">@lang('app.workbooks')</div>
                     <ul class="link-list">
-                        <li><a href="/worksheets/reading">@lang('app.reading')</a></li>
                         <li><a href="/worksheets/writing">@lang('app.writing')</a></li>
                         <li><a href="/worksheets/math">@lang('app.math')</a></li>
-                        <li><a href="/worksheets/art-and-colors">@lang('app.art_and_colors')</a></li>
-                        <li><a href="/suggest-worksheet">@lang('app.suggest_worksheet')</a></li>
-                        <li><a href="/customize">@lang('app.customize_worksheet')</a></li>
+                        <li><a href="/worksheets/art_coloring">@lang('app.art_and_colors')</a></li>
                     </ul>
                 </div>
                 <div class="footer-column two">
@@ -35,11 +32,10 @@
                 <div class="footer-column four">
                     <div class="footer-header">@lang('app.my_teaching_station')</div>
                     <ul>
-                        <li><a href="/about">@lang('app.about')</a></li>
-                        <li><a href="/contact">@lang('app.contact')</a></li>
-                        <li><a href="/privacy-statement">@lang('app.privacy_statement')</a></li>
-                        <li><a href="/refund-policy">@lang('app.refund_policy')</a></li>
-                        <li><a href="/terms-and-conditions">@lang('app.terms_and_conditions')</a></li>
+                        <li><a href="{{ route('about') }}">@lang('app.about')</a></li>
+                        <li><a href="{{ route('statement') }}">@lang('app.privacy_statement')</a></li>
+                        <li><a href="{{ route('policy') }}">@lang('app.refund_policy')</a></li>
+                        <li><a href="{{ route('terms') }}">@lang('app.terms_and_conditions')</a></li>
                     </ul>
                 </div>
                 <div class="footer-column five">

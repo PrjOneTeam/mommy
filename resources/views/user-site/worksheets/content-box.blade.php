@@ -2,9 +2,6 @@
     @if($totals)
         <div class="has_records clearfix ">
             <div class="list-view ft-left">
-{{--                <span class="space10">{{__("VIEW AS")}}</span>--}}
-{{--                <a href="javascript:void(0);" data-id="portrait" class="post-listing-view box active"></a>--}}
-{{--                <a href="javascript:void(0);" data-id="landscape" class="post-listing-view list"></a>--}}
             </div>
             <div class="ft-right">
                 <span class="space10">@lang('app.page'): </span>

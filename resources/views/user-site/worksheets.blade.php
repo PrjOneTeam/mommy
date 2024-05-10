@@ -16,23 +16,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-{{--        <div class="promo-b mbo" id="wf-promo">--}}
-{{--            <div class="promo-in">--}}
-{{--                <div class="promo-left">--}}
-{{--                    <div class="hdr">Word Family Workbook Bundle</div>--}}
-{{--                    <div class="txt">22 Word Family Workbooks</div>--}}
-{{--                    <div class="large">--}}
-{{--                        <div class="bt2 mto10"><a href="/word-family/word-family-workbook-bundle" class="button btn">Click here for details</a></div>--}}
-{{--                        <div class="bt"><img src="/lib/theme/mts/images/instant-download.jpg"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="promo-right">--}}
-{{--                    <a href="/word-family/word-family-workbook-bundle"><img src="/vault/2599/web/images/word-family-worksheet-pdf-bundle.jpg" alt="Word Family Workbook Bundle" title="Word Family Workbook Bundle" nopin="nopin" style="max-width:559px;width: 100%;"></a>--}}
-{{--                </div>--}}
-{{--                <div class="clearfix"></div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        <div class="content-holder">
+        <div class="content-holder" style="min-height: 732px">
             <div class="open-slide"><a href="javascript:void(0);" id="filter-open">{{__("Filter")}}</a></div>
             @include('user-site.worksheets.filter')
             <div class="left-body">
