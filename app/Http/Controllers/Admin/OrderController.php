@@ -48,6 +48,19 @@ class OrderController extends Controller
 
     public function show($id) { }
 
+    public function purchased(int $id)
+    {
+        $order = Order::findOrFail($id);
+        if (!$order) {
+            return redirect()->route('admin.order.index')->with('error', 'Đơn hàng không tồn tại!');
+        }
+        if ($order->status == Order::ORDERED_STATUS) {
+            $order->status = Order::PURCHASED_STATUS;
+            $order->save();
+        }
+        return redirect()->route('admin.order.index')->with('success', 'Đơn hàng đã được thanh toán thành công!');
+    }
+
     public function edit(string $id, Request $request)
     {
         $order = Order::findOrFail($id);

@@ -67,6 +67,9 @@ class Helper
                 <a style="margin-left:5px" class="btn btn-sm btn-info" href="'.route('admin.'.$module.'.edit', $id).'">
                 <i class="c-icon c-icon-sm cil-description"></i>
                 </a>
+                <a style="margin-left:5px" class="btn btn-sm btn-success" href="'.route('admin.'.$module.'.purchased', $id).'">
+                <i class="c-icon c-icon-sm cil-check"></i>
+                </a>
                 </div>';
         } else {
             return '<div class="d-flex text-center">

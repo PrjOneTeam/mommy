@@ -26,6 +26,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('review',ReviewController::class);
     Route::resource('customer',CustomerController::class);
     Route::resource('order', OrderController::class);
+    Route::get('order/{id}/purchased', [OrderController::class, 'purchased'])->name('order.purchased');
     Route::get('payment', [PaymentController::class, 'index'])->name('payment');
     Route::post('payment', [PaymentController::class, 'store'])->name('payment.store');
 });

@@ -40,4 +40,9 @@ class Workbook extends Model
     {
         return $this->hasOne('App\Models\Slug', 'workbook_id', 'id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review', 'workbook_id', 'id')->limit(10)->orderBy('created_at', 'desc');
+    }
 }
