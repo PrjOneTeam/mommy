@@ -20,15 +20,6 @@
                         <li><a href="/my-account?actionxm=EmailPreference">@lang('app.email_preferences')</a></li>
                     </ul>
                 </div>
-                <div class="footer-column three">
-                    <div class="footer-header">@lang('app.resources')</div>
-                    <ul>
-                        <li><a href="/preschool-kindergarten-workbooks">@lang('app.mts_products')</a></li>
-                        <li><a href="/children-educational-articles">@lang('app.educational_articles')</a></li>
-                        <li><a href="/early-childhood-lesson-guidelines">@lang('app.lesson_guidelines')</a></li>
-                        <li><a href="/faq">@lang('app.faqs')</a></li>
-                    </ul>
-                </div>
                 <div class="footer-column four">
                     <div class="footer-header">@lang('app.my_teaching_station')</div>
                     <ul>

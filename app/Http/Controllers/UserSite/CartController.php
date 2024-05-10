@@ -5,6 +5,7 @@ namespace App\Http\Controllers\UserSite;
 use App\Enums\Color;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\CartItem;
 use App\Repositories\CartRepository;
 use App\Repositories\SlugRepository;
 use Illuminate\Http\Request;

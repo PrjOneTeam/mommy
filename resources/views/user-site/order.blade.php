@@ -8,31 +8,33 @@
                 <div class="content-box" style="margin-bottom:15px;">
                     <div class="box-body">
                         <h2>@lang('app.list')</h2>
-                        <div class="table-container">
-                            <table class="table table-responsive table-bordered table-striped">
-                                <thead>
-                                <tr role="row" >
-                                    <th>ID</th>
-                                    <th>@lang('app.bill_info')</th>
-                                    <th>@lang('app.total')</th>
-                                    <th>@lang('app.status')</th>
-                                    <th>@lang('app.created_at')</th
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($dataList as $data)
-                                    <tr>
-                                        <td>{{ $data->id }}</td>
-                                        <td>{{ $data->bill_info }}</td>
-                                        <td>{{ $data->total }}</td>
-                                        <td>{{ $data->status }}</td>
-                                        <td>{{ $data->created_at }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                        <div class="cart-wrapper">
+                            <ul class="list-holder cart-title clearfix">
+                                <li class="product">@lang('app.bill_info')</li>
+                                <li class="price">@lang('app.bill_total')</li>
+                            </ul>
+                            <div class="cart-items-holder">
+                                <div class="cart-item">
+                                    @foreach($dataList as $item)
+                                        <div class="cart-item-wrapper">
+                                            <ul class="list-holder cart-detail clearfix">
+                                                <li class="product">
+                                                    <div class="inner">
+                                                        <h2 class="title" style="padding-bottom:0"><a href="">@lang('app.bill_no'): {{$item->id}}</a></h2>
+                                                        <span class="semi-small">@lang('app.order_date'): {{ $item->created_at  }}<br></span>
+                                                    </div>
+                                                </li>
+                                                <li class="price">
+                                                    <div class="inner">
+                                                        <span>{{'VND ' .$item->total}}</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="content-box" style="margin-bottom:15px;">
