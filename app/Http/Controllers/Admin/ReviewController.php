@@ -8,6 +8,7 @@ use App\Repositories\ReviewRepository;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -51,7 +52,7 @@ class ReviewController extends Controller
         return view('review-form');
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
             'workbook_id' => 'required|integer|exists:workbooks,id',
@@ -63,14 +64,14 @@ class ReviewController extends Controller
         try {
             $this->reviewRepository->create($data);
 
-            return response()->json(['message' => 'Review created successfully'], 201);
+            return redirect()->back()->with('success', 'Review successfully');
         } catch (Exception $e) {
             Log::error('Error in ReviewController@store: ' . $e->getMessage(), [
                 'request' => $request->all(),
                 'trace' => $e->getTrace(),
             ]);
 
-            return response()->json(['message' => 'Review could not be created'], 500);
+            return redirect()->back()->with('error', 'Error review');
         }
     }
 }

@@ -127,7 +127,11 @@
                         </div>
                     </div>
                     @include('user-site.worksheet-detail.you-may-also-like')
-                    @include('user-site.worksheet-detail.review')
+                    @if($worksheet instanceof \App\Models\Pdf)
+                        @include('user-site.worksheet-detail.comments')
+                    @else
+                        @include('user-site.worksheet-detail.review')
+                    @endif
                 </div>
             </div>
             @include('user-site.worksheet-detail.content-right')

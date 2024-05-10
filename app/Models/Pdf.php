@@ -40,4 +40,9 @@ class Pdf extends Model
     {
         return $this->hasOne('App\Models\Slug', 'pdf_id', 'id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'pdf_id', 'id')->limit(10)->orderBy('created_at', 'desc');
+    }
 }

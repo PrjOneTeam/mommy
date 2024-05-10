@@ -51,7 +51,7 @@ class CommentController extends Controller
         return view('comment-form');
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
             'pdf_id' => 'required|integer|exists:pdfs,id',
@@ -63,14 +63,14 @@ class CommentController extends Controller
         try {
             $this->commentRepository->create($data);
 
-            return response()->json(['message' => 'Comment created successfully'], 201);
+            return redirect()->back()->with('success', __('Comment created successfully'));
         } catch (Exception $e) {
             Log::error('Error in CommentController@store: ' . $e->getMessage(), [
                 'request' => $request->all(),
                 'trace' => $e->getTrace(),
             ]);
 
-            return response()->json(['message' => 'Comment could not be created'], 500);
+            return redirect()->back()->with('error', __('Comment could not be created'));
         }
     }
 
