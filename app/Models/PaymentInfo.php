@@ -16,5 +16,6 @@ class PaymentInfo extends Model
         'bank_name',
         'card_name',
         'card_number',
+        'qr',
     ];
 }

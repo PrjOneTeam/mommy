@@ -33,14 +33,12 @@
                                                             <span class="{{ $item->sale_price !== null ? 'strike' : null }}">{{'VND '.$item->price}}</span>
                                                         </div>
                                                     </li>
-                                                    <li class="remove">
+                                                    <li>
                                                         <form action="{{route('cart.remove')}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <input type="hidden" name="item_id" value="{{$item->id}}">
-                                                            <div class="inner">
-                                                                <a class="remove-item"></a>
-                                                            </div>
+                                                            <button style="box-shadow: none !important; border: 0; background-color: white; color: red">X</button>
                                                         </form>
                                                     </li>
                                                 </ul>
@@ -91,15 +89,6 @@
                                 </div>
                                 <a class="button btn-standout full-width tall mto" href="/checkout">@lang('app.proceed_checkout')</a>
                             </div>
-{{--                            <div class="section-box mto">--}}
-{{--                                <h4>Promotional Code</h4>--}}
-{{--                                <div class="section-body">--}}
-{{--                                    <div class="cart-coupon">--}}
-{{--                                        <input type="text" name="coupon_code" id="coupon_code" value="" autocomplete="off" maxlength="20">--}}
-{{--                                        <input type="submit" name="actionxm" value="Apply Code" class="button btn-green small">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="section-box mto">
                                 <h4>Questions?</h4>
                                 <div class="section-body">

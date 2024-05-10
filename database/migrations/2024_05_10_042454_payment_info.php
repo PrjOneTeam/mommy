@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('bank_name');
             $table->string('card_name');
             $table->string('card_number');
+            $table->string('qr')->nullable();
             $table->timestamps();
         });
     }

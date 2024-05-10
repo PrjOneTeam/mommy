@@ -49,6 +49,21 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="pictures" class="col-sm-12 control-label">QR</label>
+                            <div class="col-sm-12">
+                                <input type="file" id="pictures" name="qr" class="form-control" onchange="previewFile(this);"
+                                       style="display: none">
+                                <img id="preview" onclick="$('#pictures').click()"
+                                     src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
+                                     style="max-width: 200px; max-height: 200px; cursor: pointer">
+                            </div>
+                            @error('pictures')
+                            <div class="col-sm-12">
+                                <span class="text-danger">{{ $message }}</span>
+                            </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                             </div>
@@ -60,3 +75,20 @@
     </div>
 @endsection
 
+@section('javascript')
+    <script>
+        const previewFile = (input) => {
+            let file = $("input[type=file]").get(0).files[0];
+
+            if (file) {
+                let reader = new FileReader();
+
+                reader.onload = function() {
+                    $("#preview").attr("src", reader.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+@endsection

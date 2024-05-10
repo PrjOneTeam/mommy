@@ -22,11 +22,17 @@
                                         <div class="row" style="padding: 10px">
                                             <div>
                                                 <h5>{{__("Bank name")}}</h5>
-                                                <h6 style="margin-left: 20px">{{ $payment->bank_name }}</h6>
+                                                <h6 style="margin-left: 20px">{{ $payment?->bank_name }}</h6>
                                                 <h5>{{__("Card name")}}</h5>
-                                                <h6 style="margin-left: 20px">{{ $payment->card_name }}</h6>
+                                                <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
                                                 <h5>{{__("Card number")}}</h5>
-                                                <h6 style="margin-left: 20px">{{ $payment->card_number }}</h6>
+                                                <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
+                                                @if($payment->qr)
+                                                    <h5>{{__("QR")}}</h5>
+                                                    <h6 style="margin-left: 20px">
+                                                        <img src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
+                                                             style="max-width: 200px; max-height: 200px; cursor: pointer">
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

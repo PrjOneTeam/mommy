@@ -39,10 +39,6 @@ class CartRepository extends Repository
 
     public function getCurrentCart(string $sessionToken): ?Cart
     {
-//        $user = Auth::user();
-//
-//        $cart = $user? $this->getByUserId($user->id) :$this->getBySessionToken($sessionToken);
-
         return $this->getBySessionToken($sessionToken);
     }
 }

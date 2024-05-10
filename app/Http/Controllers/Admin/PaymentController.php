@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\File;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentInfo;
 use Exception;
@@ -15,6 +16,7 @@ class PaymentController extends Controller
 {
 
     public function __construct(
+        private readonly File $file,
     ) {
     }
 
@@ -34,10 +36,16 @@ class PaymentController extends Controller
             'bank_name' => 'required|string',
             'card_name' => 'required|string',
             'card_number' => 'required|string',
+            'pictures' => 'nullable|image|mimes:jpg,jpeg,png|max:1048',
         ]);
 
         try {
             $count = PaymentInfo::count();
+
+            if ($request->hasFile('qr')) {
+                $data['qr'] = $this->file->uploadFile($request, 'qr');
+            }
+
             if (isset($data['id']) && $count == 1) {
                 $paymentInfo = PaymentInfo::findOrFail($data['id']);
                 $paymentInfo->update($data);

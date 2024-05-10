@@ -19,7 +19,7 @@
                         <li class="first">
                             <div class="top-bar-cart">
                                 <a href="/cart">
-                                    <span class="txt">@lang('app.cart')</span>
+                                    <span class="txt">@lang('app.cart')</span> <span class="cnt">{{ $cart?->items->count() ?? 0 }}</span>
                                 </a>
                             </div>
                         </li>
