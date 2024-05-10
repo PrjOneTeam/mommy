@@ -19,7 +19,7 @@
                         <li class="first">
                             <div class="top-bar-cart">
                                 <a href="/cart">
-                                    <span class="txt">@lang('app.cart')</span> <span class="cnt">1</span>
+                                    <span class="txt">@lang('app.cart')</span>
                                 </a>
                             </div>
                         </li>
@@ -38,14 +38,6 @@
                             </li>
 {{--                            <li><a style="color: white" href="{{ route('setLocale', 'en') }}">English</a></li>--}}
 {{--                            <li><a style="color: white"  href="{{ route('setLocale', 'vi') }}">Tiếng Việt</a></li>--}}
-                        <li>
-                            <div class="social">
-                                <a class="social-icons" id="social-icons" href="#" target="_blank"><i class="icon-pinterest"></i></a>
-                                <a class="social-icons" id="social-icons" href="#" target="_blank"><i class="icon-facebook"></i></a>
-                                <a class="social-icons" id="social-icons" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                                <a class="social-icons" id="social-icons" href="#" target="_blank"><i class="icon-instagram"></i></a>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
