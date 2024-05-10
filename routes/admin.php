@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\WorkbookController;
@@ -25,4 +26,6 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('review',ReviewController::class);
     Route::resource('customer',CustomerController::class);
     Route::resource('order', OrderController::class);
+    Route::get('payment', [PaymentController::class, 'index'])->name('payment');
+    Route::post('payment', [PaymentController::class, 'store'])->name('payment.store');
 });

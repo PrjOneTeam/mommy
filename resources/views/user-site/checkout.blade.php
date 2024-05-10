@@ -1,7 +1,7 @@
 @extends('user-site.main')
 @section('content-layout')
     <div id="content-layout">
-        <h1 class="hpage">Payment Info</h1>
+        <h1 class="hpage">{{__("Payment Info")}}</h1>
         <div class="container" id="checkout">
             <div class="content-holder">
                 <div class="content-box">
@@ -21,12 +21,12 @@
                                         </div>
                                         <div class="row" style="padding: 10px">
                                             <div>
-                                                <h5>{{__("Tên ngân hàng")}}</h5>
-                                                <h6 style="margin-left: 20px">Vietcombank</h6>
-                                                <h5>{{__("Tên tài khoản")}}</h5>
-                                                <h6 style="margin-left: 20px">Phan Anh Tuan</h6>
-                                                <h5>{{__("Số tài khoản")}}</h5>
-                                                <h6 style="margin-left: 20px">0491000163032</h6>
+                                                <h5>{{__("Bank name")}}</h5>
+                                                <h6 style="margin-left: 20px">{{ $payment->bank_name }}</h6>
+                                                <h5>{{__("Card name")}}</h5>
+                                                <h6 style="margin-left: 20px">{{ $payment->card_name }}</h6>
+                                                <h5>{{__("Card number")}}</h5>
+                                                <h6 style="margin-left: 20px">{{ $payment->card_number }}</h6>
                                             </div>
                                         </div>
                                     </div>

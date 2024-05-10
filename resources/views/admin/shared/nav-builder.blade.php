@@ -70,6 +70,16 @@
                 {{__("Reviews")}}
             </a>
         </li>
+
+        <li class="c-sidebar-nav-item">
+            <p style="margin: 10px auto 0 5px; color: #999999">{{__("Payment")}}</p>
+        </li>
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.payment') }}">
+                <i class="c-sidebar-nav-icon c-icon cil-album"></i>
+                {{__("Config bank info")}}
+            </a>
+        </li>
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
         data-class="c-sidebar-minimized"></button>
