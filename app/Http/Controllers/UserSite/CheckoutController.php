@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserSite;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\PaymentInfo;
 use App\Repositories\CartRepository;
 use App\Repositories\OrderRepository;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class CheckoutController extends Controller
 
         return view('user-site.checkout', [
             'cart' => $cart,
+            'payment' => PaymentInfo::first(),
         ]);
     }
 

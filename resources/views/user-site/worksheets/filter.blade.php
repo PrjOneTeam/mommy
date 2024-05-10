@@ -4,15 +4,6 @@
             <div class="filter-header">
                 <div class="refine">{{__("Filter")}}<i>{{__("Your Selection")}}</i></div>
             </div>
-            {{--                        <form id="worksheetSearchFrm" class="worksheet-search-form" method="get">--}}
-            {{--                            <fieldset>--}}
-            {{--                                <input type="hidden" name="c" id="c" value="142">--}}
-            {{--                                <input type="search" name="k" id="k" placeholder="Keyword Search...">--}}
-            {{--                                <input type="submit" value="">--}}
-            {{--                                <div class="clear-results icon-close sitecolor"><span class="space"><a href="/worksheets">clear search results</a></span></div>--}}
-            {{--                            </fieldset>--}}
-            {{--                            <div class="clearfix"></div>--}}
-            {{--                        </form>--}}
             <div>
                 <div class="filter-group mbo">
                     <h5 class="filter-title">@lang('app.subject')</h5>
@@ -89,18 +80,30 @@
                     }
                 });
 
-                var ul = this.nextElementSibling;
-                if (ul && ul.classList.contains('expand')) {
-                    ul.classList.remove('hide');
-                }
-
                 var listItems = document.querySelectorAll('#subject li');
                 listItems.forEach(function(item) {
                     item.classList.remove('ck-active');
                 });
 
-                this.parentElement.classList.add('ck-active');
-                setUrl({topic: this.getAttribute('data-path')});
+                var ul = this.nextElementSibling;
+
+                let currentUrl = window.location.href;
+                let path = this.getAttribute('data-path');
+
+                let isCurrentActive = currentUrl.includes(path);
+                if (isCurrentActive) {
+                    currentUrl.replace(path, '');
+                    this.parentElement.classList.remove('ck-active');
+                    setUrl({topic: path, remove: true});
+                    ul.classList.add('hide');
+                } else {
+                    if (ul && ul.classList.contains('expand')) {
+                        ul.classList.remove('hide');
+                    }
+                    this.parentElement.classList.add('ck-active');
+                    setUrl({topic: path});
+                }
+
                 fetchWorksheet();
             });
         });
@@ -113,8 +116,20 @@
                 sub_links.forEach(function(item) {
                     item.parentElement.classList.remove('ck-active');
                 });
-                link.parentElement.classList.add('ck-active');
-                setUrl({topic: this.getAttribute('data-path')});
+
+                let currentUrl = window.location.href;
+                let path = this.getAttribute('data-path');
+
+                let isCurrentActive = currentUrl.includes(path);
+                if (isCurrentActive) {
+                    currentUrl.replace(path, '');
+                    link.parentElement.classList.remove('ck-active');
+                    setUrl({topic: path, remove: true});
+                } else {
+                    link.parentElement.classList.add('ck-active');
+                    setUrl({topic: path});
+                }
+
                 fetchWorksheet();
             });
         });
@@ -126,9 +141,20 @@
                 grade_links.forEach((item) => {
                     item.parentElement.classList.remove('ck-active');
                 });
-                this.parentElement.classList.add('ck-active');
 
-                setUrl({grade: this.getAttribute('data-path')});
+                let currentUrl = window.location.href;
+                let path = this.getAttribute('data-path');
+
+                let isCurrentActive = currentUrl.includes(path);
+                if (isCurrentActive) {
+                    currentUrl.replace(path, '');
+                    this.parentElement.classList.remove('ck-active');
+                    setUrl({grade: path, remove: true});
+                } else {
+                    this.parentElement.classList.add('ck-active');
+                    setUrl({grade: path});
+                }
+
                 fetchWorksheet();
             });
         });
@@ -179,11 +205,11 @@
             currentTopic = option.topic;
         }
 
-        if (currentGrade) {
+        if (currentGrade && option.remove !== true) {
             url += '/' + currentGrade;
         }
 
-        if(currentTopic) {
+        if(currentTopic && option.remove !== true) {
             url += '/' + currentTopic;
         }
 
