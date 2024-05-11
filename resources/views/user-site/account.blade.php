@@ -90,7 +90,7 @@
                                                                     <ul class="reg inline">
                                                                         @foreach($data['subject_prefer'] as $key => $subject)
                                                                             <li>
-                                                                                {{ $subject }}
+                                                                                @lang('app.' . $subject)
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>
@@ -110,7 +110,7 @@
                                                                     <ul class="reg inline">
                                                                         @foreach($data['role'] as $key => $role)
                                                                             <li>
-                                                                                {{ $role }}
+                                                                                @lang('app.' . $role)
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>
@@ -129,7 +129,7 @@
                                                                     <ul class="reg inline">
                                                                         @foreach($data['grade_teacher'] as $key => $grade)
                                                                             <li>
-                                                                                {{ $grade }}
+                                                                                @lang('app.' . $grade)
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>
@@ -145,7 +145,7 @@
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL492D8570935D1A29316878D827532CA2">
                                                         <td valign="top" class="padleft">
                                                             <label id="form_label_SignInFormEL492D8570935D1A29316878D827532CA2" class="XMLabel" for="SignInFormEL492D8570935D1A29316878D827532CA2" style=""><strong>@lang('app.color_prefer')</strong></label>
-                                                            <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL492D8570935D1A29316878D827532CA2">{{ $data['color_prefer'] }}</div> </div>
+                                                            <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL492D8570935D1A29316878D827532CA2"> @lang('app.' . $data['color_prefer'])</div> </div>
                                                         </td>
                                                     </tr>
                                                     </tbody></table>
@@ -156,7 +156,7 @@
                                                     </colgroup><tbody><tr style=";" id="form_row_SignInFormEL176D25D5F69E605E0EB028484D8FFA23">
                                                         <td valign="top" class="padleft">
                                                             <label id="form_label_SignInFormEL176D25D5F69E605E0EB028484D8FFA23" class="XMLabel" for="SignInFormEL176D25D5F69E605E0EB028484D8FFA23" style=""><strong><strong>@lang('app.gender')</strong></label>
-                                                            <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL176D25D5F69E605E0EB028484D8FFA23">&nbsp;</div> {{ $data['gender'] }} </div>
+                                                            <div style="word-wrap:break-word;;"><div class="xmFieldValue " data-type="" id="SignInFormEL176D25D5F69E605E0EB028484D8FFA23">&nbsp;</div> @lang('app.' . $data['gender'] ) </div>
                                                         </td>
                                                     </tr>
                                                     </tbody></table>
@@ -170,10 +170,6 @@
                             <input type="hidden" name="xm_form_request_token" value=" XMFRT-www.myteachingstation.com-64EC06F9-D543-5F69-514F49CCBFC2AF31"> <input type="hidden" name="xm_user_token" value="1504685|4FAAB81A-8B4D-4AA5-AEBA-1D8679E0B1A6"> </form>
                         <script type="text/javascript">
                             if (window.hasOwnProperty("xmFormObj")) xmFormObj["SignInForm"] = {"SignInFormEL492D8570935D1A29316878D827532CA2":{"field_options":{},"required":false,"label":"<strong>@lang('app.color_prefer')</strong>","type":"display"},"SignInFormEL1769A191C7DC6D1C9502B363B7FF83BE":{"field_options":{},"required":false,"label":"<strong>@lang('app.name')</strong>","type":"display"},"SignInFormEL5CE689B3D99ADC3730CB2018CC101572":{"field_options":{},"required":false,"label":"<strong>E-mail</strong>","type":"display"},"SignInFormELB8CEA6E111EBA77E52A607A6AEF55ABE":{"field_options":{},"required":false,"label":"<strong>@lang('app.subject_prefer')</strong>","type":"display"},"SignInFormELFDFCF948D68FD8764F36ADF00AF2D19E":{"field_options":{},"required":false,"label":"<strong>@lang('app.location')</strong>","type":"display"},"SignInFormEL8E79429BFD23757E38B3486C12A23B00":{"field_options":{},"required":false,"label":"<strong>@lang('app.grade_teacher')</strong>","type":"display"},"SignInFormEL176D25D5F69E605E0EB028484D8FFA23":{"field_options":{},"required":false,"label":"<strong>@lang('app.gender')</strong>","type":"display"},"SignInFormEL80A6FDF094CF70098B07CAEFDB0DCEBC":{"field_options":{},"required":false,"label":"<strong>@lang('app.role')</strong>","type":"display"}};
-
-                            //MR: 9/5/2022 - loop over all fields to set fieldOptions
-
-
                             if (typeof jQuery != 'undefined')  {
                                 $(function () {
                                     /*

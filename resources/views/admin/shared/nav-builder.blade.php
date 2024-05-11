@@ -10,74 +10,67 @@
             }
         }
         </style>
-        <img class="c-sidebar-brand-full" src="{{ asset('logo.svg') }}" width="118" height="46" alt="Logo">
+        <img class="c-sidebar-brand-full" src="{{ asset('/images/mommy-logo.svg') }}" width="118" height="46" alt="Logo">
         <span class="span-c-sidebar-brand-minimized">
-            <img class="c-sidebar-brand-minimized" src="{{ asset('logo.svg') }}" width="118" height="46" alt="Logo">
+            <img class="c-sidebar-brand-minimized" src="{{ asset('/images/mommy-logo.svg') }}" width="118" height="46" alt="Logo">
         </span>
     </div>
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('admin.dashboard') }}">
-                <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{ $lang['dashboard'] }}
-            </a>
-        </li>
-
-        <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.customer.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-people"></i>
-                {{ $lang['customers'] }}
+                Quản lý thành viên
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.order.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-share-boxed"></i>
-                {{ $lang['orders'] }}
+                Quản lý đơn hàng
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.workbook.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{__("Workbooks")}}
+                Quản lý workbook
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.pdf.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{__("Pdfs")}}
+                Quản lý PDFs
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.article.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{__("Articles")}}
+                Bài viết
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
-            <p style="margin: 10px auto 0 5px; color: #999999">{{__("Customers")}}</p>
+            <p style="margin: 10px auto 0 5px; color: #999999">Khách hàng</p>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.comment.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{__("Comments")}}
+                Quản lý bình luận
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.review.index') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{__("Reviews")}}
+                Quản lý đánh giá
             </a>
         </li>
 
         <li class="c-sidebar-nav-item">
-            <p style="margin: 10px auto 0 5px; color: #999999">{{__("Payment")}}</p>
+            <p style="margin: 10px auto 0 5px; color: #999999">Thanh toán</p>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('admin.payment') }}">
                 <i class="c-sidebar-nav-icon c-icon cil-album"></i>
-                {{__("Config bank info")}}
+                Quản lý tài khoản ngân hàng
             </a>
         </li>
     </ul>

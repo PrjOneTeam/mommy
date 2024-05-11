@@ -6,6 +6,7 @@ class Helper
 {
     public const DELETE_BUTTON = 'delete';
     public const EDIT_BUTTON = 'edit';
+    public const ADS_BUTTON = 'ads';
 
     public static function get_content($file) {
         return file_get_contents($file);
@@ -40,7 +41,79 @@ class Helper
             $actionButton = '';
             foreach ($actions as $action) {
                 if ($action == self::EDIT_BUTTON) $actionButton.=$editButton;
+                if ($action == self::ADS_BUTTON) $actionButton.=$deleteButton;
+            }
+
+            return '<div class="d-flex text-center">' . $actionButton . '</div>';
+        } else {
+            return '<div class="d-flex text-center">
+            <button id="btn-delete-resource" disabled class="btn btn-sm btn-danger">
+            <i class="c-icon c-icon-sm cil-trash"></i>
+            </button>
+            <button disabled style="margin-left:5px" class="btn btn-sm btn-info">
+            <i class="c-icon c-icon-sm cil-pencil"></i>
+            </button>
+            </div>';
+        }
+    }
+
+    public static function renderWorkbookAction($module, $id, $userId = null, array $actions = [self::EDIT_BUTTON, self::DELETE_BUTTON])
+    {
+
+        if(auth()->guard('admin') || ($userId != null && auth()->guard('admin')->user()->id == $userId)) {
+            $deleteButton = '<button id="btn-delete-resource" class="btn btn-sm btn-danger"
+                data-toggle="modal" data-target="#confirmDelete"
+                data-id="'.$id.'" data-url="'.route('admin.'.$module.'.destroy', $id).'">
+                <i class="c-icon c-icon-sm cil-trash"></i>
+                </button>';
+            $editButton = '<a style="margin-left:5px" class="btn btn-sm btn-info" href="'.route('admin.'.$module.'.edit', $id).'">
+                <i class="c-icon c-icon-sm cil-pencil"></i>
+                </a>';
+            $adsButton = '<a style="margin-left:5px" class="btn btn-sm btn-success" href="'.route('admin.'.$module.'.ads', $id).'">
+                <i class="c-icon c-icon-sm cil-highligt"></i>
+                </a>';
+
+            $actionButton = '';
+            foreach ($actions as $action) {
+                if ($action == self::EDIT_BUTTON) $actionButton.=$editButton;
                 if ($action == self::DELETE_BUTTON) $actionButton.=$deleteButton;
+                if ($action == self::DELETE_BUTTON) $actionButton.=$adsButton;
+            }
+
+            return '<div class="d-flex text-center">' . $actionButton . '</div>';
+        } else {
+            return '<div class="d-flex text-center">
+            <button id="btn-delete-resource" disabled class="btn btn-sm btn-danger">
+            <i class="c-icon c-icon-sm cil-trash"></i>
+            </button>
+            <button disabled style="margin-left:5px" class="btn btn-sm btn-info">
+            <i class="c-icon c-icon-sm cil-pencil"></i>
+            </button>
+            </div>';
+        }
+    }
+
+    public static function renderPdfAction($module, $id, $userId = null, array $actions = [self::EDIT_BUTTON, self::DELETE_BUTTON])
+    {
+
+        if(auth()->guard('admin') || ($userId != null && auth()->guard('admin')->user()->id == $userId)) {
+            $deleteButton = '<button id="btn-delete-resource" class="btn btn-sm btn-danger"
+                data-toggle="modal" data-target="#confirmDelete"
+                data-id="'.$id.'" data-url="'.route('admin.'.$module.'.destroy', $id).'">
+                <i class="c-icon c-icon-sm cil-trash"></i>
+                </button>';
+            $editButton = '<a style="margin-left:5px" class="btn btn-sm btn-info" href="'.route('admin.'.$module.'.edit', $id).'">
+                <i class="c-icon c-icon-sm cil-pencil"></i>
+                </a>';
+            $adsButton = '<a style="margin-left:5px" class="btn btn-sm btn-success" href="'.route('admin.'.$module.'.ads', $id).'">
+                <i class="c-icon c-icon-sm cil-highligt"></i>
+                </a>';
+
+            $actionButton = '';
+            foreach ($actions as $action) {
+                if ($action == self::EDIT_BUTTON) $actionButton.=$editButton;
+                if ($action == self::DELETE_BUTTON) $actionButton.=$deleteButton;
+                if ($action == self::DELETE_BUTTON) $actionButton.=$adsButton;
             }
 
             return '<div class="d-flex text-center">' . $actionButton . '</div>';

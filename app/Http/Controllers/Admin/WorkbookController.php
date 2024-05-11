@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Workbook;
 use App\Repositories\SlugRepository;
 use App\Repositories\WorkbookRepository;
 use Exception;
@@ -38,7 +39,9 @@ class WorkbookController extends Controller
 
             if ($workbooks->count() > 0) {
                 $results = $workbooks->map(function ($workbook) {
+                    $adsStatus = $workbook->ads == 1 ? '<button class="status-btn btn-success" data-status="1">ON</button>' : '';
                     return [
+                        'ads' => $adsStatus ,
                         'id' => $workbook->id,
                         'name' => $workbook->name,
                         'description' => Str::limit($workbook->description, 50),
@@ -48,7 +51,7 @@ class WorkbookController extends Controller
                         'price' => $workbook->price,
                         'created_at' => $workbook->created_at->format('Y-m-d H:i:s'),
                         'updated_at' => $workbook->updated_at->format('Y-m-d H:i:s'),
-                        'action' => Helper::renderAction('workbook', $workbook->id),
+                        'action' => Helper::renderWorkbookAction('workbook', $workbook->id),
                     ];
                 });
             }
@@ -77,6 +80,21 @@ class WorkbookController extends Controller
             'topics' => $topics,
             'workbook' => $workbook,
         ]);
+    }
+
+    public function ads(int $id)
+    {
+        $workbook = $this->workbookRepository->find($id);
+        $oldWorkbook = Workbook::where('ads', 1)->first();
+        if ($oldWorkbook) {
+            $oldWorkbook->ads = 0;
+            $oldWorkbook->save();
+        }
+        $workbook->ads = 1;
+        $workbook->save();
+        return redirect()
+            ->route('admin.workbook.index')
+            ->with('success', 'Thay đổi quảng bá trang chủ thành công!');
     }
 
     public function store(Request $request): RedirectResponse

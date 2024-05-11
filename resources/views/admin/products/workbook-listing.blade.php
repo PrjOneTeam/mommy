@@ -2,6 +2,7 @@
 
 @section('title', __('Workbooks'))
 @section('content')
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-between align-items-center mb-3">
@@ -19,13 +20,14 @@
                                 <thead>
                                 <tr role="row">
                                     <th class="w68px"></th>
+                                    <th>Quảng bá</th>
                                     <th>ID</th>
-                                    <th>{{ __('Name') }}</th>
-                                    <th>{{ __('Description') }}</th>
-                                    <th>{{ __('Grade') }}</th>
-                                    <th>{{ __('Topic') }}</th>
-                                    <th>{{ __('Status') }}</th>
-                                    <th>{{ __('Price') }}</th>
+                                    <th>Tên</th>
+                                    <th>Mô tả</th>
+                                    <th>Lớp</th>
+                                    <th>Chủ đề</th>
+                                    <th>Trạng thái</th>
+                                    <th>Giá bán</th>
                                     <th>{{ __('created_at') }}</th>
                                     <th>{{ __('updated_at') }}</th>
                                 </tr>
@@ -44,6 +46,7 @@
         $(document).ready(function () {
             renderTable('/admin/workbook', JSON.parse('[\
 						{ "data": "action", "orderable": false },\
+						\{ "data": "ads" },\
                         { "data": "id" },\
                         { "data": "name" },\
                         { "data": "description" },\

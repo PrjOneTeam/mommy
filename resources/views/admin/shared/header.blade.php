@@ -17,18 +17,18 @@
         <li class="c-header-nav-item px-3">
             <div class="btn-group">
                 <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Create
+                    Thêm mới
                 </button>
                 <div class="dropdown-menu" style="margin: 0px;">
-                    <a class="dropdown-item" href="{{ route('admin.workbook.create') }}">{{ __('Workbook') }}</a>
-                    <a class="dropdown-item" href="{{ route('admin.pdf.create') }}">{{ __('Pdf') }}</a>
-                    <a class="dropdown-item" href="{{ route('admin.article.create') }}">{{ __('Article') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.workbook.create') }}">Workbook</a>
+                    <a class="dropdown-item" href="{{ route('admin.pdf.create') }}">PDF</a>
+                    <a class="dropdown-item" href="{{ route('admin.article.create') }}">Bài viết</a>
                 </div>
             </div>
         </li>
-        <li class="c-header-nav-item px-3">
-            <a class="c-header-nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
-        </li>
+{{--        <li class="c-header-nav-item px-3">--}}
+{{--            <a class="c-header-nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>--}}
+{{--        </li>--}}
 {{--        @if($isAdmin)--}}
 {{--        <li class="c-header-nav-item px-3">--}}
 {{--            <a class="c-header-nav-link" href="{{ route('admin.setting.index') }}">Settings</a>--}}
@@ -43,53 +43,10 @@
     </ul>
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item dropdown">
-            <a href="#" class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-{{--                @if($flag == 'en')--}}
-                    <i class="c-icon c-icon-2xl cif-gb mr-2"></i>
-{{--                @else--}}
-{{--                    <i class="c-icon c-icon-2xl cif-vn"></i>--}}
-{{--                @endif--}}
-            </a>
-{{--            <div class="dropdown-menu dropdown-menu-right pt-0">--}}
-{{--                <a class="dropdown-item" href="{{ $flag == 'vn' ? 'javascript:void(0)' : route('admin.lang', ['flg' => 'vn']) }}">--}}
-{{--                    <i class="c-icon c-icon-2xl cif-vn mr-2"></i>--}}
-{{--                    Vietnamese--}}
-{{--                </a>--}}
-{{--                <a class="dropdown-item" href="{{ $flag == 'en' ? 'javascript:void(0)' : route('admin.lang', ['flg' => 'en']) }}">--}}
-{{--                    <i class="c-icon c-icon-2xl cif-gb mr-2"></i>--}}
-{{--                    English--}}
-{{--                </a>--}}
-{{--            </div>--}}
-        </li>
-        <li class="c-header-nav-item d-md-down-none mx-2">
-            <a class="c-header-nav-link" href="#">
-                <svg class="c-icon">
-                    <use xlink:href="/coreui-icons/sprites/free.svg#cil-bell"></use>
-                </svg>
-            </a>
-        </li>
-        <li class="c-header-nav-item d-md-down-none mx-2">
-            <a class="c-header-nav-link" href="#">
-                <svg class="c-icon">
-                    <use xlink:href="/coreui-icons/sprites/free.svg#cil-list-rich"></use>
-                </svg>
-            </a>
-        </li>
-        <li class="c-header-nav-item d-md-down-none mx-2">
-            <a class="c-header-nav-link" href="#">
-                <svg class="c-icon">
-                    <use xlink:href="/coreui-icons/sprites/free.svg#cil-envelope-open"></use>
-                </svg>
-            </a>
-        </li>
-        <li class="c-header-nav-item dropdown">
             <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="c-avatar"><img class="c-avatar-img" src="/admin/assets/img/avatars/6.jpg" alt="user@email.com"></div>
+                <div class="c-avatar"><i class="c-sidebar-nav-icon c-icon cil-account-logout"></i></div>
             </a>
            <div class="dropdown-menu dropdown-menu-right pt-0" style="padding-bottom: 0">
-            <a class="dropdown-item" href="{{ route('admin.logout') }}">
-                Thông tin tài khoản
-            </a>
             <a class="dropdown-item" href="{{ route('admin.logout') }}">
                 Đăng xuất
             </a>

@@ -53,10 +53,6 @@
                                 <label for="password">Mật khẩu</label>
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" name="remember" class="custom-control-input" id="customControlInline">
-                                <label class="custom-control-label" for="customControlInline">Nhớ mật khẩu</label>
-                            </div>
                             <div class="mt-3">
                                 <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Đăng nhập</button>
                             </div>

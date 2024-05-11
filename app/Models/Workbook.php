@@ -15,6 +15,7 @@ class Workbook extends Model
         'slug',
         'description',
         'color_pick',
+        'ads',
         'image_bw',
         'image_color',
         'image_both',

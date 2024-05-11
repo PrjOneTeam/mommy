@@ -8,7 +8,7 @@ use App\Models\Article;
 class ArticleController extends Controller
 {
     function index() {
-        $articleList = Article::all();
+        $articleList = Article::orderBy('created_at', 'desc')->get();
         return view('user-site.article', [
             'articleList' => $articleList
         ]);
