@@ -79,7 +79,7 @@
                                         <tbody>
                                         <tr>
                                             <td class="bold">@lang('app.total')</td>
-                                            <td class="bold total amt {{$cart->total_sale_price && $cart->total_sale_price < $cart->total_price ? 'strike' : null}}">{{__("$").$cart->total_price}}</td>
+                                            <td class="bold total amt {{$cart->total_sale_price && $cart->total_sale_price < $cart->total_price ? 'strike' : null}}">{{__("VND").$cart->total_price}}</td>
                                             @if($cart->total_sale_price && $cart->total_sale_price < $cart->total_price)
                                                 <td class="bold total sale">{{'VND '.$cart->final_price}}</td>
                                             @endif

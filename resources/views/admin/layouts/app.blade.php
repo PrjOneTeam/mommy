@@ -74,10 +74,6 @@
                 </div>
                 @yield('content')
             </main>
-            <footer class="c-footer">
-                <div>Temas © 2021.</div>
-                <div class="ml-auto">Powered by&nbsp;<span class="text-danger">Tuan Anh nVa</span></div>
-            </footer>
             </div>
         </div>
     </div>
