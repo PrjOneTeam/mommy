@@ -23,6 +23,7 @@
                                     <th>{{ $lang['bill_info'] }}</th>
                                     <th>{{ $lang['total'] }}</th>
                                     <th>{{ $lang['status'] }}</th>
+                                    <th>{{ $lang['bill_code'] }}</th>
                                     <th>{{ $lang['created_at'] }}</th>
                                     <th>{{ $lang['updated_at'] }}</th>
                                 </tr>
@@ -44,6 +45,7 @@
                     { "data": "bill_info" },
                     { "data": "total" },
                     { "data": "status" },
+                    { "data": "bill_code" },
                     { "data": "created_at" },
                     { "data": "updated_at" }
                 ];

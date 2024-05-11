@@ -2,12 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Mail\OrderMail;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Slug;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderRepository extends Repository
 {
@@ -16,14 +18,19 @@ class OrderRepository extends Repository
         parent::__construct($order);
     }
 
-    public function createByCart(Cart $cart)
+    public function createByCart(Cart $cart, array $customerInfo): Order
     {
         $customer = Auth::user();
+        $full_name = $customer ? $customer->first_name . ' ' . $customer->last_name : $customerInfo['full_name'];
+        $email = $customer ? $customer->email : $customerInfo['email'];
         $order = $this->create([
-            'customer_id' => $customer->id,
+            'customer_id' => $customer->id ?? null,
             'total' => $cart->final_price,
-            'bill_info' => $customer->first_name . ' ' . $customer->last_name,
+            'bill_info' => $full_name,
             'status' => Order::ORDERED_STATUS,
+            'bill_code' => $customerInfo['bill_code'],
+            'full_name' => $full_name,
+            'email' => $email,
         ]);
 
         foreach ($cart->items as $item) {
@@ -53,7 +60,7 @@ class OrderRepository extends Repository
         if (!$customer) {
             return false;
         }
-        
+
         $result = DB::table('orders as o')
             ->select('od.id')
             ->join('order_details as od', 'o.id', '=', 'od.order_id')
@@ -68,5 +75,17 @@ class OrderRepository extends Repository
             ->get();
 
         return count($result) > 0;
+    }
+
+    public function getTotalOrderCurrentDay(): int
+    {
+        $today = now()->startOfDay();
+        return DB::table('orders as o')->whereDate('created_at', $today)->count();
+    }
+
+    public function sendMail(Order $order)
+    {
+        $email = $order->email;
+        Mail::to($email)->send(new OrderMail($order));
     }
 }

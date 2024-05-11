@@ -27,6 +27,8 @@
                                                 <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
                                                 <h5>{{__("Card number")}}</h5>
                                                 <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
+                                                <h5>{{__("Message")}}</h5>
+                                                <h6 style="margin-left: 20px"> {{ $billCode ?? '' }} </h6>
                                                 @if(isset($payment->qr))
                                                     <h5>{{__("QR")}}</h5>
                                                     <h6 style="margin-left: 20px">
@@ -53,6 +55,22 @@
                                                                     <div>{{__("Be sure that you have an application to open this file type.")}}</div>
                                                                 </div>
                                                             </div>
+                                                            <form action="{{route('checkout.place-order')}}" method="post">
+                                                                <input type="hidden" name="bill_code" value="{{ $billCode ??'' }}">
+                                                                @if(!Auth::user())
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label for="public_name">Full Name:</label>
+                                                                            <input type="text" class="form-control" id="public_name" name="full_name" required="">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="public_name">Email:</label>
+                                                                            <input type="text" class="form-control" id="public_name" name="email" required="">
+                                                                        </div>
+                                                                    </div>
+
+                                                                @endif
+
                                                             <div class="cart-foot clearfix">
                                                                 <div class="total-block horizontal">
                                                                     <div class="total-holder">
@@ -64,14 +82,14 @@
                                                                                 <span class="title">{{__("Total")}}:</span>
                                                                                 <span class="cost">{{ __("$") . $cart->final_price }}</span>
                                                                             </div>
-                                                                            <form action="{{route('checkout.place-order')}}" method="post">
                                                                                 @csrf
                                                                                 <button type="submit" id="btnaction" name="btnaction" class="button btn-standout tall mto10">{{__("Complete Transaction")}}</button>
-                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            </form>
+
                                                         </div>
                                                     </td>
                                                 </tr>

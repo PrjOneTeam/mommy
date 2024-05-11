@@ -102,6 +102,7 @@ return [
     'list' => 'Danh sách',
     'my_order' => 'My orders',
     'bill_info' => 'Bill Info',
+    'bill_code' => 'Bill Code',
     'bill_total' => 'Total',
     'my_favorite' => 'My favorites',
     'edit_account' => 'Modify account',

@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Pdf;
 use App\Models\Workbook;
+use App\Repositories\OrderRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,9 @@ class OrderController extends Controller
                     return [
                         'id' => $item->id,
                         'bill_info' => $item->bill_info,
-                        'customer_email' => Customer::findOrFail($item->customer_id)->email,
+                        'customer_email' => $item->customer_id ? Customer::findOrFail($item->customer_id)->email : null,
                         'total' => $item->total,
+                        'bill_code' => $item->bill_code,
                         'status' => $lang[$item->status],
                         'created_at' => Carbon::parse($item->created_at)->format('Y-m-d H:i:s'),
                         'updated_at' => Carbon::parse($item->updated_at)->format('Y-m-d H:i:s'),
@@ -48,7 +50,7 @@ class OrderController extends Controller
 
     public function show($id) { }
 
-    public function purchased(int $id)
+    public function purchased(int $id, OrderRepository $orderRepository)
     {
         $order = Order::findOrFail($id);
         if (!$order) {
@@ -58,6 +60,7 @@ class OrderController extends Controller
             $order->status = Order::PURCHASED_STATUS;
             $order->save();
         }
+        $orderRepository->sendMail($order);
         return redirect()->route('admin.order.index')->with('success', 'Đơn hàng đã được thanh toán thành công!');
     }
 

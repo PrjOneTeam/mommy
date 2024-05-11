@@ -24,7 +24,10 @@ class Order extends Model
         'bill_info',
         'payment_info',
         'total',
-        'status'
+        'status',
+        'bill_code',
+        'full_name',
+        'email',
     ];
 
     /**
