@@ -3,14 +3,26 @@
 namespace App\Http\Controllers\UserSite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
     function index() {
-        return view('user-site.article');
+        $articleList = Article::all();
+        return view('user-site.article', [
+            'articleList' => $articleList
+        ]);
     }
+
+    public function show($id) {
+        $article = Article::findOrFail($id);
+        $related = Article::take(3)->get();
+        return view('user-site.article-detail', [
+            'article' => $article,
+            'related' => $related
+        ]);
+    }
+
+
 
 }

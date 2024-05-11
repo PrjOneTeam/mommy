@@ -7,26 +7,26 @@
         <h1 class="hpage">Mommy Me Station Account</h1>
         <div class="content-left">
             <div class="content-holder">
-                <div class="content-box" style="margin-bottom:15px;">
-                    <div class="box-body">
-                        <h2>@lang('app.recommend_for_you'), {{ $data['public_name'] }}</h2>
-                        <div id="related-worksheets" class="crsl-nav">
-                            <a href="#" class="previous">Previous</a>
-                            <a href="#" class="next">Next</a>
-                        </div>
-                        <div class="crsl-items" data-navigation="related-worksheets" style="width: 100%; overflow: hidden;">
-                            <div class="crsl-wrap" style="width: 915px; margin-left: -183px;">
-                                @foreach($recommend_list as $key => $workbook)
-                                    <figure class="crsl-item" style="position: relative; float: left; overflow: hidden; height: auto; width: 173px; margin-right: 10px;"><a href="/word-family/at-word-family-printable-workbook" title="View AT Word Family Workbook product">
-                                            <div class="bck"><img src="/vault/2599/store/small/at-word-family-workbook.jpg" width="100%" alt=""></div>
-                                            <figcaption>{{ $workbook['name'] }}</figcaption></a>
-                                        </figure>
-                                @endforeach
+{{--                <div class="content-box" style="margin-bottom:15px;">--}}
+{{--                    <div class="box-body">--}}
+{{--                        <h2>@lang('app.recommend_for_you'), {{ $data['public_name'] }}</h2>--}}
+{{--                        <div id="related-worksheets" class="crsl-nav">--}}
+{{--                            <a href="#" class="previous">Previous</a>--}}
+{{--                            <a href="#" class="next">Next</a>--}}
+{{--                        </div>--}}
+{{--                        <div class="crsl-items" data-navigation="related-worksheets" style="width: 100%; overflow: hidden;">--}}
+{{--                            <div class="crsl-wrap" style="width: 915px; margin-left: -183px;">--}}
+{{--                                @foreach($recommend_list as $key => $workbook)--}}
+{{--                                    <figure class="crsl-item" style="position: relative; float: left; overflow: hidden; height: auto; width: 173px; margin-right: 10px;"><a href="/word-family/at-word-family-printable-workbook" title="View AT Word Family Workbook product">--}}
+{{--                                            <div class="bck"><img src="/vault/2599/store/small/at-word-family-workbook.jpg" width="100%" alt=""></div>--}}
+{{--                                            <figcaption>{{ $workbook['name'] }}</figcaption></a>--}}
+{{--                                        </figure>--}}
+{{--                                @endforeach--}}
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="content-box" style="margin-bottom:15px;">
                     <div class="box-body">
                         <h2>@lang('app.my_profile')<div class="fright"><a href="/my-account/edit" class="button x-small">@lang('app.edit')</a></div></h2><div class="clearfix"></div>
