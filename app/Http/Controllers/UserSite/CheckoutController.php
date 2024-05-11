@@ -25,10 +25,14 @@ class CheckoutController extends Controller
         if (!$cart) {
             return redirect()->route('cart')->with('error', __('Cart is empty'));
         }
+        $currentDate = new \DateTime();
+        $count = $this->orderRepository->getTotalOrderCurrentDay();
+        $billCode = $currentDate->format('md') . str_pad($count + 1, 3, '0', STR_PAD_LEFT);
 
         return view('user-site.checkout', [
             'cart' => $cart,
             'payment' => PaymentInfo::first(),
+            'billCode' => $billCode,
         ]);
     }
 
@@ -40,13 +44,16 @@ class CheckoutController extends Controller
             return redirect()->route('cart')->with('error', __('Cart is empty'));
         }
 
-        if (!Auth::user()) {
-            return redirect()->route('user-site.login');
-        }
+        $customerInfo = [
+            'full_name' => $request->input('full_name'),
+            'email' => $request->input('email'),
+            'bill_code' => $request->input('bill_code'),
 
-        $this->orderRepository->createByCart($cart);
+        ];
 
-        return redirect()->route('order');
+        $this->orderRepository->createByCart($cart, $customerInfo);
+
+        return Auth::user() ?redirect()->route('order') : redirect()->route('user-site-home');
     }
 }
 

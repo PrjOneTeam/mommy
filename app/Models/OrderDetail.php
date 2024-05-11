@@ -41,4 +41,14 @@ class OrderDetail extends Model
         return [
         ];
     }
+
+    public function workbook()
+    {
+        return $this->hasOne('App\Models\Workbook', 'id', 'workbook_id');
+    }
+
+    public function pdf()
+    {
+        return $this->hasOne('App\Models\Pdf', 'id', 'pdf_id');
+    }
 }

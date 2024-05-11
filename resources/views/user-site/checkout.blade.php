@@ -20,25 +20,21 @@
                                             </table>
                                         </div>
                                         <div class="row" style="padding: 10px">
-                                            <div class="row" style="padding: 10px; display: flex;">
-                                                <div style="flex: 1;">
-                                                    <h5>@lang('app.bank_name')</h5>
-                                                    <h6 style="margin-left: 20px">{{ $payment?->bank_name }}</h6>
-                                                    <h5>@lang('app.account_name')</h5>
-                                                    <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
-                                                    <h5>@lang('app.account_number')</h5>
-                                                    <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
-                                                    <h5>@lang('app.trans_content')</h5>
-                                                    <h6 style="margin-left: 20px"></h6>
-                                                </div>
-                                                <div style="flex: 1;">
-                                                    @if(isset($payment->qr))
-                                                        <h6 style="margin-left: 20px">
-                                                            <img  src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
-                                                                 style="max-width: 300px; max-height: 300px; cursor: pointer">
-                                                        </h6>
-                                                    @endif
-                                                </div>
+                                            <div>
+                                                <h5>@lang('app.bank_name')</h5>
+                                                <h6 style="margin-left: 20px">{{ $payment?->bank_name }}</h6>
+                                                <h5>@lang('app.account_name')</h5>
+                                                <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
+                                                <h5>@lang('app.account_number')</h5>
+                                                <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
+                                                <h5>@lang('app.trans_content')</h5>
+                                                <h6 style="margin-left: 20px"> {{ $billCode ?? '' }} </h6>
+                                                @if(isset($payment->qr))
+                                                    <h5>{{__("QR")}}</h5>
+                                                    <h6 style="margin-left: 20px">
+                                                        <img src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
+                                                             style="max-width: 200px; max-height: 200px; cursor: pointer">
+                                                @endif
                                             </div>
 
                                         </div>
@@ -60,6 +56,22 @@
                                                                     <div>{{__("Be sure that you have an application to open this file type.")}}</div>
                                                                 </div>
                                                             </div>
+                                                            <form action="{{route('checkout.place-order')}}" method="post">
+                                                                <input type="hidden" name="bill_code" value="{{ $billCode ??'' }}">
+                                                                @if(!Auth::user())
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label for="public_name">Full Name:</label>
+                                                                            <input type="text" class="form-control" id="public_name" name="full_name" required="">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="public_name">Email:</label>
+                                                                            <input type="text" class="form-control" id="public_name" name="email" required="">
+                                                                        </div>
+                                                                    </div>
+
+                                                                @endif
+
                                                             <div class="cart-foot clearfix">
                                                                 <div class="total-block horizontal">
                                                                     <div class="total-holder">
@@ -71,14 +83,14 @@
                                                                                 <span class="title">@lang('app.total')</span>
                                                                                 <span class="cost">{{ 'VND ' . $cart->final_price }}</span>
                                                                             </div>
-                                                                            <form action="{{route('checkout.place-order')}}" method="post">
                                                                                 @csrf
-                                                                                <button type="submit" id="btnaction" name="btnaction" class="button btn-standout tall mto10">@lang('app.complete_trans')</button>
-                                                                            </form>
+                                                                                <button type="submit" id="btnaction" name="btnaction" class="button btn-standout tall mto10">{{__("Complete Transaction")}}</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            </form>
+
                                                         </div>
                                                     </td>
                                                 </tr>

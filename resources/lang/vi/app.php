@@ -27,6 +27,7 @@ return [
     'my_order' => 'Sản phẩm đã đặt',
     'my_favorite' => 'Sản phẩm đã thích',
     'bill_info' => 'Thông tin đơn hàng',
+    'bill_code' => 'Mã đơn hàng',
     'bill_total' => 'Tiền thanh toán',
     'total' => 'Tổng tiền',
     'status' => 'Trạng thái',
