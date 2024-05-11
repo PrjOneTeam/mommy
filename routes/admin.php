@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\WorkbookController;
+use App\Models\Workbook;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -27,6 +28,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('customer',CustomerController::class);
     Route::resource('order', OrderController::class);
     Route::get('order/{id}/purchased', [OrderController::class, 'purchased'])->name('order.purchased');
+    Route::get('workbook/{id}/ads', [WorkbookController::class, 'ads'])->name('workbook.ads');
+    Route::get('pdf/{id}/ads', [PdfController::class, 'ads'])->name('pdf.ads');
     Route::get('payment', [PaymentController::class, 'index'])->name('payment');
     Route::post('payment', [PaymentController::class, 'store'])->name('payment.store');
 });

@@ -45,7 +45,7 @@
                         { "data": "updated_at" }\
                     ]'), JSON.parse('[\
                         { "width": 160, "targets": 2 },\
-                        { "width": 100, "targets": 3 },\
+                        { "width": 320, "targets": 3 },\
                         { "width": 160, "targets": 4 },\
                         { "width": 160, "targets": 5 }\
                     ]')

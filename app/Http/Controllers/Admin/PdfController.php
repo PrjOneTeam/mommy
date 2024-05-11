@@ -8,6 +8,8 @@ use App\Helpers\Helper;
 use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Pdf;
+use App\Models\Workbook;
 use App\Repositories\PdfRepository;
 use App\Repositories\SlugRepository;
 use App\Repositories\WorkbookRepository;
@@ -41,7 +43,9 @@ class PdfController extends Controller
 
             if ($pdfs->count() > 0) {
                 $results = $pdfs->map(function ($pdf) {
+                    $adsStatus = $pdf->ads == 1 ? '<button class="status-btn btn-success" data-status="1">ON</button>' : '';
                     return [
+                        'ads' => $adsStatus,
                         'id' => $pdf->id,
                         'name' => $pdf->name,
                         'description' => Str::limit($pdf->description, 50),
@@ -51,7 +55,7 @@ class PdfController extends Controller
                         'price' => $pdf->price,
                         'created_at' => $pdf->created_at->format('Y-m-d H:i:s'),
                         'updated_at' => $pdf->updated_at->format('Y-m-d H:i:s'),
-                        'action' => Helper::renderAction('pdf', $pdf->id),
+                        'action' => Helper::renderPdfAction('pdf', $pdf->id),
                     ];
                 });
             }
@@ -84,6 +88,21 @@ class PdfController extends Controller
             'relatedWorkbooks' => $relatedWorkbooks,
             'pdf' => $pdf,
         ]);
+    }
+
+    public function ads(int $id)
+    {
+        $pdf = $this->pdfRepository->find($id);
+        $oldPdf = Pdf::where('ads', 1)->first();
+        if ($oldPdf) {
+            $oldPdf->ads = 0;
+            $oldPdf->save();
+        }
+        $pdf->ads = 1;
+        $pdf->save();
+        return redirect()
+            ->route('admin.pdf.index')
+            ->with('success', 'Thay đổi quảng bá trang chủ thành công!');
     }
 
     public function validateRequest(Request $request): array

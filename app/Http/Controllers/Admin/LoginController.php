@@ -23,7 +23,7 @@ class LoginController extends Controller
         ], $request->filled('remember'));
 
         if ($attempt) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.customer.index');
         }
         else {
             $error = __('auth.failed');

@@ -4,23 +4,22 @@
     <div class="container">
         <div class="banner-wrap">
             <div class="banner">
-                <a href="learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner1"><img src="/lib/theme/mts/images/Printable-Alphabet-Activities-Workbook.png" alt="Printable Alphabet Activities Workbook Series" title="Learning the Alphabet Workbook Series" nopin="nopin"></a>
+                <a href="/{{$adsWorkbook->slug}}"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsWorkbook->image_bw) ? asset($adsWorkbook->image_bw) : (isset($adsWorkbook->image_color) ? asset($adsWorkbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="Printable Alphabet Activities Workbook Series" title="Learning the Alphabet Workbook Series" nopin="nopin"></a>
             </div>
             <div class="banner-clear"></div>
             <div class="descr">
-                <h1>Learning the Alphabet<span>The Complete Guide</span></h1>
+                <h1>{{ $adsWorkbook->name }}<span>Workbook</span></h1>
                 <p>
-                    Everything you need to effectively teach the alphabet and help your child to build a strong reading and writing foundation.
-                    <em>Increase your child's learning progress today!</em>
+                    {{ $adsWorkbook->description }}
+                    <em>@lang('app.home_invite')</em>
                 </p>
-                <div class="start-now"><a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner2" class="button large">Download Now</a></div>
-                <div class="instant-download">( 27 printable workbooks )</div>
+                <div class="start-now"><a href="/{{$adsWorkbook->slug}}" class="button large">@lang('app.download_now')</a></div>
                 <p></p>
             </div>
-            <div class="badges">
-                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner3"><img src="/vault/2599/web/images/alphabet-phonics-printable-workbook.png" alt="Available in Black-and-white and in color worksheets" title="The best phonics printable workbook" nopin="nopin"></a>
-                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner4"><img src="/vault/2599/web/images/the-ultimate-phonics.png" alt="Download phonics workbook" title="The ultimate phonics workbook" nopin="nopin"></a>
-            </div>
+{{--            <div class="badges">--}}
+{{--                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner3"><img src="/vault/2599/web/images/alphabet-phonics-printable-workbook.png" alt="Available in Black-and-white and in color worksheets" title="The best phonics printable workbook" nopin="nopin"></a>--}}
+{{--                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner4"><img src="/vault/2599/web/images/the-ultimate-phonics.png" alt="Download phonics workbook" title="The ultimate phonics workbook" nopin="nopin"></a>--}}
+{{--            </div>--}}
             <div class="clearfix"></div>
         </div>
     </div>
@@ -29,30 +28,30 @@
 <div class="section-what">
     <div class="container">
         <div class="box">
-            <a href="/blog">
+            <a href="/article">
                 <div class="img yellow">
                     <i class="icon-newspaper"></i>
                 </div>
-                <h2>Educational Articles</h2>
-                Get tips, ideas and how to's to better equip you to teach.
+                <h2>@lang('app.home_article')</h2>
+                @lang('app.home_sub_article')
             </a>
         </div>
         <div class="box">
-            <a href="/preschool-kindergarten-workbooks">
+            <a href="/worksheets/maths">
                 <div class="img blue">
                     <i class="icon-products"></i>
                 </div>
-                <h2>Printable Workbooks</h2>
-                Browse preschool and kindergarten educational materials and workbooks.
+                <h2>@lang('app.Maths')</h2>
+                @lang('app.home_sub_maths')
             </a>
         </div>
         <div class="box">
-            <a href="/early-childhood-lesson-guidelines">
+            <a href="/worksheets/art_coloring">
                 <div class="img green">
                     <i class="icon-map"></i>
                 </div>
-                <h2>Lesson Guidelines</h2>
-                View our easy guide to direct you on planning your child's lessons.
+                <h2>@lang('app.Art & Coloring')</h2>
+                @lang('app.home_sub_art')
             </a>
         </div>
         <div class="box">
@@ -60,8 +59,8 @@
                 <div class="img purple">
                     <i class="icon-worksheet"></i>
                 </div>
-                <h2>Free Worksheets</h2>
-                Download printable activities and worksheets to use in your classroom.
+                <h2>@lang('app.free_worksheet')</h2>
+                @lang('app.home_sub_worksheet')
             </a>
         </div>
     </div>
@@ -471,15 +470,15 @@
     <div class="container">
         <div class="banner-wrap">
             <div class="banner math">
-                <a href="/preschool-and-kindergarten-math-curriculum?utm_campaign=MTH&amp;utm_medium=MTS&amp;utm_source=home_banner1"><img src="/vault/2599/web/images/mts-math-program-prek-kindergarten-math-curriculum.png" alt="MTS Kindergarten Math Curriculum" title="MTS Math Program - Kindergarten Level" nopin="nopin" style="max-width:559px;width: 100%;"></a>
+                <a href="/preschool-and-kindergarten-math-curriculum?utm_campaign=MTH&amp;utm_medium=MTS&amp;utm_source=home_banner1"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsPdf->image_bw) ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="MTS Kindergarten Math Curriculum" title="MTS Math Program - Kindergarten Level" nopin="nopin" style="max-width:559px;width: 100%;"></a>
             </div>
             <div class="banner-clear"></div>
             <div class="descr math">
-                <h1 class="math">MTS Math Program<span>Preschool and Kindergarten Math Curriculum</span></h1>
+                <h1 class="math">{{  $adsPdf->name }}<span>PDF</span></h1>
                 <p class="math">
-                    Effectively teach pre-k and kindergarten math skills with easy-to-use exercises and activities students love.
+                    {{$adsPdf->description}}
                 </p>
-                <div class="start-now mbo"><a href="/preschool-and-kindergarten-math-curriculum?utm_campaign=MTH&amp;utm_medium=MTS&amp;utm_source=home_banner2" class="button large">Download Now</a></div>
+                <div class="start-now mbo"><a href="/{{$adsPdf->slug}}" class="button large">@lang('app.download_now')</a></div>
                 <p></p>
             </div>
             <div class="clearfix"></div>
