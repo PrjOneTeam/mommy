@@ -333,16 +333,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="content-box">
-                <div class="box-body">
-                    <h2>Need Help?</h2>
-                    <ul class="link-list">
-                        <li><a href="/faq" title="View MyTeachingStation.com Frequently Asked Questions">Frequently Asked Questions</a></li>
-                        <li><a href="/contact" title="Contact MyTeachingStation.com">Contact Us</a></li>
-                        <li><a href="/teaching-materials" title="Contact MyTeachingStation.com">MTS Products</a></li>
-                    </ul>
-                </div>
-            </div>
+{{--            <div class="content-box">--}}
+{{--                <div class="box-body">--}}
+{{--                    <h2>Need Help?</h2>--}}
+{{--                    <ul class="link-list">--}}
+{{--                        <li><a href="/faq" title="View MyTeachingStation.com Frequently Asked Questions">Frequently Asked Questions</a></li>--}}
+{{--                        <li><a href="/contact" title="Contact MyTeachingStation.com">Contact Us</a></li>--}}
+{{--                        <li><a href="/teaching-materials" title="Contact MyTeachingStation.com">MTS Products</a></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
     <div class="clearfix"></div>

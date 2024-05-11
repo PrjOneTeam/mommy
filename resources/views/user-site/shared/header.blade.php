@@ -41,7 +41,10 @@
             </div>
         </div>
         <div class="container">
-            <a href="/" id="logo" title="@lang('app.app_name')"></a>
+            <div>
+                <a href="/" title="@lang('app.app_name')">
+                <img style="margin-top: 0px;height: 82px;width: 245px;text-indent: -9999px;display: block;float: left;" src="{{ asset('admin/assets/images/mommy-logo.png') }}" alt="logo"></a>
+            </div>
             <div class="nav-container">
                 <nav>
                     <nav id="nav-main">

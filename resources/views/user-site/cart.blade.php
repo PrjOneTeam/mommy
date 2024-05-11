@@ -62,7 +62,7 @@
                                             <span class="list-icon dollar"></span>
                                             <span class="list-txt semi-small">
                                             <strong class="normal">100% Satisfaction Guarantee</strong>
-                                            <div>@lang('app.satisfaction_guarantee')<a href="/refund-policy">@lang('app.learn_more')</a>.</div>
+                                            <div>@lang('app.satisfaction_guarantee')<a href="/station/refund-policy">@lang('app.learn_more')</a>.</div>
                                         </span>
                                         </li>
                                     </ul>
@@ -89,18 +89,18 @@
                                 </div>
                                 <a class="button btn-standout full-width tall mto" href="/checkout">@lang('app.proceed_checkout')</a>
                             </div>
-                            <div class="section-box mto">
-                                <h4>Questions?</h4>
-                                <div class="section-body">
-                                    <ul class="link-list">
-                                        <li><a href="/refund-policy" title="View MyTeachingStation.com Refund Policy">Hassle Free Refund Policy</a></li>
-                                        <li><a href="/sales-policy" title="View MyTeachingStation.com Sales Policy">Sales Policy</a></li>
-                                        <li><a href="/privacy-statement" title="View MyTeachingStation.com Privacy Statement">Privacy Statement</a></li>
-                                        <li><a href="/faq" title="View MyTeachingStation.com Frequently Asked Questions">Frequently Asked Questions</a></li>
-                                        <li><a href="/contact" title="Contact MyTeachingStation.com">Contact Us</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+{{--                            <div class="section-box mto">--}}
+{{--                                <h4>Questions?</h4>--}}
+{{--                                <div class="section-body">--}}
+{{--                                    <ul class="link-list">--}}
+{{--                                        <li><a href="/refund-policy" title="View MyTeachingStation.com Refund Policy">Hassle Free Refund Policy</a></li>--}}
+{{--                                        <li><a href="/sales-policy" title="View MyTeachingStation.com Sales Policy">Sales Policy</a></li>--}}
+{{--                                        <li><a href="/privacy-statement" title="View MyTeachingStation.com Privacy Statement">Privacy Statement</a></li>--}}
+{{--                                        <li><a href="/faq" title="View MyTeachingStation.com Frequently Asked Questions">Frequently Asked Questions</a></li>--}}
+{{--                                        <li><a href="/contact" title="Contact MyTeachingStation.com">Contact Us</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>

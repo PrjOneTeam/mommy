@@ -135,21 +135,21 @@
             @include('user-site.worksheet-detail.content-right')
         </div>
         <div class="clearfix"></div>
-        <div class="section-signup">
-            <div class="container">
-                <h2>Exclusive Worksheets</h2>
-                <div class="descr">Enter your email below to sign up and download exclusive worksheets for free!</div>
-                <div class="xm-sm-loading optinfoot" id="optloading1137"></div>
-                <form class="opt-in-form" id="leadBoxOptIn-1137">
-                    <input id="t" name="t" type="hidden" value="A66D2FAA-D4BE-D992-B8FAE05F81E4C851" /><input id="p" name="p" type="hidden" value="/writing/letters/letter-x-tracing-printable-worksheet-color" /><input id="confirm_path" name="confirm_path" type="hidden" value="join" />
-                    <div id="optinfields1137">
-                        <div class="row-e"><input class="required" id="your_name" name="your_name" type="text" /><input class="required-email" id="your_email" name="your_email" type="email" /></div>
-                        <input id="lead_first_name" name="lead_first_name" placeholder="Your Name" type="text" /><input id="email" name="email" placeholder="Your Email" type="email" autocomplete="off" /> <input id="submit" name="submit" type="submit" value="Get Worksheets" />
-                        <div class="optin-req" id="req1137">&nbsp;</div>
-                    </div>
-                </form>
-            </div>
-        </div>
+{{--        <div class="section-signup">--}}
+{{--            <div class="container">--}}
+{{--                <h2>Exclusive Worksheets</h2>--}}
+{{--                <div class="descr">Enter your email below to sign up and download exclusive worksheets for free!</div>--}}
+{{--                <div class="xm-sm-loading optinfoot" id="optloading1137"></div>--}}
+{{--                <form class="opt-in-form" id="leadBoxOptIn-1137">--}}
+{{--                    <input id="t" name="t" type="hidden" value="A66D2FAA-D4BE-D992-B8FAE05F81E4C851" /><input id="p" name="p" type="hidden" value="/writing/letters/letter-x-tracing-printable-worksheet-color" /><input id="confirm_path" name="confirm_path" type="hidden" value="join" />--}}
+{{--                    <div id="optinfields1137">--}}
+{{--                        <div class="row-e"><input class="required" id="your_name" name="your_name" type="text" /><input class="required-email" id="your_email" name="your_email" type="email" /></div>--}}
+{{--                        <input id="lead_first_name" name="lead_first_name" placeholder="Your Name" type="text" /><input id="email" name="email" placeholder="Your Email" type="email" autocomplete="off" /> <input id="submit" name="submit" type="submit" value="Get Worksheets" />--}}
+{{--                        <div class="optin-req" id="req1137">&nbsp;</div>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 @endsection
 @section('javascript')
