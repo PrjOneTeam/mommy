@@ -17,7 +17,11 @@ class CartComposer
 
     public function compose(View $view)
     {
-        $cart = $this->cartRepository->getCurrentCart(request()->cookie(Cart::SESSION_TOKEN));
+        if (request()->cookie(Cart::SESSION_TOKEN)) {
+            $cart = $this->cartRepository->getCurrentCart(request()->cookie(Cart::SESSION_TOKEN));
+        } else {
+            $cart = null;
+        }
         $view->with('cart', $cart);
     }
 }

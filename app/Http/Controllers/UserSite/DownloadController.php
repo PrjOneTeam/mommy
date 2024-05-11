@@ -42,9 +42,9 @@ class DownloadController extends Controller
         }
 
         $user = Auth::user();
-        if (!$user) {
-            return redirect()->back()->with('error', __('Something went wrong'));
-        }
+//        if (!$user) {
+//            return redirect()->back()->with('error', __('Something went wrong'));
+//        }
 
         return response()->download($file);
     }

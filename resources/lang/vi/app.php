@@ -92,6 +92,7 @@ return [
     'Scissors' => 'Cắt kéo',
     'Dot to Dot' => 'Nối điểm',
     'home_article' => 'Bài viết giáo dục',
+    'newest_workbook' => '5 Workbook mới nhất',
     'free_worksheet' => 'Workbook miễn phí',
     'home_sub_article' => 'Nhận các mẹo, ý tưởng và cách trang bị tốt hơn cho bạn trong giảng dạy.',
     'home_sub_maths' => 'Duyệt các tài liệu và sách giáo dục mầm non và mẫu giáo.',

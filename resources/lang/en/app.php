@@ -150,6 +150,7 @@ return [
     'Boy' => 'Boy',
     'home_invite' => 'Increase your child\'s learning progress today!',
     'free_worksheet' => 'Free Worksheets',
+    'newest_workbook' => '5 Lastest Workbooks',
     'home_article' => 'Educational Articles',
     'home_sub_article' => 'Get tips, ideas and how to\'s to better equip you to teach.',
     'home_sub_maths' => 'Browse preschool and kindergarten educational materials and workbooks.',

@@ -31,13 +31,13 @@
                                     </div>
                                 </div>
                                 <div class="pdetail"><a href="/{{$worksheet->slug}}" title="{{$worksheet->name}}">{{$worksheet->name}}</a></div>
-                                <div class="post-icons clearfix">
-                                    <div class="right">
-                                        <a class="xmTip icon-info" data-tooltip="Alphabet"></a>
-                                        <a data-id="8543" href="/login"><i class="xmTip icon-plus" data-tooltip="Save to Favorites"></i></a>
-                                        <a href="javascript:void(0);" title="Pin it!" class="xc_pin" onclick="pin_this(event, 'http://pinterest.com/pin/create/button/?url=https://www.myteachingstation.com/reading/alphabet/uppercase-letter-w-maze-worksheet&amp;media=https://www.myteachingstation.com/vault/2599/web/articles/reading/alphabet/Uppercase-Letter-W-Maze-Worksheet.jpg&amp;description=Uppercase%20Letter%20W%20Maze%20Worksheet%2E%20If%20you%20are%20looking%20for%20creative%20ways%20to%20help%20your%20preschooler%20or%20kindergartener%20to%20practice%20identifying%20the%20letters%20of%20the%20alphabet%2C%20the%20Uppercase%20Letter%20Maze%20is%20the%20perfect%20activity%2E')"><i class="icon-pinterest"></i></a>
-                                    </div>
-                                </div>
+{{--                                <div class="post-icons clearfix">--}}
+{{--                                    <div class="right">--}}
+{{--                                        <a class="xmTip icon-info" data-tooltip="Alphabet"></a>--}}
+{{--                                        <a data-id="8543" href="/login"><i class="xmTip icon-plus" data-tooltip="Save to Favorites"></i></a>--}}
+{{--                                        <a href="javascript:void(0);" title="Pin it!" class="xc_pin" onclick="pin_this(event, 'http://pinterest.com/pin/create/button/?url=https://www.myteachingstation.com/reading/alphabet/uppercase-letter-w-maze-worksheet&amp;media=https://www.myteachingstation.com/vault/2599/web/articles/reading/alphabet/Uppercase-Letter-W-Maze-Worksheet.jpg&amp;description=Uppercase%20Letter%20W%20Maze%20Worksheet%2E%20If%20you%20are%20looking%20for%20creative%20ways%20to%20help%20your%20preschooler%20or%20kindergartener%20to%20practice%20identifying%20the%20letters%20of%20the%20alphabet%2C%20the%20Uppercase%20Letter%20Maze%20is%20the%20perfect%20activity%2E')"><i class="icon-pinterest"></i></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </li>
                     @endforeach
