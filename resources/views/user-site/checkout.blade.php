@@ -1,7 +1,7 @@
 @extends('user-site.main')
 @section('content-layout')
     <div id="content-layout">
-        <h1 class="hpage">{{__("Payment Info")}}</h1>
+        <h1 class="hpage">@lang('app.payment_info')</h1>
         <div class="container" id="checkout">
             <div class="content-holder">
                 <div class="content-box">
@@ -14,26 +14,33 @@
                                             <table>
                                                 <tbody>
                                                 <tr>
-                                                    <td>{{__("Payment Method")}}</td>
+                                                    <td>@lang('app.payment_method')</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="row" style="padding: 10px">
-                                            <div>
-                                                <h5>{{__("Bank name")}}</h5>
-                                                <h6 style="margin-left: 20px">{{ $payment?->bank_name }}</h6>
-                                                <h5>{{__("Card name")}}</h5>
-                                                <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
-                                                <h5>{{__("Card number")}}</h5>
-                                                <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
-                                                @if(isset($payment->qr))
-                                                    <h5>{{__("QR")}}</h5>
-                                                    <h6 style="margin-left: 20px">
-                                                        <img src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
-                                                             style="max-width: 200px; max-height: 200px; cursor: pointer">
-                                                @endif
+                                            <div class="row" style="padding: 10px; display: flex;">
+                                                <div style="flex: 1;">
+                                                    <h5>@lang('app.bank_name')</h5>
+                                                    <h6 style="margin-left: 20px">{{ $payment?->bank_name }}</h6>
+                                                    <h5>@lang('app.account_name')</h5>
+                                                    <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
+                                                    <h5>@lang('app.account_number')</h5>
+                                                    <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
+                                                    <h5>@lang('app.trans_content')</h5>
+                                                    <h6 style="margin-left: 20px"></h6>
+                                                </div>
+                                                <div style="flex: 1;">
+                                                    @if(isset($payment->qr))
+                                                        <h6 style="margin-left: 20px">
+                                                            <img  src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
+                                                                 style="max-width: 300px; max-height: 300px; cursor: pointer">
+                                                        </h6>
+                                                    @endif
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="XMFormGroup" style="margin-bottom:10px;" id="Section">
@@ -61,12 +68,12 @@
                                                                         </div>
                                                                         <div class="total-frame">
                                                                             <div class="total-box">
-                                                                                <span class="title">{{__("Total")}}:</span>
-                                                                                <span class="cost">{{ __("$") . $cart->final_price }}</span>
+                                                                                <span class="title">@lang('app.total')</span>
+                                                                                <span class="cost">{{ 'VND ' . $cart->final_price }}</span>
                                                                             </div>
                                                                             <form action="{{route('checkout.place-order')}}" method="post">
                                                                                 @csrf
-                                                                                <button type="submit" id="btnaction" name="btnaction" class="button btn-standout tall mto10">{{__("Complete Transaction")}}</button>
+                                                                                <button type="submit" id="btnaction" name="btnaction" class="button btn-standout tall mto10">@lang('app.complete_trans')</button>
                                                                             </form>
                                                                         </div>
                                                                     </div>
@@ -93,11 +100,11 @@
                                         <h2 style="margin-bottom:0">{{$item->worksheet_name}}</h2>
                                         <span class="semi-small">{{$item->color}}</span>
                                         <div class="price {{$item->sale_price !== null ? 'strike' : null}}">
-                                            <span class="semi-small">{{__("$").$item->price}}</span>
+                                            <span class="semi-small">{{'VND '.$item->price}}</span>
                                         </div>
                                         @if($item->sale_price !== null)
                                             <div class="price sale">
-                                                <span class="semi-small">{{__("$").$item->sale_price}}</span>
+                                                <span class="semi-small">{{'VND '.$item->sale_price}}</span>
                                             </div>
                                         @endif
                                     </div>
@@ -106,12 +113,12 @@
                                     <table class="cart-amounts">
                                         <tbody>
                                         <tr>
-                                            <td class="bold">{{__("Total")}}</td>
+                                            <td class="bold">@lang('app.total')</td>
                                             <td class="bold total amt">
                                                 @if($cart->total_sale_price && $cart->total_sale_price < $cart->total_price)
-                                                    <p class="semi-small strike">{{__("$").$cart->total_price}}</p>
+                                                    <p class="semi-small strike">{{'VND '.$cart->total_price}}</p>
                                                 @endif
-                                                <p class="sale">{{__("$") . $cart->final_price}}</p>
+                                                <p class="sale">{{'VND ' . $cart->final_price}}</p>
                                             </td>
                                         </tr>
                                         </tbody>
