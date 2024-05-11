@@ -36,14 +36,12 @@
                                     }
                                 </script>
                             </li>
-{{--                            <li><a style="color: white" href="{{ route('setLocale', 'en') }}">English</a></li>--}}
-{{--                            <li><a style="color: white"  href="{{ route('setLocale', 'vi') }}">Tiếng Việt</a></li>--}}
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container">
-            <a href="/" title="@lang('app.free_preschool_and_kindergarten_worksheets')">@lang('app.my_teaching_station')</a>
+            <a href="/" id="logo" title="@lang('app.app_name')"></a>
             <div class="nav-container">
                 <nav>
                     <nav id="nav-main">

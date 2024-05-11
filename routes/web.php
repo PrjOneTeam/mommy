@@ -24,6 +24,7 @@ Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('set
 Route::group(['middleware' => 'customer'], function() {
     Route::get('/', [HomeController::class, 'index'])->name('user-site-home');
     Route::get('/article', [ArticleController::class, 'index'])->name('article');
+    Route::get('/article/{id}/details', [ArticleController::class, 'show'])->name('article-detail');
     Route::get('/my-account', [AccountController::class, 'index'])->name('my-account');
 
     Route::get('/user/login', [LoginController::class, 'index'])->name('user-site.login');

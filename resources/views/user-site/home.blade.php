@@ -444,28 +444,28 @@
     </div>
 </div>
 
-<div class="section-banner wf">
-    <div class="container">
-        <div class="banner-wrap" style="position:relative">
-            <div class="banner-clear"></div>
-            <div class="descr wf">
-                <h1 class="wf">22 Word Family Workbooks<span>Over 200 words!<br>Including CVC and CCVC words.</span></h1>
-                <p class="wf">
-                    The Word Family Workbooks provide fun-filled, engaging activities to help children learn to blend sounds, read, and write simple words.
-                </p>
-                <div class="start-now mbo"><a href="/word-family/word-family-workbook-bundle?utm_campaign=WF&amp;utm_medium=MTS&amp;utm_source=home_banner_wf" class="button large">Download Now</a></div>
-                <p></p>
-            </div>
-            <div class="banner wf">
-                <div class="wf-house">
-                    <a href="/word-family/word-family-workbook-bundle?utm_campaign=WF&amp;utm_medium=MTS&amp;utm_source=home_banner_wf"><img src="/lib/theme/mts/images/wf-house.png" alt="Word Family House" title="Reading CVC words with Word Family worksheets" nopin="nopin" style="max-width:486px;width: 100%;"></a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div style="background-color:#7ec146; border-top:3px solid #71a942;border-bottom:5px solid #fff; height: 30px"></div>
-</div>
+{{--<div class="section-banner wf">--}}
+{{--    <div class="container">--}}
+{{--        <div class="banner-wrap" style="position:relative">--}}
+{{--            <div class="banner-clear"></div>--}}
+{{--            <div class="descr wf">--}}
+{{--                <h1 class="wf">22 Word Family Workbooks<span>Over 200 words!<br>Including CVC and CCVC words.</span></h1>--}}
+{{--                <p class="wf">--}}
+{{--                    The Word Family Workbooks provide fun-filled, engaging activities to help children learn to blend sounds, read, and write simple words.--}}
+{{--                </p>--}}
+{{--                <div class="start-now mbo"><a href="/word-family/word-family-workbook-bundle?utm_campaign=WF&amp;utm_medium=MTS&amp;utm_source=home_banner_wf" class="button large">Download Now</a></div>--}}
+{{--                <p></p>--}}
+{{--            </div>--}}
+{{--            <div class="banner wf">--}}
+{{--                <div class="wf-house">--}}
+{{--                    <a href="/word-family/word-family-workbook-bundle?utm_campaign=WF&amp;utm_medium=MTS&amp;utm_source=home_banner_wf"><img src="/lib/theme/mts/images/wf-house.png" alt="Word Family House" title="Reading CVC words with Word Family worksheets" nopin="nopin" style="max-width:486px;width: 100%;"></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="clearfix"></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <div style="background-color:#7ec146; border-top:3px solid #71a942;border-bottom:5px solid #fff; height: 30px"></div>--}}
+{{--</div>--}}
 
 <div class="section-banner math">
     <div class="container">
@@ -492,66 +492,16 @@
         <h2>Educational Articles</h2>
         <div id="article_results">
             <ul class="mts-col3 col4 clearfix">
-                <li class="pgitem" style="">
-                    <div id="view_portrait" class="pbox">
-                        <div class="pimg">
-                            <div class="img-wrap full"><a href="/articles/8-tips-for-well-being-a-teachers-support-guide-for-longevity" title="Alphabet letter crafts are an excellent activity to add to your letter of the week studies for children in preschool and kindergarten."><img src="/vault/2599/web/articles/Tips_for_teachers_sanity_and_well-being.png" alt="Alphabet letter crafts are an excellent activity to add to your letter of the week studies for children in preschool and kindergarten."></a></div>
-                        </div>
-                        <div class="pdetail"><a href="/articles/8-tips-for-well-being-a-teachers-support-guide-for-longevity" title="Alphabet letter crafts are an excellent activity to add to your letter of the week studies for children in preschool and kindergarten.">8 Tips for Well-being: A Teacher's Support Guide for Longevity</a></div>
-                        <div class="post-icons">
-                            <div class="left">Activities</div>
-                            <div class="right">
-                                <a data-id="11008" class="like-post xmTip icon-heart" data-tooltip="I Like"></a>
-                                <a href="javascript:void(0);" title="Pin it!" class="xc_pin" onclick="pin_this(event, 'http://pinterest.com/pin/create/button/?url=https://www.myteachingstation.com/articles/8-tips-for-well-being-a-teachers-support-guide-for-longevity&amp;media=https://www.myteachingstation.com/vault/2599/web/articles/Tips_for_teachers_sanity_and_well-being.png&amp;description=8%20Tips%20for%20Well%2Dbeing%3A%20A%20Teacher%27s%20Support%20Guide%20for%20Longevity%2E%20Ensuring%20our%20educators%27%20and%20parents%27%20mental%20and%20emotional%20health%20is%20not%20just%20a%20noble%20goal%3B%20it%27s%20a%20strategic%20move%20for%20a%20less%20chaotic%20classroom%20and%20a%20more%20harmonious%20household%2E')"><i class="icon-pinterest"></i></a>
+                @foreach($articleList as $index => $article)
+                    <li class="pgitem" style="">
+                        <div id="view_portrait" class="pbox">
+                            <div class="pimg">
+                                <div class="img-wrap full"><a href="/articles/8-tips-for-well-being-a-teachers-support-guide-for-longevity" title="{{ $article->title }}"><img src="{{ $article->pictures ? asset($article->pictures) : asset(\App\Enums\Image::DEFAULT_IMAGE) }}" ></a></div>
                             </div>
+                            <div class="pdetail"><a href="/articles/8-tips-for-well-being-a-teachers-support-guide-for-longevity" title="Alphabet letter crafts are an excellent activity to add to your letter of the week studies for children in preschool and kindergarten.">8 Tips for Well-being: A Teacher's Support Guide for Longevity</a></div>
                         </div>
-                    </div>
-                </li>
-                <li class="pgitem" style="">
-                    <div id="view_portrait" class="pbox">
-                        <div class="pimg">
-                            <div class="img-wrap full"><a href="/images/Articles/unleashing-the-superpowers-of-cvc-words-4-incredible-benefits-of-cvc-words-to-boost-early-learning" title="CVC words are secret superheroes waiting to equip young learners with the language skills needed to conquer the challenges of reading, spelling, and vocabulary with confidence and excitement!"><img src="/vault/2599/web/images/Articles/How-to-Teach-Reading-to-Kids-Using-CVC-Words.jpg" alt="CVC words are secret superheroes waiting to equip young learners with the language skills needed to conquer the challenges of reading, spelling, and vocabulary with confidence and excitement!"></a></div>
-                        </div>
-                        <div class="pdetail"><a href="/images/Articles/unleashing-the-superpowers-of-cvc-words-4-incredible-benefits-of-cvc-words-to-boost-early-learning" title="CVC words are secret superheroes waiting to equip young learners with the language skills needed to conquer the challenges of reading, spelling, and vocabulary with confidence and excitement!">Unleashing the Superpowers of CVC Words: 4 Incredible Benefits of CVC Words to Boost Early Learning!</a></div>
-                        <div class="post-icons">
-                            <div class="left">Teaching &amp; Learning</div>
-                            <div class="right">
-                                <a data-id="11007" class="like-post xmTip icon-heart" data-tooltip="I Like"></a>
-                                <a href="javascript:void(0);" title="Pin it!" class="xc_pin" onclick="pin_this(event, 'http://pinterest.com/pin/create/button/?url=https://www.myteachingstation.com/images/Articles/unleashing-the-superpowers-of-cvc-words-4-incredible-benefits-of-cvc-words-to-boost-early-learning&amp;media=https://www.myteachingstation.com/vault/2599/web/images/Articles/How-to-Teach-Reading-to-Kids-Using-CVC-Words.jpg&amp;description=Unleashing%20the%20Superpowers%20of%20CVC%20Words%3A%204%20Incredible%20Benefits%20of%20CVC%20Words%20to%20Boost%20Early%20Learning%21%2E%20Let%27s%20uncover%20the%20magic%20and%20fun%20that%20CVC%20words%20bring%20to%20your%20child%27s%20language%20development%20and%20discover%20how%20these%20word%20superheroes%20optimize%20language%20learning%20and%20create%20an%20adventure%2Dfilled%20experience%21')"><i class="icon-pinterest"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="pgitem" style="">
-                    <div id="view_portrait" class="pbox">
-                        <div class="pimg">
-                            <div class="img-wrap full"><a href="/teaching-learning/3-powerful-methods-to-help-young-students-excel-at-math" title="Teachers everywhere are quickly discovering how to help struggling students learn early math, which increases their overall future academic progress!"><img src="/vault/2599/web/images/Articles/Teaching-Learning/three-powerful-methods-to-help-young-children-excel-at-math-ten-frame-place-value-compose-decompose-numbers.jpg" alt="Teachers everywhere are quickly discovering how to help struggling students learn early math, which increases their overall future academic progress!"></a></div>
-                        </div>
-                        <div class="pdetail"><a href="/teaching-learning/3-powerful-methods-to-help-young-students-excel-at-math" title="Teachers everywhere are quickly discovering how to help struggling students learn early math, which increases their overall future academic progress!">3 Powerful Methods to Help Young Students Excel at Math</a></div>
-                        <div class="post-icons">
-                            <div class="left">Teaching &amp; Learning</div>
-                            <div class="right">
-                                <a data-id="8875" class="like-post xmTip icon-heart" data-tooltip="I Like"></a>
-                                <a href="javascript:void(0);" title="Pin it!" class="xc_pin" onclick="pin_this(event, 'http://pinterest.com/pin/create/button/?url=https://www.myteachingstation.com/teaching-learning/3-powerful-methods-to-help-young-students-excel-at-math&amp;media=https://www.myteachingstation.com/vault/2599/web/images/Articles/Teaching-Learning/three-powerful-methods-to-help-young-children-excel-at-math-ten-frame-place-value-compose-decompose-numbers.jpg&amp;description=3%20Powerful%20Methods%20to%20Help%20Young%20Students%20Excel%20at%20Math%2E%20Learn%20three%283%29%20must%2Dhave%20methods%20to%20set%20the%20ultimate%20foundation%20of%20math%20for%20preschoolers%20and%20kindergarteners%2E')"><i class="icon-pinterest"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="pgitem" style="">
-                    <div id="view_portrait" class="pbox">
-                        <div class="pimg">
-                            <div class="img-wrap full"><a href="/teaching-learning/is-number-sense-your-missing-math-link" title="Learn how number sense can help you avoid headaches and save you time while successfully teaching your students the foundations of math."><img src="/vault/2599/web/images/Articles/Teaching-Learning/Why-Number-Sense-in-Preschool-and-Kindergarten.jpg" alt="Learn how number sense can help you avoid headaches and save you time while successfully teaching your students the foundations of math."></a></div>
-                        </div>
-                        <div class="pdetail"><a href="/teaching-learning/is-number-sense-your-missing-math-link" title="Learn how number sense can help you avoid headaches and save you time while successfully teaching your students the foundations of math.">Is Number Sense Your Missing Math Link?</a></div>
-                        <div class="post-icons">
-                            <div class="left">Teaching &amp; Learning</div>
-                            <div class="right">
-                                <a data-id="8872" class="like-post xmTip icon-heart" data-tooltip="I Like"></a>
-                                <a href="javascript:void(0);" title="Pin it!" class="xc_pin" onclick="pin_this(event, 'http://pinterest.com/pin/create/button/?url=https://www.myteachingstation.com/teaching-learning/is-number-sense-your-missing-math-link&amp;media=https://www.myteachingstation.com/vault/2599/web/images/Articles/Teaching-Learning/Why-Number-Sense-in-Preschool-and-Kindergarten.jpg&amp;description=Is%20Number%20Sense%20Your%20Missing%20Math%20Link%3F%2E%20Are%20you%20ready%20to%20release%20your%20students%20into%20the%20field%20of%20flexible%20learning%20with%20quick%20and%20simple%20tools%3F')"><i class="icon-pinterest"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>

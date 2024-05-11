@@ -27,7 +27,7 @@
                                                 <h6 style="margin-left: 20px">{{ $payment?->card_name }}</h6>
                                                 <h5>{{__("Card number")}}</h5>
                                                 <h6 style="margin-left: 20px">{{ $payment?->card_number }}</h6>
-                                                @if($payment->qr)
+                                                @if(isset($payment->qr))
                                                     <h5>{{__("QR")}}</h5>
                                                     <h6 style="margin-left: 20px">
                                                         <img src="{{ isset($payment->qr) ? asset($payment->qr) : asset('admin/assets/images/default_image.jpg') }}" alt="Image preview"
