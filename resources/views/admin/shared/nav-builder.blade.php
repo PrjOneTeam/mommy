@@ -1,5 +1,5 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand">
+    <div style="background: whitesmoke" class="c-sidebar-brand">
         <style>
         @media(min-width: 768px) {
             .span-c-sidebar-brand-minimized {
@@ -10,9 +10,9 @@
             }
         }
         </style>
-        <img class="c-sidebar-brand-full" src="{{ asset('/images/mommy-logo.svg') }}" width="118" height="46" alt="Logo">
+        <img class="c-sidebar-brand-full" src="{{ asset('admin/assets/images/mommy-logo.png') }}" width="118" height="46" alt="Logo">
         <span class="span-c-sidebar-brand-minimized">
-            <img class="c-sidebar-brand-minimized" src="{{ asset('/images/mommy-logo.svg') }}" width="118" height="46" alt="Logo">
+            <img class="c-sidebar-brand-minimized" src="{{ asset('admin/assets/images/mommy-logo.png') }}" width="118" height="46" alt="Logo">
         </span>
     </div>
     <ul class="c-sidebar-nav">
