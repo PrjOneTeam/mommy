@@ -4,13 +4,22 @@ namespace App\Http\Controllers\UserSite;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Pdf;
+use App\Models\Slug;
+use App\Models\Workbook;
 
 class ArticleController extends Controller
 {
     function index() {
         $articleList = Article::orderBy('created_at', 'desc')->get();
+        $adsWorkbook = Workbook::where('ads', 1)->first();
+        $adsWorkbook->slug = Slug::where('workbook_id', $adsWorkbook->id)->first()->slug;
+        $adsPdf = Pdf::where('ads',1)->first();
+        $adsPdf->slug = Slug::where('pdf_id', $adsPdf->id)->first()->slug;
         return view('user-site.article', [
-            'articleList' => $articleList
+            'articleList' => $articleList,
+            'adsWorkbook' => $adsWorkbook,
+            'adsPdf' => $adsPdf
         ]);
     }
 

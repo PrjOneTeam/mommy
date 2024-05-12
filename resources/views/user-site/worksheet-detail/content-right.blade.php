@@ -3,25 +3,24 @@
     <div class="content-box sboptin-holder">
         <div class="sb-lta-banner">
             <div class="spacer">
-                <h2>Learning the Alphabet<span>The Complete Guide</span></h2>
+                <h2>{{ $adsWorkbook->name }}<span>Workbook</span></h2>
+                <div class="center mto30 mbo50"><img src="{{ isset($adsWorkbook->image_bw) ? asset($adsWorkbook->image_bw) : (isset($adsWorkbook->image_color) ? asset($adsWorkbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" /></div>
                 <p>
-                    Everything you need to effectively teach the alphabet and help your child to build a strong reading and writing foundation.
-                    <em>Increase your child's learning progress today!</em>
-                <div class="center mto mbo"><a href="/learning-the-alphabet?utm_campaign=LTA&utm_medium=MTS&utm_source=side_banner" class="button">Download Now</a></div>
+                    {{ $adsWorkbook->description }}
+                    <em>@lang('app.home_invite')</em>
+                <div class="center mto mbo"><a href="/{{$adsWorkbook->slug}}" class="button">@lang('app.download_now')</a></div>
                 </p>
             </div>
-            <div class="center mto30 mbo50"><img src="/vault/2599/web/images/teaching-the-alphabet-printable-workbooks.png" /></div>
         </div>
     </div>
     <div class="sidebanner-wrap">
         <div class="sidebanner-box">
-            <div class="banner-title purple">Alphabet Flipbook Activity Set</div>
+            <div class="banner-title purple">{{  $adsPdf->name }}</div>
             <div class="banner-txt">
-                <p>52 letter flipbook templates.</p>
+                <p>{{$adsPdf->description}}</p>
             </div>
-            <div class="center mto10"><a href="/reading/alphabet-flipbook-activity-set"><img src="/vault/2599/store/product/sidebar/printable-alphabet-flipbook-templates.png" /></a></div>
-            <div class="center mto mbo"><a href="/reading/alphabet-flipbook-activity-set" class="button btn-purple">Download Now</a></div>
-            <div class="banner-txt small">&#9733; available in black-and-white and color.</div>
+            <div class="center mto10"><a href="/{{$adsPdf->slug}}"><img src="{{ isset($adsPdf->image_bw) ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" /></a></div>
+            <div class="center mto mbo"><a href="/{{$adsPdf->slug}}" class="button btn-purple">@lang('app.download_now')</a></div>
         </div>
     </div>
 {{--    <div class="content-box sboptin-holder">--}}
