@@ -124,7 +124,7 @@
     <div class="container">
         <div class="banner-wrap">
             <div class="banner math">
-                <a href="/preschool-and-kindergarten-math-curriculum?utm_campaign=MTH&amp;utm_medium=MTS&amp;utm_source=home_banner1"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsPdf->image_bw) ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="MTS Kindergarten Math Curriculum" title="MTS Math Program - Kindergarten Level" nopin="nopin" style="max-width:559px;width: 100%;"></a>
+                <a href="/preschool-and-kindergarten-math-curriculum?utm_campaign=MTH&amp;utm_medium=MTS&amp;utm_source=home_banner1"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsPdf->image_bw) ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="photo" nopin="nopin" style="max-width:559px;width: 100%;"></a>
             </div>
             <div class="banner-clear"></div>
             <div class="descr math">

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'join_for_free' => 'Join for FREE',
+    'join_for_free' => 'Đăng ký',
     'preschool_kindergarten_worksheets' => 'Preschool and Kindergarten worksheets',
     'recommend_for_you' => 'Gợi ý cho bạn',
     'edit' => 'Chỉnh sửa',
