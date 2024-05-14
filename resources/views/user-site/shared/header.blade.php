@@ -48,6 +48,8 @@
                 <nav>
                     <nav id="nav-main">
                         <ul>
+                            <li><a href="/worksheets/logic">@lang('app.logic')</a></li>
+                            <li><a href="/worksheets/story">@lang('app.story')</a></li>
                             <li><a href="/worksheets/writing">@lang('app.writing')</a></li>
                             <li><a href="/worksheets/maths">@lang('app.math')</a></li>
                             <li><a href="/worksheets/art_coloring">@lang('app.art_and_colors')</a></li>
@@ -62,6 +64,8 @@
                     </div>
                     <nav id="nav-mobile">
                         <ul>
+                            <li><a href="/worksheets/logic">@lang('app.logic')</a></li>
+                            <li><a href="/worksheets/story">@lang('app.story')</a></li>
                             <li><a href="/worksheets/writing">@lang('app.writing')</a></li>
                             <li><a href="/worksheets/maths">@lang('app.math')</a></li>
                             <li><a href="/worksheets/art_coloring">@lang('app.art_and_colors')</a></li>

@@ -39,6 +39,19 @@ class Category
                 'writing_number' => 'Writing Number',
                 'writing_letter' => 'Writing Letter',
             ]
+        ],
+        'story' => [
+            'name' => 'Story',
+            'sub' => []
+        ],
+        'logic' => [
+            'name' => 'Logic',
+            'sub' => [
+                'logic_table' => 'Logic Table',
+                'matching_similar' => 'Match the Similar',
+                'matching_shadow' => 'Match the Shadow',
+                'practice_observation' => 'Practice Observation'
+            ]
         ]
     ];
 
