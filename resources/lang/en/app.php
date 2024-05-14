@@ -147,6 +147,8 @@ return [
     'about' => 'About Mommy Me Station',
     'trans_content' => 'Checkout with content',
     'complete_trans' => 'Complete transaction',
+    'privacy' => 'Privacy Statement',
+    'term_condition' => 'Terms and Conditions of Use',
     'Boy' => 'Boy',
     'home_invite' => 'Increase your child\'s learning progress today!',
     'free_worksheet' => 'Free Worksheets',

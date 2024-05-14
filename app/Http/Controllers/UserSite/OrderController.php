@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller {
     public function index() {
         $userInfo = Auth::user();
+        if (!$userInfo) {
+            return view('user-site.login');
+        }
         $dataList = Order::where('customer_id', $userInfo->id)
             ->where('status', 'ordered')
             ->get();

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Systems Manager | @yield('title', 'Dashboard')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin/assets/images/mommy-logo.png') }}">
     <link href="/admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/v2/css/free.min.css') }}" rel="stylesheet"> <!-- icons -->
     <link href="{{ asset('admin/v2/css/flag.min.css') }}" rel="stylesheet"> <!-- icons -->

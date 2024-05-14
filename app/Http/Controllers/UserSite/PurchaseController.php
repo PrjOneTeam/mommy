@@ -15,6 +15,9 @@ class PurchaseController extends Controller {
     }
     public function index() {
         $user = Auth::user();
+        if (!$user) {
+            return view('user-site.login');
+        }
         $dataList = Order::where('customer_id', $user->id)
             ->where('status', 'purchased')
             ->get();

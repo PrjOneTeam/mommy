@@ -13,7 +13,7 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     function index() {
-        return view('user-site.login');
+            return view('user-site.login');
     }
 
     function login(Request $request) {

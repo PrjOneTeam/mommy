@@ -21,8 +21,11 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        $cart = $this->cartRepository->getCurrentCart($request->cookie(Cart::SESSION_TOKEN));
-
+        if ($request->cookie(Cart::SESSION_TOKEN)) {
+            $cart = $this->cartRepository->getCurrentCart($request->cookie(Cart::SESSION_TOKEN));
+        } else {
+            $cart = new Cart();
+        }
         return view('user-site.cart', [
             'cart' => $cart,
         ]);
