@@ -1,112 +1,132 @@
 @extends('user-site.main')
 @section('content-layout')
     <div id="content-layout">
-        <h1 class="hpage">Terms and Conditions of Use</h1>
+        <h1 class="hpage">@lang('app.term_condition')</h1>
         <div class="container">
             <div class="content-holder">
                 <div class="content-box">
                     <div class="box-body">
                         <div class="block-text">
-                            <p><strong>PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE ACCESSING OR USING THIS WEB SITE.</strong></p>
-                            <p class="hmb mto"><strong>ACCEPTANCE OF TERMS OF USE</strong></p>
-                            <p>BY ACCESSING THIS WEB SITE, YOU ARE AGREEING TO BE BOUND BY THESE TERMS OF USE, ALL APPLICABLE LAWS AND REGULATIONS, AND AGREE THAT YOU ARE RESPONSIBLE FOR COMPLIANCE WITH ANY APPLICABLE LOCAL LAWS. IF YOU ARE USING THIS WEB SITE ON BEHALF OF A COMPANY OR OTHER LEGAL ENTITY, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND SUCH ENTITY TO THESE TERMS OF USE, IN WHICH CASE THE TERMS "YOU" OR "YOUR" SHALL REFER TO SUCH ENTITY AND ITS AFFILIATES. IF YOU DO NOT HAVE SUCH AUTHORITY, OR IF YOU DO NOT UNDERSTAND AND AGREE WITH THESE TERMS OF USE, YOU SHOULD SEEK LEGAL COUNSEL, AND NOT USE THIS SITE OR ITS SERVICES.</p>
-                            <p class="hmb mto"><strong>TERMS OF USE</strong></p>
-                            <p>Your use of the Web Site or any of its Content and services made available through the Web Site constitutes Your agreement to the following terms and conditions:</p>
+                            <p><strong>Cập nhật lần cuối: 13/5/2024</strong></p>
+                            <p>Chào mừng bạn đến với MommyMe Station. Những thuật ngữ được gọi trong chính sách này là “MommyMe Station”, “MommyMe”, “MMS”, “chúng tôi” hoặc “của chúng tôi” để nói về mối quan hệ của bạn với MMS và cung cấp các thông tin quan trọng về điều khoản.</p>
+                            <p>Các Điều khoản này giải thích các quy tắc bạn cần tuân theo khi truy cập trang dịch vụ của chúng tôi tại mommymestation.com và các tên có liên quan (gọi chung là “Trang dịch vụ MMS”), bất kỳ trang web liên kết nào mà chúng tôi có thể lưu trữ (cùng với Trang dịch vụ MMS, chúng tôi đề cập đến trong các Điều khoản này được gọi là “Trang web”), và bất kỳ dịch vụ nào khác mà chúng tôi có thể cung cấp (gọi chung là Trang web, và các dịch vụ liên quan là “Dịch vụ” của chúng tôi).</p>
+                            <p>Trang web MommyMe cung cấp một nền tảng mở chứa các phiếu bài tập và các hoạt động theo lứa tuổi (“Tài nguyên”) dành cho các bậc cha mẹ và những nhà giáo dục. Tài nguyên có thể bao gồm các tệp được phân phối điện tử, hàng hóa vật lý và các loại sản phẩm khác. Tài nguyên, cùng với tiêu đề, mô tả Tài nguyên và thông tin danh sách khác tạo nên “Danh sách tài nguyên”. </p>
+                            <p>Chúng tôi yêu cầu bạn đọc kỹ Chính sách quyền riêng tư này vì nó chứa các chi tiết quan trọng về dữ liệu cá nhân mà MommyMe thu thập và xử lý khi bạn sử dụng dịch vụ của chúng tôi, bao gồm cả các lựa chọn chúng tôi cung cấp cho bạn quyền truy cập, duy trì và kiểm soát nó.</p>
+                            <p class="hmb mto"><strong>Dữ liệu dịch vụ và tài khoản MommyMe của bạn</strong></p>
+                            <p>Khi bạn đăng ký và sử dụng dịch vụ của chúng tôi hoặc đăng ký tham gia các sự kiện hoặc quà tặng miễn phí của chúng tôi, chúng tôi sẽ thu thập và xử lý dữ liệu cá nhân do bạn cung cấp để có thể cung cấp dịch vụ, sự kiện, và quà tặng cho bạn . Dưới đây là bảng để thông báo cho bạn về:</p>
+                            <ul class="plain">
+                                <li>Dữ liệu cá nhân nào chúng tôi thu thập khi đăng ký</li>
+                                <li>Mục đích xử lý</li>
+                            </ul>
+                            <table id="table-term">
+                                <tr>
+                                    <th>Dữ liệu thu thập</th>
+                                    <th>Mục đích xử lý</th>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ email</td>
+                                    <td>
+                                        <ul class="plain">
+                                            <li>Để quản lý đăng ký, thực hiện quản lý tài khoản và cung cấp dịch vụ khách hàng</li>
+                                            <li>Để nhận dạng bạn trong các dịch vụ và cách sử dụng dịch vụ của chúng tôi</li>
+                                            <li>Hành chính (tức là tuân thủ tài chính, pháp lý và quy định) Để liên hệ với bạn về sản phẩm, sự kiện, dịch vụ, phản hồi, giải thưởng, quà tặng và quà tặng miễn phí</li>
+                                            <li>Bảo mật</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tên người dùng</td>
+                                    <td>
+                                        <ul class="plain">
+                                            <li>Để quản lý đăng ký, thực hiện quản lý tài khoản và cung cấp dịch vụ khách hàng</li>
+                                            <li>Để nhận dạng bạn trong các dịch vụ và cách sử dụng dịch vụ của chúng tôi</li>
+                                            <li>Hành chính (tức là tuân thủ tài chính, pháp lý và quy định)</li>
+                                            <li>Bảo mật</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mật khẩu</td>
+                                    <td>Bảo mật</td>
+                                </tr>
+                                <tr>
+                                    <td>Quốc gia</td>
+                                    <td>
+                                        <ul class="plain">
+                                            <li>Để quản lý đăng ký, thực hiện quản lý tài khoản và cung cấp dịch vụ khách hàng</li>
+                                            <li>Hành chính (tức là tuân thủ tài chính, pháp lý và quy định)</li>
+                                            <li>Để cung cấp dịch vụ cá nhân hóa và cải tiến dịch vụ</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nghề nghiệp</td>
+                                    <td>Để cung cấp dịch vụ cá nhân hóa và cải tiến dịch vụ</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <h5><strong>Bản quyền</strong></h5>
+                            <p>Bằng cách tải xuống bất kỳ tài nguyên nào từ MommyMe (dù miễn phí hay trả phí), bạn đồng ý với những điều sau:</p>
                             <ol class="plain">
-                                <li>
-                                    <p class="hmb"><strong>Definitions</strong></p>
-                                    <ul class="plain">
-                                        <li><strong>"Affiliate" </strong>means, with respect to a party, any entity which directly or indirectly controls, is controlled by, or is under common control with such party.</li>
-                                        <li><strong>"Agreement" </strong>means this Terms and Conditions of Use.</li>
-                                        <li><strong>"Web Site" </strong>means the hosted, on-demand, Web-based on-line service provided by MommyMeStation.com, including updates from time to time.</li>
-                                        <li><strong>"Malicious Code" </strong>means viruses, worms, time bombs, Trojan horses and other harmful, disruptive, or destructive files, code, scripts, agents or programs.</li>
-                                        <li><strong>"User" </strong>means You and Your employees, agents, contractors, consultants or any other individuals and/or end users who are authorized by You to access and use the Web Site and/or whose information is stored on the Web Site.</li>
-                                        <li><strong>"MommyMeStation.com" </strong>means My Teaching Station LLC, a Florida Limited Liability Company. You may contact MommyMeStation.com via our Web Site.</li>
-                                        <li><strong>"You" or "Your"</strong> means the individual, company, or other legal entity for which You are accepting this Terms and Conditions of Use.</li>
-                                        <li><strong>"Content" </strong>means any content on this Web Site, including the text, graphics, images, information, and other materials contained on the Web Site.</li>
-                                        <li><strong>"Your Data" </strong>means without limitation any and all data and textual information submitted to or through the Web Site by You. You are required, at Your own expense, to ensure that all such text and data meets all local, state, and federal security and confidentiality requirements before its entry into the Web Site, storage and use in the database(s) used for the Web Site, and for its eventual display and/or use on any screen or page of the Web Site.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>User Conduct</strong></p>
-                                    <p>You are responsible for all activities conducted under Your User login and for Your compliance with this Terms and Conditions of Use. You shall use the Web Site and its Content solely for personal, noncommercial, informational purposes, in compliance with applicable law, and shall not:</p>
-                                    <ul class="plain">
-                                        <li>Resell, sublicense, lease, time-share or otherwise make the Web Site available to any third party;</li>
-                                        <li>Modify, copy or create derivative works based on the Web Site or its Content, including photocopying and recording, except that MommyMeStation.com authorizes You to view and print one copy per child or person of free Content that is available on the Web Site (such as articles, worksheets or papers);</li>
-                                        <li>Republish, upload, post, transmit or distribute Content from the Web Site to online message boards, newsgroups, chat rooms, bulletin boards, or in other any manner, without our prior written permission. Modification of the Content or use of the Content for any purpose other than Your own personal, non-commercial use is a violation of our copyright and other proprietary rights, and may subject You to legal liability.</li>
-                                        <li>Remove any copyright, trademark, or other proprietary notations from the Content;</li>
-                                        <li>Attempt to gain unauthorized access to, or disrupt the integrity or performance of, the Web Site or the data contained therein, including, without limitation, by means of "hacking" or defacing any portion of the Web Site;</li>
-                                        <li>Post, disseminate, or transmit Malicious Code;</li>
-                                        <li>Interfere with, disrupt, or harm in any way the Web Site or servers or networks connected to the Web Site;</li>
-                                        <li>Use the Web Site for any unlawful or illegal purpose or in violation of any of the rules herein;</li>
-                                        <li>Post, disseminate, or transmit any Content You do not have the right to post, disseminate, or transmit;</li>
-                                        <li>Post, disseminate, or transmit any unauthorized advertising, promotional materials, chain letters, spam, junk mail, or any other type of unsolicited mass e-mail to people or entities that have not agreed to be part of such mailings;</li>
-                                        <li>Post, disseminate, or transmit any Content that is or which we consider, in our sole discretion, unlawful, harassing, defamatory, abusive, threatening, vulgar, obscene, pornographic, harmful, tortuous, libelous, racist, violent or otherwise objectionable;</li>
-                                        <li>Electronically stalk or otherwise harass another user of our Web Site;</li>
-                                        <li>Post or disclose any personally identifying information or private information about children or any third parties without their consent (or their parent's consent in case of a child under 13 years of age);</li>
-                                        <li>Impersonate any person or entity; falsely state or otherwise misrepresent Your affiliation with any person or entity; intentionally omit, delete, forge, or misrepresent transmission information; or otherwise manipulate identifiers to disguise the origin of any Content transmitted through the Web Site;</li>
-                                        <li>Express or imply that any statements You make are endorsed by us, without our prior written consent;</li>
-                                        <li>Collect information about visitors to the Web Site without their express consent or store personal data about other users;.</li>
-                                        <li>Transfer the Content to another person, "Frame" or "mirror" any part of the Web Site or its Content without our prior written authorization;</li>
-                                        <li>Reverse engineer, decompile, disassemble, modify, adapt, sublicense, translate or sell any portion of the Web Site or its Content;</li>
-                                        <li>Use any robot, spider, site search/retrieval application, or other manual or automatic device or process to download, retrieve, index, "data mine," or in any way reproduce or circumvent the navigational structure or presentation of the Web Site or its contents;</li>
-                                        <li>Access the Web Site for the purpose of building a competitive product or service or copying its features or user interface;</li>
-                                        <li>Use the Web Site, or permit it to be used, for purposes of product evaluation, benchmarking or other comparative analysis intended for publication without prior written consent from MommyMeStation.com;</li>
-                                        <li>Permit access to the Web Site by a direct competitor of MommyMeStation.com, or</li>
-                                        <li>Allow any User under the age of 18 to access or use the Web Site.</li>
-                                    </ul>
-                                    <p>&nbsp;</p>
-                                    <p>Nothing contained on this Web Site should be construed as granting, by implication, estoppel, or otherwise, any license or right to use this Web Site or any information or documents displayed on the Web Site, through the use of framing or otherwise, except: (a) as expressly permitted by these terms and conditions; or (b) with the prior written permission of MommyMeStation.com or such third party that may own the trademark or copyright of material displayed on this Web Site. If You are interested in reprinting, republishing or distributing content from MommyMeStation.com, please contact us via our Web Site.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Terms of Use Modifications</strong></p>
-                                    <p>MommyMeStation.com reserves the right to modify or replace this Agreement at any time without prior notice. For this reason, we encourage You to review this Agreement periodically for changes. Any changes will be effective immediately upon posting the revised version on the Web Site. Your continued use of the Web Site following the posting of any changes to this Agreement will constitute Your acceptance of such changes. By using this&nbsp;<span style="background-color: rgb(245, 246, 245);">Web Site,</span>&nbsp;Yagree to be bound by the current version of these Terms and Conditions of Use. If You do not agree to the changes, You must immediately stop using the Web Site.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Site Membership</strong></p>
-                                    <p>MommyMeStation.com reserves the right to refuse registration, or to refuse or limit access to the Web Site or any features, to anyone in its sole discretion. You will provide accurate, current and complete information in any registration or other account-related forms provided on the Web Site and agree to maintain the security of Your username(s) and password(s). You will maintain and promptly update Your Information to keep it accurate, current and complete. YOU UNDERSTAND THAT ANY PERSON WITH YOUR USERNAME(S) AND PASSWORD(S) MAY BE ABLE TO ACCESS YOUR ACCOUNT (INCLUDING YOUR INFORMATION, TRANSACTION INFORMATION, AND OTHER USER DATA YOU OR OTHERS HAVE PROVIDED TO MommyMeStation.com (SOME OF WHICH YOU MAY CONSIDER CONFIDENTIAL IN NATURE). YOU ACCEPT ALL RISKS OF UNAUTHORIZED ACCESS TO THE WEB SITE BASED ON THE SHARING OR LOSS OF A USERNAME AND PASSWORD. You will promptly notify MommyMeStation.com if You discover or otherwise suspect any security breaches related to the Web Site, including any unauthorized use or disclosure of a username or password. You understand and agree that MommyMeStation.com may, under certain circumstances and without prior notice to You, terminate Your access to and use of the Web Site. Cause for such termination shall include, but not be limited to, (a) breaches or violations of the Agreement or other agreements or guidelines, (b) requests by law enforcement or other government or regulatory authorities, or (c) technical difficulties.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Features and Links to Other Sites</strong></p>
-                                    <p>There may be times when You may be able&nbsp;to gain access to other web sites and/or Internet related content that is not owned, maintained, or controlled by MommyMeStation.com (and which may or may not be part of the Web Site). Such additional information and/or content may be available via hyperlink from the Web Site, or it may be contained within and integrated with Content provided by MommyMeStation.com. MommyMeStation.com assumes no responsibility for any material outside the Web Site that may be accessed in this manner.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>MommyMeStation.com Proprietary Rights</strong></p>
-                                    <p>All information, content, instructions and services provided by MommyMeStation.com, its owners, officers, investors, employees, agents, and authorized representatives on the Web Site is owned by or licensed to MommyMeStation.com (the "Content"). MommyMeStation.com and its licensors retain all proprietary rights to the Content.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Warranty Disclaimers</strong></p>
-                                    <p>MommyMeStation.com makes no guarantee or warranty as to the accuracy or completeness of the Web Site or the Content and the Web Site, and the Content is provided "AS-IS" and "AS-AVAILABLE". Neither MommyMeStation.com nor any of its licensors shall be liable to You or anyone else for any damages arising from or relating to any inaccuracy, error or omission in the Web Site or the Content. By using this Web Site, You assume the risk that the information on this Web Site and its Content may be incomplete, inaccurate, out of date, or may not meet Your needs and requirements. The Content provided by this Web Site does not constitute the rendering of medical, health, legal or other professional advice or services. Always seek the advice of Your physician or other qualified health provider with questions You may have regarding any medical conditions. The Content should not be relied upon or used as a substitute for consultation with physicians, qualified health professionals, lawyers or other professional advisors. Reliance on any Content provided on this Web Site, whether by us or visitors to this Web Site is solely at Your own risk. We do not recommend or endorse any specific tests, physicians, products, procedures, opinions or other information that may be mentioned on this Web Site.</p>
-                                    <p>TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, MommyMeStation.com, ITS OFFICERS, DIRECTORS, EMPLOYEES, AFFILIATES, SUPPLIERS, ADVERTISERS, AND AGENTS DISCLAIM ANY AND ALL WARRANTIES, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE, AND ALL WARRANTIES RELATING TO THE ADEQUACY, ACCURACY OR COMPLETENESS OF ANY INFORMATION ON OUR WEB SITES.</p>
-                                    <p>Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusions may not apply to you.</p>
-                                    <p>YOU ACKNOWLEDGE THAT YOU ARE RESPONSIBLE FOR OBTAINING AND MAINTAINING ALL TELEPHONE, COMPUTER HARDWARE AND OTHER EQUIPMENT NEEDED TO ACCESS AND USE OUR WEB SITES, AND ALL CHARGES RELATED THERETO. YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE WEB SITE AND YOUR RELIANCE THEREON. NO OPINION, ADVICE, OR STATEMENT OF MommyMeStation.com OR ITS AFFILIATES, SUPPLIERS, AGENTS, MEMBERS, OR VISITORS, WHETHER MADE ON THE WEB SITE OR OTHERWISE, SHALL CREATE ANY WARRANTY. YOUR USE OF THE WEB SITE, THE CONTENT CONTAINED HEREIN, AND ANY MATERIALS PROVIDED THROUGH THE WEB SITE, ARE ENTIRELY AT YOUR OWN RISK.</p>
-                                    <p>A possibility exists that the Web Site could include inaccuracies or errors, or Content that violate this Agreement. Additionally, a possibility exists that unauthorized alterations could be made to the Web Site by third parties. Although we attempt to ensure the integrity of the Web Site and other products and services, we make no guarantees as to the completeness or correctness of the Content. In the event that such a situation arises, please contact us via our Web Site with, if possible, a description of the Content to be checked and the location (URL) where such Content can be found on our Web Site, if applicable, as well as information sufficient to enable us to contact you. We will try to address your concerns as soon as reasonably practicable.</p>
-                                    <p>The accuracy of information supplied by You and other users is not within the control of MommyMeStation.com, and MommyMeStation.com does not certify that it has verified any information, file, or other information entered into the Web Site database or available on this Web Site. MommyMeStation.com has no obligation to screen or edit information that is posted or shared by You or other users of the Web Site, and we reserve the right (without notice) to remove any information found on the Web Site that MommyMeStation.com finds to be objectionable. Our policy with respect to the collection and use of Your personal information is set forth in our Privacy Statement.</p>
-                                    <p>MommyMeStation.com has NO authority or control over the operation or performance of any portion of the Internet including other Internet sites to which this Web Site may be linked or from which this Web Site may be accessed. You acknowledge that in any computer system and any network of computer systems there is certain to be downtime due to mechanical, telecommunication, software, hardware and third party vendor failures during which MommyMeStation.com will be unable to provide access to this Web Site. MommyMeStation.com cannot predict or control when such downtime may occur and cannot control the duration of such "downtime." We may alter, suspend, or discontinue this Web Site, or any Content, at any time for any reason, without notice or cost. We may also elect, at any time upon notice, to begin to impose fees or charges for access or use of this Web Site.</p>
-                                    <p>You understand and agree that the Internet is inherently unreliable and subject to breaches of security and the transmission of Malicious Code that can cause harm to Your computer system(s). Therefore, MommyMeStation.com cannot be responsible for the integrity of any information, file or another posting available on, sent to, or received from or through this Web Site. MommyMeStation.com shall not be liable to You or any third parties for any damage to Your computer from the use of this Web Site or for Malicious Code Your computer may receive by accessing this Web Site.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Privacy Statement</strong></p>
-                                    By accessing the Web Site, you also expressly accept the Web Site’s privacy statement. A complete statement of our current privacy statement can be found at www.theteachingstation.com/privacy-statement. The Web Site terms of use and privacy statement are expressly incorporated into this Agreement by this reference.
-                                    <p>You acknowledge that all discussion for votes, ratings, comments and/or other message or communication facilities are public and not private communications, and that, therefore, others may read Your communications without Your knowledge. MommyMeStation.com does not control or endorse the content, messages or information found in any Community, and, therefore, MommyMeStation.com specifically disclaims any liability concerning the Communities and any actions resulting from Your participation in any Community, including any objectionable content. Generally, any communication which You post to MommyMeStation.com is considered to be non-confidential. If particular web pages permit the submission of communications that will be treated by MommyMeStation.com as confidential, that fact will be stated on those pages. By posting comments, lessons or worksheet requests, messages or other information on the Web Site, You grant MommyMeStation.com the right to use such comments, messages or information for promotions, advertising, market research or any other lawful purpose. For more information see MommyMeStation.com's Privacy Statement as noted above.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Sales Policy</strong></p>
-                                    The purchase and use of MommyMeStation.com products are subject to additional terms and conditions found in the <a href="{{ route('policy') }}">Sales Policy</a> page.
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Monitoring</strong></p>
-                                    <p>Access to this Web Site is monitored. The requesting URLs, the machine originating the request, and the time of the request are logged for access statistics and security purposes. Your use of this Web Site constitutes consent to such monitoring.</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Indemnification</strong></p>
-                                    <p>By using this Web Site, You agree to indemnify, hold harmless and defend MommyMeStation.com from any claims, damages, losses, liabilities and all costs and expenses of defense, including but not limited to attorneys' fees, resulting directly or indirectly from Your use of this Web Site. Furthermore, You agree to indemnify, hold harmless and defend MommyMeStation.com from any damages, losses, costs and expenses (including reasonable attorneys' fees) it suffers which arise from or relate to Your breach of these Terms and Conditions of Use. Your sole and exclusive remedy for any breach of this agreement by MommyMeStation.com shall be a refund of the fees paid to use the Web Site (if any).</p>
-                                </li>
-                                <li>
-                                    <p class="hmb"><strong>Miscellaneous</strong></p>
-                                    <p>The Web Site and certain of the Content is copyright material and cannot be copied, distributed, or reproduced in any manner without the express written permission of MommyMeStation.com - all rights reserved.</p>
-                                </li>
+                                <li>Bạn chỉ có thể sử dụng các tài nguyên cho mục đích cá nhân và / hoặc lớp học trực tiếp.</li>
+                                <li>Để hỗ trợ chúng tôi, chúng tôi yêu cầu bạn luôn thừa nhận www.mommymestation.com là nguồn của tài nguyên. Nếu bạn yêu thích tài nguyên của chúng tôi, tại sao không cho người khác biết về MommyMe?</li>
+                                <li>Bạn không được sao chép hoặc chia sẻ tài nguyên này với người khác dưới mọi hình thức. Bạn không thể sử dụng tài khoản của mình để tải xuống và in cho bất kỳ ai khác, vì điều này vi phạm giấy phép sử dụng tài khoản.</li>
+                                <li>Bạn không được lưu trữ hoặc theo bất kỳ cách nào khác chia sẻ tài nguyên của chúng tôi trực tiếp với người khác mà không có sự cho phép trước bằng văn bản của Founder từ MommyMe.</li>
+                                <li>Bạn không được sử dụng bất kỳ sản phẩm nào cho mục đích thương mại và bạn cũng không được thay đổi phiên bản kỹ thuật số của sản phẩm của chúng tôi theo bất kỳ cách nào.</li>
+                                <li>Bạn không được sử dụng bất kỳ sản phẩm hoặc tài nguyên nào để đào tạo, xác thực, kiểm tra hoặc lập mô hình cho bất kỳ ứng dụng trí tuệ nhân tạo nào hoặc tải bất kỳ sản phẩm hoặc tài nguyên nào lên bất kỳ hệ thống hoặc nền tảng nào như vậy.</li>
+                                <li>Bạn xác nhận rằng sản phẩm bạn tải xuống sẽ luôn là tài sản của MommyMe Station và bạn đồng ý với các Điều khoản và Điều kiện chung của trang web của chúng tôi.</li>
                             </ol>
+                            <p>Nếu bạn có bất kỳ câu hỏi nào về chính sách bản quyền của chúng tôi hoặc để thảo luận về bất kỳ vấn đề nào ở trên, vui lòng gửi email cho chúng tôi:</p>
+                            <p><strong>Xin lưu ý rằng chúng tôi rất coi trọng việc sao chép bất kỳ phần nào trong tài nguyên của mình, vì chúng tôi đầu tư rất nhiều vào nhóm của mình để tạo ra các tài nguyên chất lượng cao nhất.</strong></p>
+                            <h5>Điều khoản dịch vụ sản phẩm</h5>
+                            <br>
+                            <p>Vui lòng đọc các điều khoản và điều kiện quan trọng sau đây trước khi bạn đăng ký bất kỳ dịch vụ sản phẩm vật lý nào trên trang web của chúng tôi và kiểm tra xem những sản phẩm đó có chứa mọi thứ bạn muốn. Hãy chắc chắn rằng không có thứ gì mà bạn không sẵn lòng đồng ý.</p>
+                            <p>Dưới đây, chúng tôi trình bày cách thức thực hiện một hợp đồng ràng buộc về mặt pháp lý giữa bạn và chúng tôi.</p>
+                            <p>Bạn đặt hàng để đăng ký Dịch vụ sản phẩm bằng cách nhấp vào nút 'Đăng ký ngay' trên trang Dịch vụ sản phẩm, nhập thông tin chi tiết của bạn, điền và gửi chi tiết thanh toán của bạn. Vui lòng đọc và kiểm tra đơn hàng của bạn một cách cẩn thận trước khi gửi nó. Bạn sẽ có thể sửa bất kỳ lỗi nào trước khi gửi đơn đặt hàng cho chúng tôi.</p>
+                            <p>Bằng cách đặt hàng, bạn đồng ý rằng MommyMe sẽ tính Giá cho bạn đối với từng Sản phẩm theo các khoảng thời gian như được chỉ định cho Dịch vụ sản phẩm.</p>
+                            <p>Khi bạn đặt hàng để đăng ký ở cuối quá trình thanh toán trực tuyến (ví dụ: khi bạn nhấp vào nút 'Thanh toán'), chúng tôi sẽ xác nhận đăng ký Dịch vụ sản phẩm của bạn qua email. (Email xác nhận đăng ký).</p>
+                            <p>Email xác nhận đăng ký có nghĩa là đơn đặt hàng đăng ký Dịch vụ sản phẩm của bạn đã được chúng tôi chấp nhận và bạn đã đăng ký Dịch vụ sản phẩm. Chúng tôi có thể gửi cho bạn Email xác nhận sản phẩm trong khoảng thời gian hợp lý trước khi chúng tôi thanh toán và/hoặc giao từng Sản phẩm.</p>
+                            <p>Nếu bạn dưới 18 tuổi, bạn không được đăng ký bất kỳ Dịch vụ sản phẩm nào trên trang web của chúng tôi.</p>
+                            <p>Bạn không được đăng ký bất kỳ Dịch vụ sản phẩm nào nếu bạn không phải là người tiêu dùng. Nếu bạn là doanh nghiệp, vui lòng liên hệ với chúng tôi tại …………. để đề nghị hợp tác với Dịch vụ sản phẩm của chúng tôi.</p>
+                            <br>
+                            <h5>Quyền hủy bỏ</h5>
+                            <br>
+                            <p>Bạn có thể hủy đăng ký Dịch vụ sản phẩm bất cứ lúc nào với điều kiện là chúng tôi nhận được thông báo về việc hủy đó trong Thời gian hủy trên trang Dịch vụ sản phẩm liên quan.</p>
+                            <p>Bạn không thể hủy đăng ký của mình ngoài Thời gian hủy.</p>
+                            <p>Để thực hiện quyền hủy, bạn phải thông báo cho chúng tôi về quyết định hủy đăng ký của mình thông qua trang web của chúng tôi hoặc bằng cách liên hệ với chúng tôi bằng phương pháp được nêu tại đây: …………. . Đăng ký về Dịch vụ Sản phẩm của bạn sẽ bị hủy kể từ thời điểm chúng tôi xác nhận việc hủy bằng cách thông báo cho bạn về điều này.</p>
+                            <p>Chúng tôi có thể hủy đăng ký Dịch vụ Sản phẩm của bạn bất kỳ lúc nào trước khi giao bất kỳ Sản phẩm nào. Chúng tôi sẽ thông báo cho bạn qua email nếu điều này xảy ra và hoàn lại cho bạn mọi khoản thanh toán đã thực hiện cho bất kỳ Sản phẩm nào chưa được giao.</p>
+                            <p>Quyền hủy bỏ KHÔNG ÁP DỤNG cho Sản phẩm là các phiếu bài tập điện tử.</p>
+                            <h5>Ảnh hưởng của việc hủy bỏ</h5>
+                            <br>
+                            <p>Nếu bạn hủy đơn hàng và bạn đã thanh toán cho Sản phẩm mà bạn chưa nhận được, chúng tôi sẽ hoàn lại cho bạn tất cả các khoản thanh toán đã nhận.
+                                Chúng tôi sẽ hoàn trả bằng cách sử dụng cùng phương thức thanh toán mà bạn đã sử dụng cho giao dịch Sản phẩm, trừ khi bạn có thỏa thuận rõ ràng khác.
+                                Nếu bạn đã hủy hợp đồng này sau khi Sản phẩm đã được chúng tôi gửi đi hoặc giao cho bạn, chúng tôi có thể khấu trừ khoản hoàn trả cho tổn thất về giá trị của bất kỳ hàng hóa nào được cung cấp và tất cả chi phí giao hàng.
+                                Chúng tôi có thể giữ lại khoản hoàn trả cho đến khi chúng tôi nhận lại được Sản phẩm.
+                            </p>
+                            <p>Nếu bạn đã nhận được hàng:</p>
+                            <ul class="plain">
+                                <li>bạn phải gửi lại hàng hóa hoặc giao cho chúng tôi mà không được chậm trễ quá mức và trong mọi trường hợp không quá 14 ngày kể từ ngày bạn thông báo việc hủy đơn hàng cho chúng tôi. Thời hạn được đáp ứng nếu bạn gửi lại hàng trước khi hết thời hạn 14 ngày;</li>
+                                <li>bạn sẽ chịu chi phí trả lại hàng</li>
+                                <li>bạn phải chịu trách nhiệm về bất kỳ giá trị giảm sút nào của hàng hóa do việc xử lý ngoài những gì cần thiết để xác định tính chất, đặc điểm và chức năng của hàng hóa.</li>
+                            </ul>
+                            <h5>Vận chuyển/Phân phối</h5>
+                            <br>
+                            <p>Lịch trình ước tính phân phối từng Sản phẩm trong Dịch vụ Sản phẩm được nêu trên trang Dịch vụ Sản phẩm tùy từng thời điểm hoặc trong Email Xác nhận Đăng ký. Nếu có xung đột giữa trang Dịch vụ sản phẩm và Email xác nhận đăng ký liên quan đến lịch giao hàng dự kiến của Sản phẩm trong Dịch vụ sản phẩm, bạn phải liên hệ với chúng tôi. Chúng tôi có thể cho bạn biết lịch trình nào phù hợp với Dịch vụ sản phẩm hoặc thông báo cho bạn về lịch giao hàng thay thế.</p>
+                            <p>Thời gian giao hàng ước tính của từng Sản phẩm có thể được nêu trong bất kỳ Email xác nhận sản phẩm nào được gửi cho bạn trước mỗi lần giao Sản phẩm ("Ngày đến dự kiến"). Nếu Email xác nhận sản phẩm không được gửi cho bạn, Ngày đến dự kiến của từng Sản phẩm sẽ như được mô tả trong lịch trình giao hàng của các đơn vị vận chuyển.</p>
+                            <p>Nếu có điều gì đó xảy ra ngoài tầm kiểm soát của chúng tôi, Ngày đến dự kiến có thể bị ảnh hưởng. Chúng tôi có thể cung cấp cho bạn Ngày đến dự kiến đã được sửa đổi bất kỳ lúc nào.</p>
+                            <p>Nếu Sản phẩm chưa được giao trước Ngày đến dự kiến, bạn phải liên hệ với chúng tôi. Chúng tôi có thể sắp xếp giao Sản phẩm thay thế cho bạn hoặc hoàn lại tiền cho Sản phẩm đó theo quyết định riêng của chúng tôi.</p>
+                            <p>Việc giao hàng sẽ diễn ra theo địa chỉ do bạn chỉ định khi bạn đặt hàng Dịch vụ Sản phẩm với chúng tôi. Nếu bạn muốn thay đổi địa chỉ này cho bất kỳ hoạt động phân phối Dịch vụ sản phẩm nào đang diễn ra, vui lòng liên hệ với chúng tôi tại ……….</p>
+                            <p>Riêng các sản phẩm là phiếu bài tập điện tử, chúng tôi sẽ gửi tới bạn trong thời gian tối đa là 48 giờ kể từ thời điểm bạn đăng ký và hoàn thành việc thanh toán trực tuyến cho chúng tôi. Nếu ngoài thời gian trên, hãy liên hệ với chúng tôi, chúng tôi sẽ gửi lại cho bạn và tặng bạn một phần quà như một khoản đền bù.</p>
+                            <h5>Thanh toán</h5>
+                            <br>
+                            <p>Phương thức thanh toán của bạn sẽ được tính phí trước khi gửi từng Sản phẩm.</p>
+                            <p>Nếu chúng tôi không nhận được khoản thanh toán của bạn và bạn đã nhận được Sản phẩm, bạn phải:</p>
+                            <ul class="plain">
+                                <li>thanh toán cho Sản phẩm đó càng sớm càng tốt và trong mọi trường hợp trong vòng 7 ngày kể từ ngày nhận Sản phẩm</li>
+                                <li>trả lại Sản phẩm cho chúng tôi càng sớm càng tốt và trong mọi trường hợp trong vòng 14 ngày kể từ ngày nhận Sản phẩm. Nếu vậy, bạn phải giữ Sản phẩm thuộc quyền sở hữu của mình cho đến khi bạn trả lại cho chúng tôi, chăm sóc Sản phẩm một cách hợp lý trong thời gian bạn sở hữu và không sử dụng Sản phẩm trước khi trả lại cho chúng tôi. (Chính sách này không áp dụng với các phiếu bài tập điện tử).</li>
+                            </ul>
+                            <p>Nếu bạn không thanh toán Sản phẩm hoặc không trả lại Sản phẩm theo khoản này, chúng tôi có thể thu Sản phẩm từ bạn bằng chi phí của bạn. Chúng tôi sẽ cố gắng liên hệ với bạn để cho bạn biết liệu chúng tôi có ý định thực hiện việc này hay không.</p>
+                            <p>Không có điều khoản nào trong điều khoản này ảnh hưởng đến quyền của bạn trong việc hủy hợp đồng trong Thời gian hủy.</p>
                         </div>
                     </div>
                 </div>

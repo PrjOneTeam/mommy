@@ -37,7 +37,7 @@ class CartRepository extends Repository
         return $this->model->where('user_id', $userId)->first();
     }
 
-    public function getCurrentCart(string $sessionToken): ?Cart
+    public function getCurrentCart(string|null $sessionToken): ?Cart
     {
         return $this->getBySessionToken($sessionToken);
     }

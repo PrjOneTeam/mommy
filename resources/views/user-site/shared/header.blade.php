@@ -25,8 +25,8 @@
                         </li>
                             <li>
                                 <select onchange="changeLanguage(this)">
-                                    <option value="{{ route('setLocale', 'en') }}" @if((isset(session()->all()['locale']) ? session()->all()['locale'] : 'en') == 'en') selected @endif>English</option>
-                                    <option value="{{ route('setLocale', 'vi') }}" @if((isset(session()->all()['locale']) ? session()->all()['locale'] : 'en') == 'vi') selected @endif>Tiếng Việt</option>
+                                    <option value="{{ route('setLocale', 'vi') }}" @if((isset(session()->all()['locale']) ? session()->all()['locale'] : 'vi') == 'vi') selected @endif>Tiếng Việt</option>
+                                    <option value="{{ route('setLocale', 'en') }}" @if((isset(session()->all()['locale']) ? session()->all()['locale'] : 'vi') == 'en') selected @endif>English</option>
                                 </select>
 
                                 <script>
@@ -42,8 +42,7 @@
         </div>
         <div class="container">
             <div>
-                <a href="/" title="@lang('app.app_name')">
-                <img style="margin-top: 0px;height: 82px;width: 245px;text-indent: -9999px;display: block;float: left;" src="{{ asset('admin/assets/images/mommy-logo.png') }}" alt="logo"></a>
+                <a href="/"><img id="logo" src="{{ asset('admin/assets/images/mommy-logo.png') }}" alt="logo"></a>
             </div>
             <div class="nav-container">
                 <nav>

@@ -152,6 +152,8 @@ return [
     'mts_products' => 'MTS Products',
     'educational_articles' => 'Educational Articles',
     'lesson_guidelines' => 'Lesson Guidelines',
+    'privacy' => 'Chính sách bảo mật',
+    'term_condition' => 'Chính sách và điều khoản',
     'faqs' => 'FAQs',
     'about' => 'Về chúng tôi',
     'article_list' => 'Danh sách bài viết',

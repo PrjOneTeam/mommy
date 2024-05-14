@@ -18,6 +18,9 @@ use Illuminate\Validation\ValidationException;
 class AccountController extends Controller {
     public function index() {
         $userInfo = Auth::user();
+        if (!$userInfo) {
+            return view('user-site.login');
+        }
         $data = Customer::findOrFail($userInfo->id);
         if (!Helper::getCookie('show_language')) {
             $flag = 'vn';

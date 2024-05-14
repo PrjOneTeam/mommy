@@ -13,7 +13,7 @@
                 <div class="footer-column two">
                     <div class="footer-header">@lang('app.my_account')</div>
                     <ul>
-                        <li><a href="/login">@lang('app.account_login')</a></li>
+                        <li><a href="/user/login">@lang('app.account_login')</a></li>
                         <li><a href="/my-account">@lang('app.my_profile')</a></li>
                         <li><a href="/my-purchases">@lang('app.my_purchase')</a></li>
                         <li><a href="/my-orders">@lang('app.my_order')</a></li>
