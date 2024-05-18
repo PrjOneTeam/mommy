@@ -4,8 +4,11 @@ namespace App\Enums;
 
 class Grade
 {
-    const PRESCHOOL = 'preschool';
-    const KINDERGARTEN = 'kindergarten';
+    const PRIMARYSCHOOL = 'primaryschool';
+    const CLASS5YEAROLD = '5yearold';
+    const CLASS4YEAROLD = '4yearold';
+    const CLASS3YEAROLD = '3yearold';
+    const CLASS2YEAROLD = '2yearold';
 
     /**
      * Get all the grades.
@@ -15,8 +18,11 @@ class Grade
     public static function all(): array
     {
         return [
-            self::PRESCHOOL,
-            self::KINDERGARTEN,
+            self::PRIMARYSCHOOL,
+            self::CLASS5YEAROLD,
+            self::CLASS4YEAROLD,
+            self::CLASS3YEAROLD,
+            self::CLASS2YEAROLD,
         ];
     }
 }

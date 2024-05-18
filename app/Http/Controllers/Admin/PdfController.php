@@ -111,7 +111,7 @@ class PdfController extends Controller
             'id' => 'nullable|numeric',
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'grade' => ['nullable', Rule::in(Grade::all())],
+            'grade' => 'required',
             'topic' => ['nullable', 'array', Rule::in(array_keys($this->category->getKeyValueCategories()))],
             'image_color' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048',
             'files_color' => 'nullable',

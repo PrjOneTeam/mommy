@@ -18,7 +18,9 @@ class Category
                 'addition' => 'Addition',
                 'subtraction' => 'Subtraction',
                 'number_recognition' => 'Number Recognition',
+                'size' => 'Size',
                 'quantity' => 'Quantity',
+                'direction' => 'Direction'
             ],
         ],
         'art_coloring' => [
@@ -47,11 +49,22 @@ class Category
         'logic' => [
             'name' => 'Logic',
             'sub' => [
+                'patterns_logic' => 'Patterns_logic',
                 'logic_table' => 'Logic Table',
-                'matching_similar' => 'Match the Similar',
-                'matching_shadow' => 'Match the Shadow',
-                'practice_observation' => 'Practice Observation'
+                'matching' => 'Matching',
             ]
+        ],
+        'science' => [
+            'name' => 'Science',
+            'sub' => [
+                'animals' => 'Animals',
+                'weather' => 'Weather',
+                'food' => 'Food'
+            ]
+        ],
+        'feeling_and_emotions' => [
+            'name' => 'Feeling and Emotions',
+            'sub' => []
         ]
     ];
 

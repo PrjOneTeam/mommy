@@ -77,10 +77,10 @@
         </div>
         <div class="has_records clearfix">
             <div class="list-view ft-left">
-                <span id="pagination_title" class="space10 mto10">{{__("Showing")}} {{$page}} - {{$page * $per_page}} of {{$totals}}</span>
+                <span id="pagination_title" class="space10 mto10">@lang('app.showing') {{$page}} - {{$page * $per_page}} @lang('app.show_of') {{$totals}}</span>
             </div>
             <div class="ft-right mto10">
-                <span class="space10">{{__("Page")}}: </span>
+                <span class="space10">@lang('app.page'): </span>
                 <div class="article_paging">
                     <ul class="pagination">
                         @for($i = 1; $i <= ceil($totals/$per_page); $i++)

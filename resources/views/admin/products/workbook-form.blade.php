@@ -195,11 +195,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-12 control-label" for="grade">{{__("Grade")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                        <label class="col-sm-12 control-label" for="grade">{{__("Age")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
                         <div class="col-sm-12">
                             <select type="text" id="grade" name="grade" class="form-control">
-                                <option value="preschool" {{ old('grade', $workbook->grade ?? null) == 'preschool' ? 'selected' : null }}>{{ __('Preschool') }}</option>
-                                <option value="kindergarten" {{ old('grade', $workbook->grade ?? null) == 'kindergarten' ? 'selected' : null }}>{{ __('Kindergarten') }}</option>
+                                <option value="primaryschool" {{ old('grade', $workbook->grade ?? null) == 'primaryschool' ? 'selected' : null }}>Primany school</option>
+                                <option value="5yearold" {{ old('grade', $workbook->grade ?? null) == '5yearold' ? 'selected' : null }}>5 year old class</option>
+                                <option value="4yearold" {{ old('grade', $workbook->grade ?? null) == '4yearold' ? 'selected' : null }}>4 year old class</option>
+                                <option value="3yearold" {{ old('grade', $workbook->grade ?? null) == '3yearold' ? 'selected' : null }}>3 year old class</option>
+                                <option value="2yearold" {{ old('grade', $workbook->grade ?? null) == '2yearold' ? 'selected' : null }}>2 year old class</option>
                             </select>
                         </div>
                     </div>

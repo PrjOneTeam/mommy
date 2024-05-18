@@ -116,7 +116,7 @@ class WorkbookController extends Controller
             'price_both' => 'nullable|numeric',
             'sale_price' => 'nullable|numeric',
             'sale_price_both' => 'nullable|numeric',
-            'grade' => ['nullable', Rule::in(Grade::all())],
+            'grade' => 'required',
             'topic' => ['nullable', 'array', Rule::in(array_keys($this->category->getKeyValueCategories()))],
         ]);
 
