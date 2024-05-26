@@ -1,5 +1,6 @@
 
 <div class="content-right">
+    @if($adsWorkbook !== null)
     <div class="content-box sboptin-holder">
         <div class="sb-lta-banner">
             <div class="spacer">
@@ -13,6 +14,8 @@
             </div>
         </div>
     </div>
+    @endif
+    @if($adsPdf !== null)
     <div class="sidebanner-wrap">
         <div class="sidebanner-box">
             <div class="banner-title purple">{{  $adsPdf->name }}</div>
@@ -23,6 +26,7 @@
             <div class="center mto mbo"><a href="/{{$adsPdf->slug}}" class="button btn-purple">@lang('app.download_now')</a></div>
         </div>
     </div>
+    @endif
 {{--    <div class="content-box sboptin-holder">--}}
 {{--        <div class="sb-content">--}}
 {{--            <span class="free">free</span>--}}

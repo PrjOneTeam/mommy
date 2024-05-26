@@ -29,9 +29,15 @@ class HomeController extends Controller
         )->take(10);
 
         $adsWorkbook = Workbook::where('ads', 1)->first();
-        $adsWorkbook->slug = Slug::where('workbook_id', $adsWorkbook->id)->first()->slug;
+        if ($adsWorkbook !=null) {
+            $adsWorkbook->slug = Slug::where('workbook_id', $adsWorkbook->id)->first()->slug;
+        }
+
         $adsPdf = Pdf::where('ads',1)->first();
-        $adsPdf->slug = Slug::where('pdf_id', $adsPdf->id)->first()->slug;
+        if ($adsPdf) {
+            $adsPdf->slug = Slug::where('pdf_id', $adsPdf->id)->first()->slug;
+        } 
+
         return view('user-site.home', [
             'articleList' => $articleList,
             'workbookList' => $workbookList,
