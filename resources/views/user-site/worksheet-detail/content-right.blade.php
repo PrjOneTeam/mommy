@@ -5,7 +5,7 @@
         <div class="sb-lta-banner">
             <div class="spacer">
                 <h2>{{ $adsWorkbook->name }}<span>Workbook</span></h2>
-                <div class="center mto30 mbo50"><img src="{{ isset($adsWorkbook->image_bw) ? asset($adsWorkbook->image_bw) : (isset($adsWorkbook->image_color) ? asset($adsWorkbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" /></div>
+                <div class="center mto30 mbo50"><img src="{{ isset($adsWorkbook->image_bw) && $adsWorkbook->image_bw != '' ? asset($adsWorkbook->image_bw) : (isset($adsWorkbook->image_color) ? asset($adsWorkbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" /></div>
                 <p>
                     {{ $adsWorkbook->description }}
                     <em>@lang('app.home_invite')</em>
@@ -22,7 +22,7 @@
             <div class="banner-txt">
                 <p>{{$adsPdf->description}}</p>
             </div>
-            <div class="center mto10"><a href="/{{$adsPdf->slug}}"><img src="{{ isset($adsPdf->image_bw) ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" /></a></div>
+            <div class="center mto10"><a href="/{{$adsPdf->slug}}"><img src="{{ isset($adsPdf->image_bw) && $adsPdf->image_bw != '' ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" /></a></div>
             <div class="center mto mbo"><a href="/{{$adsPdf->slug}}" class="button btn-purple">@lang('app.download_now')</a></div>
         </div>
     </div>
