@@ -1,30 +1,31 @@
 @extends('user-site.main')
 @section('content-layout')
-<div class="section-banner">
+@if($adsWorkbook !== null)
+<div class="section-banner">h
     <div class="container">
         <div class="banner-wrap">
-            <div class="banner">
-                <a href="/{{$adsWorkbook->slug}}"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsWorkbook->image_bw) ? asset($adsWorkbook->image_bw) : (isset($adsWorkbook->image_color) ? asset($adsWorkbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="Printable Alphabet Activities Workbook Series" title="Learning the Alphabet Workbook Series" nopin="nopin"></a>
-            </div>
-            <div class="banner-clear"></div>
-            <div class="descr">
-                <h1>{{ $adsWorkbook->name }}<span>Workbook</span></h1>
-                <p>
-                    {{ $adsWorkbook->description }}
-                    <em>@lang('app.home_invite')</em>
-                </p>
-                <div class="start-now"><a href="/{{$adsWorkbook->slug}}" class="button large">@lang('app.download_now')</a></div>
-                <p></p>
-            </div>
-{{--            <div class="badges">--}}
-{{--                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner3"><img src="/vault/2599/web/images/alphabet-phonics-printable-workbook.png" alt="Available in Black-and-white and in color worksheets" title="The best phonics printable workbook" nopin="nopin"></a>--}}
-{{--                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner4"><img src="/vault/2599/web/images/the-ultimate-phonics.png" alt="Download phonics workbook" title="The ultimate phonics workbook" nopin="nopin"></a>--}}
-{{--            </div>--}}
-            <div class="clearfix"></div>
+                <div class="banner">
+                    <a href="/{{$adsWorkbook->slug}}"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsWorkbook->image_bw) &&  $adsWorkbook->image_bw != '' ? asset($adsWorkbook->image_bw) : (isset($adsWorkbook->image_color) ? asset($adsWorkbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" nopin="nopin"></a>
+                </div>
+                <div class="banner-clear"></div>
+                <div class="descr">
+                    <h1>{{ $adsWorkbook->name }}<span>Workbook</span></h1>
+                    <p>
+                        {{ $adsWorkbook->description }}
+                        <em>@lang('app.home_invite')</em>
+                    </p>
+                    <div class="start-now"><a href="/{{$adsWorkbook->slug}}" class="button large">@lang('app.download_now')</a></div>
+                    <p></p>
+                </div>
+                {{--            <div class="badges">--}}
+                {{--                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner3"><img src="/vault/2599/web/images/alphabet-phonics-printable-workbook.png" alt="Available in Black-and-white and in color worksheets" title="The best phonics printable workbook" nopin="nopin"></a>--}}
+                {{--                <a href="/learning-the-alphabet?utm_campaign=LTA&amp;utm_medium=MTS&amp;utm_source=home_banner4"><img src="/vault/2599/web/images/the-ultimate-phonics.png" alt="Download phonics workbook" title="The ultimate phonics workbook" nopin="nopin"></a>--}}
+                {{--            </div>--}}
+                <div class="clearfix"></div>
         </div>
     </div>
 </div>
-
+@endif
 <div class="section-what">
     <div class="container">
         <div class="box">
@@ -81,7 +82,7 @@
                 @foreach($workbookList as $key => $workbook)
                     <figure class="crsl-item" style="position: relative; float: left; overflow: hidden; height: auto; width: 212px; margin-right: 10px;">
                         <a href="/{{$workbook->slug}}">
-                            <div class="bck"><img style="width: 200px; height: 250px" src="{{ isset($workbook->image_bw) ? asset($workbook->image_bw) : (isset($workbook->image_color) ? asset($workbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" width="100%"></div>
+                            <div class="bck"><img style="width: 200px; height: 250px" src="{{ isset($workbook->image_bw) &&  $adsWorkbook->image_bw != ''? asset($workbook->image_bw) : (isset($workbook->image_color) ? asset($workbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" width="100%"></div>
                             <figcaption>{{ $workbook->name }}</figcaption>
                             <div class="olay">
                                 <div class="pad">
@@ -119,12 +120,12 @@
 {{--    </div>--}}
 {{--    <div style="background-color:#7ec146; border-top:3px solid #71a942;border-bottom:5px solid #fff; height: 30px"></div>--}}
 {{--</div>--}}
-
+@if($adsPdf !== null)
 <div class="section-banner math">
     <div class="container">
         <div class="banner-wrap">
             <div class="banner math">
-                <a href="/preschool-and-kindergarten-math-curriculum?utm_campaign=MTH&amp;utm_medium=MTS&amp;utm_source=home_banner1"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsPdf->image_bw) ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="photo" nopin="nopin" style="max-width:559px;width: 100%;"></a>
+                <a href="/{{$adsPdf->slug}}"><img style="max-height: 400px; max-width: 300px" src="{{ isset($adsPdf->image_bw) &&  $adsPdf->image_bw != '' ? asset($adsPdf->image_bw) : (isset($adsPdf->image_color) ? asset($adsPdf->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" alt="photo" nopin="nopin" style="max-width:559px;width: 100%;"></a>
             </div>
             <div class="banner-clear"></div>
             <div class="descr math">
@@ -139,7 +140,7 @@
         </div>
     </div>
 </div>
-
+@endif
 <div class="section-article">
     <div class="container">
         <h2>@lang('app.home_article')</h2>

@@ -38,9 +38,13 @@ class WorksheetDetailController extends Controller
         $isPurchase = $this->orderRepository->isPurchase($worksheet->id);
 
         $adsWorkbook = Workbook::where('ads', 1)->first();
-        $adsWorkbook->slug = Slug::where('workbook_id', $adsWorkbook->id)->first()->slug;
+        if ($adsWorkbook != null) {
+            $adsWorkbook->slug = Slug::where('workbook_id', $adsWorkbook->id)->first()->slug;
+        }
         $adsPdf = Pdf::where('ads',1)->first();
-        $adsPdf->slug = Slug::where('pdf_id', $adsPdf->id)->first()->slug;
+        if ($adsPdf != null) {
+            $adsPdf->slug = Slug::where('pdf_id', $adsPdf->id)->first()->slug;
+        }
 
         return view('user-site.worksheet-detail', [
             'type' => $type,

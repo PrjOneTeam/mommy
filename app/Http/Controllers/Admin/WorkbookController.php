@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Slug;
 use App\Models\Workbook;
 use App\Repositories\SlugRepository;
 use App\Repositories\WorkbookRepository;
@@ -116,7 +117,7 @@ class WorkbookController extends Controller
             'price_both' => 'nullable|numeric',
             'sale_price' => 'nullable|numeric',
             'sale_price_both' => 'nullable|numeric',
-            'grade' => ['nullable', Rule::in(Grade::all())],
+            'grade' => 'required',
             'topic' => ['nullable', 'array', Rule::in(array_keys($this->category->getKeyValueCategories()))],
         ]);
 
@@ -150,6 +151,10 @@ class WorkbookController extends Controller
                 if ($already) {
                     $slug = $slug . '-' . time();
                 }
+
+                if (strpos($slug, "#") !== false) {
+                    $slug = str_replace("#", "hashtag", $slug);
+                }
                 $workbook = $this->workbookRepository->create($data);
                 $this->slugRepository->create([
                     'slug' => $slug,
@@ -177,6 +182,9 @@ class WorkbookController extends Controller
         try {
             $article = $this->workbookRepository->find($id);
             $this->workbookRepository->delete($article);
+
+            $slug = Slug::where('workbook_id',$id)->first();
+            $slug->delete();
 
             return redirect()->back()->with('success', __('Workbook deleted successfully'));
         } catch (\Exception $e) {

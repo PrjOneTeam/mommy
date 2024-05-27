@@ -18,7 +18,9 @@ class Category
                 'addition' => 'Addition',
                 'subtraction' => 'Subtraction',
                 'number_recognition' => 'Number Recognition',
+                'size' => 'Size',
                 'quantity' => 'Quantity',
+                'direction' => 'Direction'
             ],
         ],
         'art_coloring' => [
@@ -39,6 +41,30 @@ class Category
                 'writing_number' => 'Writing Number',
                 'writing_letter' => 'Writing Letter',
             ]
+        ],
+        'story' => [
+            'name' => 'Story',
+            'sub' => []
+        ],
+        'logic' => [
+            'name' => 'Logic',
+            'sub' => [
+                'patterns_logic' => 'Patterns_logic',
+                'logic_table' => 'Logic Table',
+                'matching' => 'Matching',
+            ]
+        ],
+        'science' => [
+            'name' => 'Science',
+            'sub' => [
+                'animals' => 'Animals',
+                'weather' => 'Weather',
+                'food' => 'Food'
+            ]
+        ],
+        'feeling_and_emotions' => [
+            'name' => 'Feeling and Emotions',
+            'sub' => []
         ]
     ];
 

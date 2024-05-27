@@ -17,7 +17,6 @@
                             <table id="js_datatable" class="table table-responsive table-bordered table-striped">
                                 <thead>
                                 <tr role="row">
-                                  	<th class="w68px"></th>
                                     <th>ID</th>
                                     <th>{{ $lang['full_name'] }}</th>
                                     <th>Email</th>
@@ -38,7 +37,6 @@
         <script>
             $(document).ready(function () {
                 renderTable('/admin/customer', JSON.parse('[\
-						{ "data": "action", "orderable": false },\
                         { "data": "id" },\
                         { "data": "name" },\
                         { "data": "email" },\

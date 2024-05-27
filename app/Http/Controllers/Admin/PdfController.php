@@ -9,6 +9,7 @@ use App\Helpers\Language;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Pdf;
+use App\Models\Slug;
 use App\Models\Workbook;
 use App\Repositories\PdfRepository;
 use App\Repositories\SlugRepository;
@@ -111,7 +112,7 @@ class PdfController extends Controller
             'id' => 'nullable|numeric',
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'grade' => ['nullable', Rule::in(Grade::all())],
+            'grade' => 'required',
             'topic' => ['nullable', 'array', Rule::in(array_keys($this->category->getKeyValueCategories()))],
             'image_color' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1048',
             'files_color' => 'nullable',
@@ -159,6 +160,10 @@ class PdfController extends Controller
                     $slug = $slug . '-' . time();
                 }
 
+                if (strpos($slug, "#") !== false) {
+                    $slug = str_replace("#", "hashtag", $slug);
+                }
+
                 $pdf = $this->pdfRepository->create($data);
                 $this->slugRepository->create([
                     'slug' => $slug,
@@ -186,6 +191,9 @@ class PdfController extends Controller
         try {
             $article = $this->pdfRepository->find($id);
             $this->pdfRepository->delete($article);
+
+            $slug = Slug::where('pdf_id',$id)->first();
+            $slug->delete();
 
             return redirect()->back()->with('success', __('Pdf deleted successfully'));
         } catch (\Exception $e) {

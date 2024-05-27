@@ -6,8 +6,7 @@
 <ul>
     @foreach($lists ?? [] as $item)
         <li>
-            <p>{{$item['name']}}</p>
-            <a href="{{route('download', ['slug' => $item['slug'], 'color' => $item['color']])}}">Tải về</a>
+            <p>{{$item['name']}} : <a href="{{route('download', ['slug' => $item['slug'], 'color' => $item['color']])}}">Tải về</a></p>
         </li>
     @endforeach
 </ul>
