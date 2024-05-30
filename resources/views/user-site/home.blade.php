@@ -1,7 +1,7 @@
 @extends('user-site.main')
 @section('content-layout')
 @if($adsWorkbook !== null)
-<div class="section-banner">h
+<div class="section-banner">
     <div class="container">
         <div class="banner-wrap">
                 <div class="banner">
