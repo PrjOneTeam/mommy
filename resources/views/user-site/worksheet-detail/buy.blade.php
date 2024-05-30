@@ -10,7 +10,7 @@
         <table class="cart-amounts">
             <tbody><tr>
                 <td class="{{ $worksheet->sale_price ?: 'bold' }}">@lang('app.' .  ($worksheet->sale_price ? 'regular_price' : 'price'))</td>
-                <td class="total"><span class="{{$worksheet->sale_price ? 'strike' : 'sale bold' }}" id="reg-price-txt">VND {{$worksheet->price}}</span></td>
+                <td class="total"><span class="{{$worksheet->sale_price ? 'strike' : 'sale bold' }}" id="reg-price-txt">{{ number_format($worksheet->price, 0, ',', ',') }} VND</span></td>
             </tr>
             </tbody>
         </table>
@@ -18,7 +18,7 @@
             <table class="cart-amounts">
                 <tbody><tr>
                     <td class="bold red">@lang('app.price')</td>
-                    <td class="bold total amt red"><span class="sale bold" id="sale-price-txt">VND {{$worksheet->sale_price}}</span></td>
+                    <td class="bold total amt red"><span class="sale bold" id="sale-price-txt">{{number_format($worksheet->sale_price, 0, ',', ',')}} VND</span></td>
                 </tr>
                 </tbody>
             </table>

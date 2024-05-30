@@ -94,9 +94,8 @@
                                             @if($worksheet->topic)
                                                 <li>
                                                     <span>{{__("Topics")}}</span>
-                                                    <span>
                                                         @foreach($worksheet->topic as $topic)
-                                                            <span style="margin-right: 5px"><a href="/worksheets/{{$topic}}">{{ucfirst($topic)}}</a></span>
+                                                           <a href="/worksheets/{{$topic}}">{{ucfirst($topic)}}</a>
                                                         @endforeach
                                                         <span></span>
                                                     </span>

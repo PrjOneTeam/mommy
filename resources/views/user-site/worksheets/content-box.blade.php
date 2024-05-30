@@ -1,4 +1,4 @@
-<div id="dyn-listing">
+<div>
     @if($totals)
         <div class="has_records clearfix ">
             <div class="list-view ft-left">

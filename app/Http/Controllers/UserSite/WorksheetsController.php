@@ -56,6 +56,7 @@ class WorksheetsController extends Controller
             $p = ceil($totals / $perPage);
         }
 
+//        dd($p <= 0 ? 1 : min($p, ceil($totals / $perPage)), $perPage,$totals, $f);
         if ($request->ajax()) {
             return view('user-site.worksheets.content-box', [
                 'grades' => $grades,
@@ -64,7 +65,7 @@ class WorksheetsController extends Controller
                 'page' => $p <= 0 ? 1 : min($p, ceil($totals / $perPage)),
                 'per_page' => $perPage,
                 'totals' => $totals,
-                'f' => $f,
+                'f' => $f
             ]);
         }
 
