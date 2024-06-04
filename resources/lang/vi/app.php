@@ -150,6 +150,8 @@ return [
     'story' => 'Câu chuyện',
     'writing' => 'Tập viết',
     'math' => 'Toán học',
+    'english' => 'Tiếng Anh',
+    'English' => 'Tiếng Anh',
     'art_and_colors' => 'Sáng tạo và tô màu',
     'articles' => 'Bài viết',
     'worksheet_title' => 'Sản phẩm cho trẻ thơ',

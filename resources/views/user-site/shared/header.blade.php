@@ -53,6 +53,7 @@
                             <li><a href="/worksheets/writing">@lang('app.writing')</a></li>
                             <li><a href="/worksheets/maths">@lang('app.math')</a></li>
                             <li><a href="/worksheets/art_coloring">@lang('app.art_and_colors')</a></li>
+                            <li><a href="/worksheets/english">@lang('app.english')</a></li>
                             <li><a href="/article" style="color:#079eed">@lang('app.articles')</a></li>
                             <li>
                                 <div class="divleft"><a href="/worksheets">@lang('app.workbooks')</a></div>
@@ -69,6 +70,7 @@
                             <li><a href="/worksheets/writing">@lang('app.writing')</a></li>
                             <li><a href="/worksheets/maths">@lang('app.math')</a></li>
                             <li><a href="/worksheets/art_coloring">@lang('app.art_and_colors')</a></li>
+                            <li><a href="/worksheets/english">@lang('app.english')</a></li>
                             <li><a href="/article" style="color:#079eed">@lang('app.articles')</a></li>
                             <li>
                                 <div class="divleft"><a href="/worksheets">@lang('app.workbooks')</a></div>

@@ -24,6 +24,7 @@ class DownloadController extends Controller
 
     public function download(Request $request, string $slug, string $color = Color::BW)
     {
+        dd(1);
         $slug = $this->slugRepository->findBySlug($slug);
         if ($slug === null) {
             return redirect()->route('user-site-home')->with('error', __("Worksheet not found"));
@@ -52,11 +53,11 @@ class DownloadController extends Controller
     private function getPathFile(Pdf|Workbook $worksheet, string $color): string
     {
         return match ($color) {
-            Color::BW => $worksheet->files_bw ?? self::DEFAULT_FILE,
-            Color::COLOR => $worksheet->files_color ?? self::DEFAULT_FILE,
-            Color::BOTH => $worksheet->files_both ?? self::DEFAULT_FILE,
+            Color::BW => $worksheet->files_bw && $worksheet->files_bw != '' ? $worksheet->files_bw : $worksheet->files_color,
+            Color::COLOR => $worksheet->files_color && $worksheet->files_color != '' ? $worksheet->files_color :  $worksheet->files_bw,
+            Color::BOTH => $worksheet->files_both && $worksheet->files_both != '' ? $worksheet->files_both : ($worksheet->files_bw && $worksheet->files_bw != '' ? $worksheet->files_bw : $worksheet->files_color),
 
-            default => self::DEFAULT_FILE,
+            default => $worksheet->files_bw && $worksheet->files_bw != '' ? $worksheet->files_bw : $worksheet->files_color,
         };
     }
 }

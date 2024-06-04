@@ -15,6 +15,21 @@
     <link href="{{ asset('admin/v2/css/custom.css') }}" rel="stylesheet">
     @yield('css')
     <link href="{{ asset('admin/v2/css/coreui-chartjs.css') }}" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/xsqee8nbt81uy2sqyclfhz9ra0btkew4ifye65fufscf48w7/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.tinymce_content',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
     <style>
         .tox .tox-toolbar__overflow {
             right: 100px !important;
@@ -97,34 +112,9 @@
     <script src="{{ asset('admin/v2/js/coreui-utils.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/cd89cfqodamjuxinfsl9k4zjkzfmnte4v0gqwy9g39s3ue50/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{ asset('admin/v2/js/filemanage.js') }}"></script>
     @yield('javascript')
     <script>
-        tinymce.init({
-            selector: '.tinymce_content',
-            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime lists wordcount textpattern noneditable charmap quickbars emoticons',
-            toolbar: 'code | undo redo | dialogimage | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile media link anchor codesample | ltr rtl',
-            font_formats: "Gilroy; Gilroy Regular; Gilroy Light; SVN Gilroy Medium=VN Gilroy Medium; Gilroy Medium; Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
-            toolbar_sticky: true,
-            importcss_append: true,
-            convert_urls: false,
-            relative_urls : 0,
-            remove_script_host : 0,
-            height: 300,
-            branding: false,
-            menubar: false,
-            fontsize_formats: "8px 9px 10px 11px 12px 14px 18px 24px 30px 36px 48px 60px 72px 96px",
-            setup: function (editor) {
-                let _this = this;
-                editor.ui.registry.addButton('dialogimage', {
-                    icon: 'image',
-                    onAction: function () {
-                        FileManage.showPopup('EDITOR', _this.id)
-                    }
-                })
-            }
-        });
 
         $(document).on('click', '.icon--drop', function () {
             $(this).parent().next('.transition-height').toggleClass('is-show');

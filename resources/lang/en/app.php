@@ -68,6 +68,8 @@ return [
     'Direction' => 'Hướng',
     'resource_type' => 'Resource type',
     'Maths' => 'Maths',
+    'english' => 'English',
+    'English' => 'English',
     'Art & Coloring' => 'Art & Coloring',
     'Writing' => 'Writing',
     'Story' => 'Story',

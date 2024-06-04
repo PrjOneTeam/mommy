@@ -49,7 +49,7 @@ class WorkbookController extends Controller
                         'grade' => $workbook->grade,
                         'topic' => $workbook->topic ? implode(', ', $workbook->topic) : null,
                         'status' => $workbook->status ? __('Active') : __('Inactive'),
-                        'price' => $workbook->price,
+                        'price' => number_format($workbook->price, 0, ',', ',') . ' VND',
                         'created_at' => $workbook->created_at->format('Y-m-d H:i:s'),
                         'updated_at' => $workbook->updated_at->format('Y-m-d H:i:s'),
                         'action' => Helper::renderWorkbookAction('workbook', $workbook->id),

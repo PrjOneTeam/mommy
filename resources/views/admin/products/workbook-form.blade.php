@@ -152,51 +152,51 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="price">{{__("Price")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
-                            <div class="col-sm-12">
-                                <input class="form-control" id="price" name="price" value="{{ old('price', $workbook->price ?? null) }}">
+                            <label class="col-sm-2 control-label" for="price">{{__("Price")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="price" type="number" step="1000" name="price" value="{{ old('price', $workbook->price ?? null) }}">
                             </div>
                             @error('price')
-                            <div class="col-sm-12">
+                            <div class="col-sm-2">
                                 <span class="text-danger">{{ $message }}</span>
                             </div>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="price_both">{{__("Price Both")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
-                            <div class="col-sm-12">
-                                <input class="form-control" type="number" id="price_both" name="price_both"
+                            <label class="col-sm-2 control-label" for="price_both">{{__("Price Both")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="number" step="1000" id="price_both" name="price_both"
                                        value="{{ old('price_both', $workbook->price_both ?? null) }}">
                             </div>
                             @error('price_both')
-                            <div class="col-sm-12">
+                            <div class="col-sm-2">
                                 <span class="text-danger">{{ $message }}</span>
                             </div>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="sale_price">{{__("Sale Price")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
-                            <div class="col-sm-12">
-                                <input class="form-control" type="number" id="sale_price" name="sale_price"
+                            <label class="col-sm-2 control-label" for="sale_price">{{__("Sale Price")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="number" step="1000" id="sale_price" name="sale_price"
                                        value="{{ old('sale_price', $workbook->sale_price ?? null) }}">
                             </div>
                             @error('sale_price')
-                            <div class="col-sm-12">
+                            <div class="col-sm-2">
                                 <span class="text-danger">{{ $message }}</span>
                             </div>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-12 control-label" for="sale_price_both">{{__("Sale Price Both")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
-                            <div class="col-sm-12">
-                                <input class="form-control" type="number" id="sale_price_both" name="sale_price_both"
+                            <label class="col-sm-2 control-label" for="sale_price_both">{{__("Sale Price Both")}} <span class="text-muted font-weight-normal">({{__("option")}})</span></label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="number" step="1000" id="sale_price_both" name="sale_price_both"
                                        value="{{ old('sale_price_both', $workbook->sale_price_both ?? null) }}">
                             </div>
                             @error('sale_price_both')
-                            <div class="col-sm-12">
+                            <div class="col-sm-2">
                                 <span class="text-danger">{{ $message }}</span>
                             </div>
                             @endif

@@ -53,7 +53,7 @@ class PdfController extends Controller
                         'grade' => $pdf->grade,
                         'topic' => $pdf->topic ? implode(', ', $pdf->topic) : null,
                         'status' => $pdf->status ? __('Active') : __('Inactive'),
-                        'price' => $pdf->price,
+                        'price' => number_format($pdf->price, 0, ',', ',') . ' VND',
                         'created_at' => $pdf->created_at->format('Y-m-d H:i:s'),
                         'updated_at' => $pdf->updated_at->format('Y-m-d H:i:s'),
                         'action' => Helper::renderPdfAction('pdf', $pdf->id),

@@ -81,7 +81,7 @@
                                                                         <div class="total-frame">
                                                                             <div class="total-box">
                                                                                 <span class="title">@lang('app.total')</span>
-                                                                                <span class="cost">{{ 'VND ' . $cart->final_price }}</span>
+                                                                                <span class="cost">{{ number_format($cart->final_price, 0, ',', ',') }} VND</span>
                                                                             </div>
                                                                                 @csrf
                                                                                 <button type="submit" id="btnaction" name="btnaction" class="button btn-standout tall mto10">{{__("Complete Transaction")}}</button>
@@ -112,11 +112,11 @@
                                         <h2 style="margin-bottom:0">{{$item->worksheet_name}}</h2>
                                         <span class="semi-small">{{$item->color}}</span>
                                         <div class="price {{$item->sale_price !== null ? 'strike' : null}}">
-                                            <span class="semi-small">{{'VND '.$item->price}}</span>
+                                            <span class="semi-small">{{ number_format($item->price, 0, ',', ',') }} VND</span>
                                         </div>
                                         @if($item->sale_price !== null)
                                             <div class="price sale">
-                                                <span class="semi-small">{{'VND '.$item->sale_price}}</span>
+                                                <span class="semi-small">{{ number_format($item->sale_price, 0, ',', ',') }} VND</span>
                                             </div>
                                         @endif
                                     </div>
@@ -128,9 +128,9 @@
                                             <td class="bold">@lang('app.total')</td>
                                             <td class="bold total amt">
                                                 @if($cart->total_sale_price && $cart->total_sale_price < $cart->total_price)
-                                                    <p class="semi-small strike">{{'VND '.$cart->total_price}}</p>
+                                                    <p class="semi-small strike">{{ number_format($cart->total_price, 0, ',', ',') }} VND</p>
                                                 @endif
-                                                <p class="sale">{{'VND ' . $cart->final_price}}</p>
+                                                <p class="sale">{{ number_format($cart->final_price, 0, ',', ',') }} VND</p>
                                             </td>
                                         </tr>
                                         </tbody>
