@@ -19,18 +19,18 @@
                 <div>&nbsp;</div>
                 <div class="auth-container">
                     <div class="auth-block">
-                        <h1 class="hpage2">@lang('app.login_title')</h1>
-                        <form onsubmit="return frmValidCheck(this);" name="SignIn" persist="false" style="margin-bottom:5px;" target="_self" id="SignIn" method="post" action="/user/login">
-                            <span class="astrix">*</span>E-mail Address
-                            <div><input maxlength="50" id="email" vtype="text" vlabel="Email Address" vrequired="true" class="clInput" style="width:97%;" type="text" name="email"> </div>
-                            <span class="astrix">*</span>Password
+                        <h1 class="hpage2">@lang('app.reset_pw_title')</h1>
+                        <form onsubmit="return frmValidCheck(this);" name="SignIn" persist="false" style="margin-bottom:5px;" target="_self" id="SignIn" method="post" action="/user/reset-password">
+                            <span class="astrix">*</span>@lang('app.reset_code_title')
+                            <div><input maxlength="50" id="reset_code" vtype="reset_code" vlabel="Email Address" vrequired="true" class="clInput" style="width:97%;" type="text" name="reset_code"> </div>
+                            <span class="astrix">*</span>@lang('app.new_pw')
                             <div><input maxlength="30" id="password" vtype="password" vlabel="Password" vrequired="true" class="clInput" style="width:97%" type="password" name="password"> </div>
-                            <div class="mbo"><input type="checkbox" name="remember_me" id="remember_me_1" value="NEVER" class="clRadioCheck ">@lang('app.remember_me')</div>
-                            <div id="ValidationMessagesSignIn" class="XMValidationMessage mbo"></div>
-                            <input id="taskbtn" vtype="submit" class="btn btn-primary" type="submit" value="@lang('app.login')" style="width:100%">
+                            <span class="astrix">*</span>@lang('app.confirm_pw')
+                            <div><input maxlength="30" id="re_password" vtype="re_password" vlabel="Password" vrequired="true" class="clInput" style="width:97%" type="password" name="re_password"> </div>
+                            <input id="taskbtn" vtype="submit" class="btn btn-primary" type="submit" value="Reset" style="width:100%">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="customer_email" value="{{ $customer_email }}">
                         </form>
-                        <p class="center semi-small">@lang('app.forgot_pw')<a href="/user/forgot">@lang('app.reset_pw')</a>.</p>
                         <div class="auth-foot center mbo">
                             <strong>@lang('app.not_member')</strong> <a href="/user/register">@lang('app.join_free')</a>.
                         </div>

@@ -13,6 +13,7 @@ use App\Http\Controllers\UserSite\AccountController;
 use App\Http\Controllers\UserSite\LoginController;
 use App\Http\Controllers\UserSite\OrderController;
 use App\Http\Controllers\UserSite\PurchaseController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 include __DIR__ . '/admin.php';
@@ -22,12 +23,27 @@ Route::get('/', [HomeController::class, 'index'])->name('user-site-home');
 Route::get('locale/{locale}', [LocaleController::class, 'setLocale'])->name('setLocale');
 
 Route::group(['middleware' => 'customer'], function() {
+    Route::get('/run-queue', function () {
+        // Thực thi lệnh queue worker với thời gian timeout là 60 giây
+    Artisan::call('queue:work', [
+        '--timeout' => 600,
+    ]);
+
+    // Lấy kết quả của lệnh nếu cần
+    $output = Artisan::output();
+
+        // Trả về kết quả hoặc thông báo thành công
+        return response()->json(['message' => 'Queue worker executed successfully', 'output' => $output]);
+    });
     Route::get('/', [HomeController::class, 'index'])->name('user-site-home');
     Route::get('/article', [ArticleController::class, 'index'])->name('article');
     Route::get('/article/{id}/details', [ArticleController::class, 'show'])->name('article-detail');
     Route::get('/my-account', [AccountController::class, 'index'])->name('my-account');
 
     Route::get('/user/login', [LoginController::class, 'index'])->name('user-site.login');
+    Route::get('/user/forgot', [LoginController::class, 'forgot'])->name('user-site.forgot');
+    Route::post('/user/submit-forgot', [LoginController::class, 'submitForgot'])->name('forgot-submit');
+    Route::post('/user/reset-password', [LoginController::class, 'resetPassword'])->name('reset-password');
     Route::post('/user/login', [LoginController::class, 'login'])->name('login-submit');
     Route::get('/user/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -68,3 +84,4 @@ Route::group(['middleware' => 'customer'], function() {
     Route::get('/worksheets/{grade?}/{topic?}', [WorksheetsController::class, 'index'])->name('worksheets');
     Route::get('/{worksheet}', [WorksheetDetailController::class, 'index'])->name('worksheets.detail');
 });
+

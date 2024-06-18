@@ -2,9 +2,9 @@
 
 namespace App\Mail;
 
+use App\Enums\Color;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -33,7 +33,9 @@ class OrderMail extends Mailable
     {
         $lists = $this->providerListProduct($this->order);
 
-        return $this->view('user-site.mail', [
+        return $this
+            ->subject('[Mommy Me Station] Tải về sản phẩm')
+            ->view('user-site.mail', [
             'order' => $this->order,
             'lists' => $lists
         ]);
@@ -56,4 +58,44 @@ class OrderMail extends Mailable
 
         return $lists;
     }
+
+    // Dinh kem file vao email thay vi link download
+//    public function build()
+//    {
+//        $lists = $this->providerListProduct($this->order);
+//        $result =  $this->view('user-site.mail', [
+//            'order' => $this->order,
+//            'lists' => $lists
+//        ]);
+//        foreach ($lists as $worksheet) {
+//            $result->attach(storage_path($worksheet['attachPath']));
+//        }
+//
+//        return $result;
+//    }
+//
+//    public function providerListProduct(Order $order): array
+//    {
+//        $lists = [];
+//        foreach ($order->detail as $item) {
+//            $worksheet = $item->workbook ?? $item->pdf;
+//            $name = $worksheet->name;
+//            $color = $item->workbook_color ?? $item->pdf_color;
+//            if ($color == Color::BW) {
+//                $attachPath = $worksheet->files_bw;
+//            }
+//            if ($color == Color::COLOR || $attachPath == null) {
+//                $attachPath = $worksheet->files_color;
+//            }
+//            if ($color == Color::BOTH || $attachPath == null) {
+//                $attachPath = $worksheet->files_both;
+//            }
+//            $lists[] = [
+//                'name' => $name,
+//                'attachPath' => $attachPath
+//            ];
+//        }
+//
+//        return $lists;
+//    }
 }

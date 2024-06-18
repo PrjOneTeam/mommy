@@ -82,7 +82,7 @@
                 @foreach($workbookList as $key => $workbook)
                     <figure class="crsl-item" style="position: relative; float: left; overflow: hidden; height: auto; width: 212px; margin-right: 10px;">
                         <a href="/{{$workbook->slug}}">
-                            <div class="bck"><img style="width: 200px; height: 250px" src="{{ isset($workbook->image_bw) &&  $adsWorkbook->image_bw != ''? asset($workbook->image_bw) : (isset($workbook->image_color) ? asset($workbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" width="100%"></div>
+                            <div class="bck"><img style="width: 200px; height: 250px" src="{{ isset($workbook->image_bw) &&  $workbook->image_bw != ''? asset($workbook->image_bw) : (isset($workbook->image_color) ? asset($workbook->image_color) : asset('admin/assets/images/default_image.jpg'))  }}" width="100%"></div>
                             <figcaption>{{ $workbook->name }}</figcaption>
                             <div class="olay">
                                 <div class="pad">

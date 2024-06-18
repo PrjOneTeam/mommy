@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Jobs\OrderTask;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -33,7 +34,7 @@ class OrderController extends Controller
                     return [
                         'id' => $item->id,
                         'bill_info' => $item->bill_info,
-                        'customer_email' => $item->customer_id ? Customer::findOrFail($item->customer_id)->email : null,
+                        'customer_email' => $item->customer_id ? Customer::findOrFail($item->customer_id)->email : $item->email,
                         'total' => $item->total,
                         'bill_code' => $item->bill_code,
                         'status' => $lang[$item->status],
@@ -60,7 +61,7 @@ class OrderController extends Controller
             $order->status = Order::PURCHASED_STATUS;
             $order->save();
         }
-        $orderRepository->sendMail($order);
+        OrderTask::dispatch($order,$orderRepository);
         return redirect()->route('admin.order.index')->with('success', 'Đơn hàng đã được thanh toán thành công!');
     }
 

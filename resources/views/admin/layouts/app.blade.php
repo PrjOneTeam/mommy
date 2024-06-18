@@ -15,21 +15,23 @@
     <link href="{{ asset('admin/v2/css/custom.css') }}" rel="stylesheet">
     @yield('css')
     <link href="{{ asset('admin/v2/css/coreui-chartjs.css') }}" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/xsqee8nbt81uy2sqyclfhz9ra0btkew4ifye65fufscf48w7/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '.tinymce_content',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-            mergetags_list: [
-                { value: 'First.Name', title: 'First Name' },
-                { value: 'Email', title: 'Email' },
-            ],
-            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-        });
-    </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
+{{--    <script src="https://cdn.tiny.cloud/1/xsqee8nbt81uy2sqyclfhz9ra0btkew4ifye65fufscf48w7/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>--}}
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: '.tinymce_content',--}}
+{{--            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',--}}
+{{--            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',--}}
+{{--            tinycomments_mode: 'embedded',--}}
+{{--            tinycomments_author: 'Author name',--}}
+{{--            mergetags_list: [--}}
+{{--                { value: 'First.Name', title: 'First Name' },--}}
+{{--                { value: 'Email', title: 'Email' },--}}
+{{--            ],--}}
+{{--            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),--}}
+{{--        });--}}
+{{--    </script>--}}
     <style>
         .tox .tox-toolbar__overflow {
             right: 100px !important;
@@ -114,6 +116,13 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('admin/v2/js/filemanage.js') }}"></script>
     @yield('javascript')
+    <script>
+        ClassicEditor
+            .create(document.querySelector('textarea'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     <script>
 
         $(document).on('click', '.icon--drop', function () {
