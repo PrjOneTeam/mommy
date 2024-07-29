@@ -28,14 +28,18 @@ class WorksheetDetailController extends Controller
     {
         $slug = $this->slugRepository->findBySlug($worksheet);
         if ($slug === null) {
-            abort(404);
+            $worksheet = null;
+            $type = null;
+        } else {
+            $worksheet = $slug->workbook_id ? $slug->workbook : $slug->pdf;
+            $type = $worksheet instanceof \App\Models\Workbook ? 'workbook' : 'pdf';
         }
-
-        $worksheet = $slug->workbook_id ? $slug->workbook : $slug->pdf;
-        $type = $worksheet instanceof \App\Models\Workbook ? 'workbook' : 'pdf';
-        $worksheetRelated = $this->worksheetRepository->getRelatedWorksheet($type, $worksheet->topic);
-
-        $isPurchase = $this->orderRepository->isPurchase($worksheet->id);
+        if ($worksheet->topic) {
+            $worksheetRelated = $this->worksheetRepository->getRelatedWorksheet($type, $worksheet->topic);
+            $isPurchase = $this->orderRepository->isPurchase($worksheet->id);
+        } else {
+            $worksheetRelated = null;
+        }
 
         $adsWorkbook = Workbook::where('ads', 1)->first();
         if ($adsWorkbook != null) {
@@ -50,7 +54,7 @@ class WorksheetDetailController extends Controller
             'type' => $type,
             'worksheet' => $worksheet,
             'worksheetRelated' => $worksheetRelated,
-            'slug' => $slug->slug,
+            'slug' => $slug->slug ?? null,
             'isPurchase' => $isPurchase,
             'adsWorkbook' => $adsWorkbook,
             'adsPdf' => $adsPdf

@@ -13,7 +13,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="post-detail" class="content-box box-alt">
+                    @if ($worksheet)
+                        <div id="post-detail" class="content-box box-alt">
                         <div class="box-body">
                             <article class="single-post">
                                 <div class="post-header">
@@ -123,11 +124,14 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    @include('user-site.worksheet-detail.you-may-also-like')
-                    @if($worksheet instanceof \App\Models\Pdf)
-                        @include('user-site.worksheet-detail.comments')
+                        @include('user-site.worksheet-detail.you-may-also-like')
+                        @if($worksheet instanceof \App\Models\Pdf)
+                            @include('user-site.worksheet-detail.comments')
+                        @else
+                            @include('user-site.worksheet-detail.review')
+                        @endif
                     @else
-                        @include('user-site.worksheet-detail.review')
+                        <p style="text-align: center">Đường dẫn sản phẩm, dịch vụ không tồn tại</p>
                     @endif
                 </div>
             </div>
