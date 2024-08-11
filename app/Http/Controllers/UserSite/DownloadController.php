@@ -8,6 +8,7 @@ use App\Enums\Color;
 use App\Helpers\Worksheet;
 use App\Http\Controllers\Controller;
 use App\Models\Pdf;
+use App\Models\Slug;
 use App\Models\Workbook;
 use App\Repositories\SlugRepository;
 use Illuminate\Http\Request;
@@ -24,7 +25,6 @@ class DownloadController extends Controller
 
     public function download(Request $request, string $slug, string $color = Color::BW)
     {
-        dd(1);
         $slug = $this->slugRepository->findBySlug($slug);
         if ($slug === null) {
             return redirect()->route('user-site-home')->with('error', __("Worksheet not found"));
@@ -32,6 +32,27 @@ class DownloadController extends Controller
 
         $isFree = $this->worksheetHelper->isFree($slug->pdf ?? $slug->workbook);
         $path = $this->getPathFile($slug->pdf ?? $slug->workbook, $color);
+        if ($path == null) {
+            $adsWorkbook = Workbook::where('ads', 1)->first();
+            if ($adsWorkbook != null) {
+                $adsWorkbook->slug = Slug::where('workbook_id', $adsWorkbook->id)->first()->slug;
+            }
+            $adsPdf = Pdf::where('ads',1)->first();
+            if ($adsPdf != null) {
+                $adsPdf->slug = Slug::where('pdf_id', $adsPdf->id)->first()->slug;
+            }
+
+            return response()->view('user-site.worksheet-detail', [
+                'type' => null,
+                'worksheet' => null,
+                'worksheetRelated' => null,
+                'slug' => $slug->slug ?? null,
+                'isPurchase' => false,
+                'adsWorkbook' => $adsWorkbook,
+                'adsPdf' => $adsPdf
+
+            ]);
+        }
         $file = storage_path($path);
 
         if (file_exists($file) === false) {
