@@ -65,6 +65,10 @@ class Category
         'feeling_and_emotions' => [
             'name' => 'Feeling and Emotions',
             'sub' => []
+        ],
+        'english' => [
+            'name' => 'English',
+            'sub' => []
         ]
     ];
 

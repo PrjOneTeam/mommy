@@ -29,8 +29,8 @@
                 <div class="card-body">
                     <div class="p-2">
                         <div class="text-center">
-{{--                            <img src="{{ asset('logo.svg') }}">--}}
-                                <strong>Mommy Login</strong>
+                            <img style="width: 100px; height: 50px" src="{{ asset('admin/assets/images/mommy-logo.png') }}">
+                                <strong> ADMIN</strong>
                         </div>
                         <hr>
                         <form class="form-horizontal" method="post">
@@ -53,7 +53,7 @@
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
                             <div class="mt-3">
-                                <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Đăng nhập</button>
+                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Đăng nhập</button>
                             </div>
                         </form>
                     </div>

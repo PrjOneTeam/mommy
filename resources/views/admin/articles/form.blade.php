@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="content" class="col-sm-12 control-label">{{ __('Content') }}</label>
                             <div class="col-sm-12">
-                                <textarea id="content" name="content" required class="form-control">{{ old('content', $article->content ?? null) }}</textarea>
+                                <textarea id="content" name="content" class="tinymce_content">{{ old('content', $article->content ?? null) }}</textarea>
                             </div>
                             @error('content')
                             <div class="col-sm-12">

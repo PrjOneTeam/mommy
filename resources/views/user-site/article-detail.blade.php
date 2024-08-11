@@ -35,7 +35,7 @@
                                 <div class="clearfix"></div>
                                 <div class="post-entry">
                                     <div class="photo-vertical-right pinterest-image"><img style="display: block; width: 366px; height: 541px;" src="{{$article->pictures ? asset($article->pictures) : asset(\App\Enums\Image::DEFAULT_IMAGE) }}"></div>
-                                    {{ $article->content }}
+                                    {!! $article->content !!}
                                 </div>
 {{--                                <ul class="share share-foot">--}}
 {{--                                    <li class="like"> <a data-id="2508" class="like-post" title="I Like"><span class="icon-heart ics"></span><span class="txt">Like</span></a></li>--}}

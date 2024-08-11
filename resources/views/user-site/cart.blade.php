@@ -28,9 +28,9 @@
                                                     <li class="price">
                                                         <div class="inner">
                                                             @if($item->sale_price !== null)
-                                                                <span class="sale">{{'VND '.$item->sale_price}}</span><br>
+                                                                <span class="sale">{{number_format($item->sale_price, 0, ',', ',') . ' VND'}}</span><br>
                                                             @endif
-                                                            <span class="{{ $item->sale_price !== null ? 'strike' : null }}">{{'VND '.$item->price}}</span>
+                                                            <span class="{{ $item->sale_price !== null ? 'strike' : null }}">{{number_format($item->price, 0, ',', ',') . ' VND'}}</span>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -79,9 +79,9 @@
                                         <tbody>
                                         <tr>
                                             <td class="bold">@lang('app.total')</td>
-                                            <td class="bold total amt {{$cart->total_sale_price && $cart->total_sale_price < $cart->total_price ? 'strike' : null}}">{{__("VND").$cart->total_price}}</td>
+                                            <td class="bold total amt {{$cart->total_sale_price && $cart->total_sale_price < $cart->total_price ? 'strike' : null}}">{{number_format($cart->total_price, 0, ',', ',') . ' VND'}}</td>
                                             @if($cart->total_sale_price && $cart->total_sale_price < $cart->total_price)
-                                                <td class="bold total sale">{{'VND '.$cart->final_price}}</td>
+                                                <td class="bold total sale">{{number_format($cart->final_price, 0, ',', ',') . ' VND'}}</td>
                                             @endif
                                         </tr>
                                         </tbody>
